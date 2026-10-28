@@ -1,0 +1,442 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  THE GENERATIONAL CURSE BREAKER — design system
+  "The Evidence File meets the Family Home"
+  Archival paper, typewriter exhibit labels, brick and brass,
+  quiet light through a window. Nothing glossy, nothing startup-like.
+*/
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-brick: var(--brick);
+  --color-brick-2: var(--brick-2);
+  --color-brass: var(--brass);
+  --color-brass-2: var(--brass-2);
+  --color-mist: var(--mist);
+  --color-stamp: var(--stamp);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: var(--paper-2);
+  --color-card-foreground: var(--ink);
+  --color-border: var(--ink-15);
+  --color-input: var(--ink-15);
+  --color-ring: var(--brass);
+
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-jetbrains);
+  --font-sans: var(--font-newsreader);
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+}
+
+:root {
+  /* Ink (dark backgrounds, body text on paper) */
+  --ink: #14110F;
+  --ink-2: #1E1A17;
+  --ink-3: #2A2420;
+  --ink-15: rgba(20, 17, 15, 0.14);
+  --ink-25: rgba(20, 17, 15, 0.28);
+
+  /* Paper (light archival sections) */
+  --paper: #F1E8D8;
+  --paper-2: #E6D9C2;
+  --paper-3: #DCCEB3;
+
+  /* Brick — row-house brick, primary accent */
+  --brick: #8E3B2F;
+  --brick-2: #6E2C23;
+
+  /* Brass — ornament diamond, dividers, focus ring on dark */
+  --brass: #B8913F;
+  --brass-2: #D4B05E;
+
+  /* Mist — secondary text on dark */
+  --mist: #9C948A;
+
+  /* Stamp — rare "EXHIBIT" stamp accent */
+  --stamp: #B3261E;
+
+  --radius: 3px;
+}
+
+@layer base {
+  * {
+    border-color: var(--ink-15);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+    font-feature-settings: "kern", "liga", "calt";
+    /* faint paper grain via layered gradients — no image asset */
+    background-image:
+      radial-gradient(rgba(20, 17, 15, 0.018) 1px, transparent 1px),
+      radial-gradient(rgba(20, 17, 15, 0.012) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 1px;
+  }
+
+  /* ink section overrides paper grain with a darker grain */
+  .bg-ink-grain {
+    background-color: var(--ink);
+    background-image:
+      radial-gradient(rgba(184, 145, 63, 0.025) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    background-size: 5px 5px, 9px 9px;
+  }
+
+  ::selection {
+    background: var(--brass);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink-25);
+    border: 2px solid var(--paper-2);
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brick); }
+}
+
+/* ============== TYPE SCALE ============== */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .display {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+
+  .display-italic {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  .lede {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .body-text {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: clamp(1rem, 1.1vw, 1.075rem);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .body-text-lg {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .label-mono {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: clamp(0.7rem, 0.9vw, 0.78rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .label-mono-sm {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .exhibit-stamp {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--stamp);
+    border: 1.5px solid var(--stamp);
+    padding: 4px 8px;
+    display: inline-block;
+    transform: rotate(-2deg);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .measure {
+    max-width: 64ch;
+  }
+}
+
+/* ============== COMPONENT PRIMITIVES ============== */
+@layer components {
+  /* Brass diamond section divider — drawn with CSS only */
+  .diamond-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    color: var(--brass);
+  }
+  .diamond-divider::before,
+  .diamond-divider::after {
+    content: "";
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor 20%, currentColor 80%, transparent);
+    flex: 1;
+    max-width: 180px;
+    opacity: 0.7;
+  }
+  .diamond-divider .diamond {
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 1.5px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-brick {
+    background: var(--brick);
+    color: var(--paper);
+    border-color: var(--brick);
+  }
+  .btn-brick:hover { background: var(--brick-2); border-color: var(--brick-2); }
+
+  .btn-paper {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-paper:hover { background: var(--paper-2); }
+
+  .btn-outline-paper {
+    color: var(--paper);
+    border-color: color-mix(in srgb, var(--paper) 55%, transparent);
+  }
+  .btn-outline-paper:hover {
+    color: var(--paper);
+    border-color: var(--paper);
+    background: color-mix(in srgb, var(--paper) 8%, transparent);
+  }
+
+  /* Exhibit card (paper section) */
+  .exhibit-card {
+    background: var(--paper-2);
+    border: 1px solid var(--ink-15);
+    border-left: 3px solid var(--brick);
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    position: relative;
+  }
+
+  /* Exhibit card (ink section) */
+  .exhibit-card-ink {
+    background: var(--ink-2);
+    border: 1px solid rgba(184, 145, 63, 0.18);
+    border-left: 3px solid var(--brass);
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  /* Link underline draw */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    text-decoration: none;
+  }
+  .link-draw:hover { background-size: 100% 1px; }
+
+  /* Focus ring on dark */
+  .focus-ring-dark :focus-visible {
+    outline-color: var(--brass);
+  }
+
+  /* Tab list */
+  .tab-list {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--ink-15);
+  }
+  .tab-list::-webkit-scrollbar { display: none; }
+
+  .tab-trigger {
+    flex: 0 0 auto;
+    padding: 0.85rem 1.1rem;
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mist);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 200ms ease, border-color 200ms ease;
+    margin-bottom: -1px;
+  }
+  .tab-trigger:hover { color: var(--ink); }
+  .tab-trigger[data-state="active"] {
+    color: var(--ink);
+    border-bottom-color: var(--brick);
+  }
+}
+
+/* ============== MOTION ============== */
+@layer utilities {
+  /*
+    Progressive enhancement: .reveal defaults to VISIBLE so the page is
+    readable without JS, with slow hydration, or when captured as a static
+    snapshot. The .js class is added to <html> on mount, and ONLY THEN do
+    we hide-then-reveal. Reduced motion is honored in the @media query below.
+  */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .js .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero staggered reveal — only hidden when JS is on */
+  .hero-rise { opacity: 1; transform: none; }
+  .js .hero-rise {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: heroRise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  @keyframes heroRise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Window glow — brass pulse on load */
+  @keyframes windowGlow {
+    0%   { opacity: 0; }
+    60%  { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* Diamond scale-in */
+  @keyframes diamondScale {
+    from { transform: rotate(45deg) scale(0.4); opacity: 0; }
+    to   { transform: rotate(45deg) scale(1); opacity: 1; }
+  }
+
+  /* Cover float-in */
+  @keyframes coverFloat {
+    from { opacity: 0; transform: translateY(20px) rotate(-2.5deg); }
+    to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
+  }
+
+  /* Underline ink draw on reveal */
+  @keyframes underlineDraw {
+    from { background-size: 0% 1px; }
+    to   { background-size: 100% 1px; }
+  }
+
+  /* Vertical scroll cue */
+  @keyframes scrollCue {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50%      { transform: translateY(6px); opacity: 1; }
+  }
+
+  /* Tab panel fade-in */
+  @keyframes panelFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Count-up — handled via JS */
+
+  /* Reduced motion: disable everything except instant state changes */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .js .reveal { opacity: 1 !important; transform: none !important; }
+    .js .hero-rise { opacity: 1 !important; transform: none !important; animation: none !important; }
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}
