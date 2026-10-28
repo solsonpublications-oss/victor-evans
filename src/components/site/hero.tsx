@@ -3,9 +3,11 @@
 import * as React from "react";
 import { RowHouseArt, BookCoverArt } from "./illustrations";
 import { useCoverTilt } from "./hooks/motion";
+import { useGetBookModal } from "./get-book-modal";
 
 export function Hero() {
   const tiltRef = useCoverTilt(6);
+  const { open: openGetBook } = useGetBookModal();
 
   return (
     <section
@@ -34,20 +36,21 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative max-w-[1400px] mx-auto px-5 md:px-8 pt-28 md:pt-32 pb-16 md:pb-24 grid md:grid-cols-12 gap-8 items-center">
+      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-5 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-24 grid md:grid-cols-12 gap-8 items-center">
         {/* left/center: text */}
         <div className="md:col-span-7 md:pr-8">
           <p
-            className="eyebrow hero-rise text-brass-2"
-            style={{ animationDelay: "100ms" }}
+            className="eyebrow hero-rise"
+            style={{ animationDelay: "100ms", color: "var(--brass-2)" }}
           >
             A True Account · First Edition 2025
           </p>
 
           <h1
-            className="display text-paper text-balance mt-5"
+            className="display text-balance mt-4 sm:mt-5"
             style={{
-              fontSize: "clamp(2.6rem, 8vw, 6.5rem)",
+              fontSize: "clamp(2.2rem, 8vw, 6.5rem)",
+              color: "var(--on-ink)",
             }}
             data-hero-rise
           >
@@ -61,10 +64,10 @@ export function Hero() {
           </h1>
 
           <p
-            className="display-italic hero-rise mt-5"
+            className="display-italic hero-rise mt-4 sm:mt-5"
             style={{
-              fontSize: "clamp(1rem, 1.7vw, 1.4rem)",
-              color: "var(--paper)",
+              fontSize: "clamp(0.95rem, 1.7vw, 1.4rem)",
+              color: "var(--on-ink)",
               opacity: 0.8,
               maxWidth: "42ch",
               animationDelay: "460ms",
@@ -75,9 +78,9 @@ export function Hero() {
           </p>
 
           <p
-            className="body-text-lg hero-rise mt-7"
+            className="body-text-lg hero-rise mt-6 sm:mt-7"
             style={{
-              color: "var(--paper)",
+              color: "var(--on-ink)",
               opacity: 0.85,
               maxWidth: "44ch",
               animationDelay: "600ms",
@@ -90,14 +93,18 @@ export function Hero() {
           </p>
 
           <div
-            className="hero-rise mt-9 flex flex-wrap gap-3"
+            className="hero-rise mt-7 sm:mt-9 flex flex-wrap gap-3"
             style={{ animationDelay: "740ms" }}
           >
-            <a href="#record" className="btn btn-brick">
-              Read the Record
-            </a>
-            <a href="#book" className="btn btn-outline-paper">
+            <button
+              type="button"
+              className="btn btn-brick"
+              onClick={openGetBook}
+            >
               Get the Book
+            </button>
+            <a href="#book" className="btn btn-outline-paper">
+              About the Book
             </a>
           </div>
         </div>
@@ -108,14 +115,14 @@ export function Hero() {
             ref={tiltRef}
             className="hero-rise relative"
             style={{
-              width: "min(78vw, 320px)",
+              width: "min(72vw, 320px)",
               aspectRatio: "2 / 3",
               animation: "coverFloat 1100ms cubic-bezier(0.2,0.7,0.2,1) forwards",
               animationDelay: "800ms",
               opacity: 0,
               transformStyle: "preserve-3d",
               transform: "perspective(1200px) rotateX(0) rotateY(0)",
-              transition: "transform 200ms ease-out",
+              transition: "transform 200ms ease-out, filter 350ms ease",
               filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.55))",
             }}
           >
@@ -136,7 +143,7 @@ export function Hero() {
 
       {/* scroll cue — vertical thread with brass diamond */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 bottom-6 hidden md:flex flex-col items-center gap-2"
+        className="absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-6 hidden md:flex flex-col items-center gap-2"
         aria-hidden="true"
         style={{ color: "var(--brass)" }}
       >
@@ -160,7 +167,7 @@ export function Hero() {
             animation: "scrollCue 2200ms ease-in-out infinite",
           }}
         />
-        <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+        <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
           Scroll
         </span>
       </div>

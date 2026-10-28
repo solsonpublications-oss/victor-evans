@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { BookCoverArt, DiamondDivider } from "./illustrations";
+import { useGetBookModal } from "./get-book-modal";
+import { useView } from "./view-provider";
 
 const BEATS = [
   {
@@ -36,41 +38,56 @@ const DETAILS = [
 ];
 
 export function AboutBook() {
+  const { open: openGetBook } = useGetBookModal();
+  const { setView } = useView();
+
   return (
     <section
       id="book"
-      className="bg-ink-grain relative py-24 md:py-32 px-5 md:px-8"
+      className="bg-ink-grain relative py-16 sm:py-20 md:py-32 px-4 sm:px-5 md:px-8"
       aria-label="About the book"
-      style={{ color: "var(--paper)" }}
+      style={{ color: "var(--on-ink)" }}
     >
       <div className="max-w-[1400px] mx-auto">
-        <div className="flex items-center gap-3 mb-12 reveal">
-          <span className="label-mono-sm text-brass">§ 02</span>
-          <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+        <div className="flex items-center gap-3 mb-8 sm:mb-12 reveal">
+          <span className="label-mono-sm" style={{ color: "var(--brass)" }}>§ 02</span>
+          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
             About the Book
           </span>
         </div>
 
-        <div className="grid md:grid-cols-12 gap-10 md:gap-14">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-14">
           {/* sticky cover */}
           <div className="md:col-span-4">
             <div
-              className="md:sticky md:top-24 reveal"
-              style={{ aspectRatio: "2 / 3" }}
+              className="md:sticky md:top-24 reveal hover-lift"
+              style={{
+                aspectRatio: "2 / 3",
+                maxWidth: "320px",
+                margin: "0 auto",
+                transition: "transform 350ms cubic-bezier(0.2,0.7,0.2,1), filter 350ms ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.filter = "drop-shadow(0 30px 60px rgba(0,0,0,0.6))";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.filter = "drop-shadow(0 20px 40px rgba(0,0,0,0.4))";
+              }}
             >
-              <BookCoverArt
-                className="w-full h-full"
-                // cover floats in already in hero; here just a soft hover
-              />
+              <BookCoverArt className="w-full h-full" />
             </div>
-            <p
-              className="label-mono-sm mt-4 reveal text-center md:text-left"
-              style={{ color: "var(--mist)" }}
-            >
-              Cover art is a placeholder.
-              <br />
-              Swap one file to publish the real jacket.
-            </p>
+            {process.env.NODE_ENV !== "production" && (
+              <p
+                className="label-mono-sm mt-4 reveal text-center md:text-left"
+                style={{ color: "var(--on-ink-muted)" }}
+              >
+                Cover art is a placeholder.
+                <br />
+                Swap one file to publish the real jacket.
+              </p>
+            )}
           </div>
 
           {/* description + details */}
@@ -78,8 +95,8 @@ export function AboutBook() {
             <h2
               className="display reveal text-balance"
               style={{
-                fontSize: "clamp(2rem, 4vw, 3.4rem)",
-                color: "var(--paper)",
+                fontSize: "clamp(1.8rem, 4vw, 3.4rem)",
+                color: "var(--on-ink)",
               }}
               data-reveal-delay="80"
             >
@@ -89,8 +106,8 @@ export function AboutBook() {
             </h2>
 
             <p
-              className="lede reveal mt-6"
-              style={{ color: "var(--paper)", opacity: 0.85, maxWidth: "55ch" }}
+              className="lede reveal mt-5 sm:mt-6"
+              style={{ color: "var(--on-ink)", opacity: 0.85, maxWidth: "55ch" }}
               data-reveal-delay="140"
             >
               A nonfiction account of one family&apos;s thirty-year fight
@@ -99,11 +116,11 @@ export function AboutBook() {
               for justice.
             </p>
 
-            <div className="mt-10 space-y-7">
+            <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-7">
               {BEATS.map((beat, i) => (
                 <div
                   key={beat.label}
-                  className="reveal grid md:grid-cols-12 gap-4 md:gap-6"
+                  className="reveal grid md:grid-cols-12 gap-3 md:gap-6 hover-lift"
                   data-reveal-delay={i * 100}
                 >
                   <div className="md:col-span-3">
@@ -115,15 +132,16 @@ export function AboutBook() {
                     <h3
                       className="display-italic"
                       style={{
-                        fontSize: "clamp(1.3rem, 2.2vw, 1.7rem)",
-                        color: "var(--paper)",
+                        fontSize: "clamp(1.2rem, 2.2vw, 1.7rem)",
+                        color: "var(--on-ink)",
+                        transition: "color 350ms ease",
                       }}
                     >
                       {beat.title}
                     </h3>
                     <p
-                      className="body-text mt-3"
-                      style={{ color: "var(--paper)", opacity: 0.82 }}
+                      className="body-text mt-2 sm:mt-3"
+                      style={{ color: "var(--on-ink)", opacity: 0.82 }}
                     >
                       {beat.body}
                     </p>
@@ -134,10 +152,10 @@ export function AboutBook() {
 
             {/* who it's for */}
             <div
-              className="reveal mt-12 p-6"
+              className="reveal mt-10 sm:mt-12 p-5 sm:p-6 hover-lift"
               style={{
                 border: "1px solid rgba(184, 145, 63, 0.25)",
-                background: "rgba(30, 26, 23, 0.5)",
+                background: "rgba(31, 24, 20, 0.5)",
               }}
             >
               <div
@@ -146,7 +164,7 @@ export function AboutBook() {
               >
                 Who the book is for
               </div>
-              <p className="body-text" style={{ color: "var(--paper)", opacity: 0.85 }}>
+              <p className="body-text" style={{ color: "var(--on-ink)", opacity: 0.85 }}>
                 Families of people with developmental disabilities. Attorneys,
                 social workers, judges, legislators, and law enforcement. Anyone
                 who needs to understand what elder and disabled adult financial
@@ -158,11 +176,11 @@ export function AboutBook() {
 
             {/* book details card */}
             <div
-              className="reveal mt-8 p-6"
+              className="reveal mt-8 p-5 sm:p-6 hover-lift"
               style={{
-                background: "var(--paper)",
-                color: "var(--ink)",
-                border: "1px solid var(--ink-15)",
+                background: "var(--bg)",
+                color: "var(--fg)",
+                border: "1px solid var(--line)",
               }}
             >
               <div className="label-mono-sm mb-4" style={{ color: "var(--brick)" }}>
@@ -173,14 +191,14 @@ export function AboutBook() {
                   <div
                     key={d.k}
                     className="grid grid-cols-3 gap-3 text-sm"
-                    style={{ borderBottom: "1px solid var(--ink-15)" }}
+                    style={{ borderBottom: "1px solid var(--line)" }}
                   >
-                    <dt className="label-mono-sm py-1" style={{ color: "var(--mist)" }}>
+                    <dt className="label-mono-sm py-1" style={{ color: "var(--fg-muted)" }}>
                       {d.k}
                     </dt>
                     <dd
                       className="col-span-2 py-1 body-text"
-                      style={{ fontSize: "0.95rem" }}
+                      style={{ fontSize: "0.92rem" }}
                     >
                       {d.v}
                     </dd>
@@ -189,25 +207,40 @@ export function AboutBook() {
               </dl>
               <p
                 className="label-mono-sm mt-4"
-                style={{ color: "var(--mist)", fontSize: "0.6rem" }}
+                style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
               >
                 Items marked &ldquo;placeholder&rdquo; are pending the author&apos;s
                 confirmation and will be filled in before launch.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#record" className="btn btn-brick">
+              <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  className="btn btn-brick"
+                  onClick={openGetBook}
+                >
+                  Get the Book
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-paper"
+                  onClick={() => setView("record")}
+                >
                   Read the Record
-                </a>
-                <a href="#contact" className="btn btn-paper">
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline"
+                  onClick={() => setView("contact")}
+                >
                   Request a review copy
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-20 reveal">
+        <div className="mt-16 sm:mt-20 reveal">
           <DiamondDivider />
         </div>
       </div>

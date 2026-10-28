@@ -8,7 +8,7 @@ export function TimelineTab() {
     <div>
       <p
         className="body-text measure mb-10"
-        style={{ color: "var(--ink)", opacity: 0.8 }}
+        style={{ color: "var(--fg)", opacity: 0.8 }}
       >
         A vertical thread that fills with brass as you scroll. Each entry is an
         exhibit card with the date the manuscript cites and the chapter that
@@ -44,7 +44,7 @@ export function TimelineTab() {
                 top: "0.4rem",
                 width: "12px",
                 height: "12px",
-                background: i === 0 ? "var(--brass)" : "var(--paper)",
+                background: i === 0 ? "var(--brass)" : "var(--bg)",
                 border: "2px solid var(--brass)",
                 transform: "rotate(45deg)",
               }}
@@ -55,7 +55,7 @@ export function TimelineTab() {
                 <span className="label-mono" style={{ color: "var(--brick)" }}>
                   {ev.date}
                 </span>
-                <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+                <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                   {ev.chapter}
                 </span>
               </div>
@@ -63,14 +63,14 @@ export function TimelineTab() {
                 className="display-italic"
                 style={{
                   fontSize: "clamp(1.25rem, 2vw, 1.6rem)",
-                  color: "var(--ink)",
+                  color: "var(--fg)",
                 }}
               >
                 {ev.title}
               </h3>
               <p
                 className="body-text mt-2"
-                style={{ color: "var(--ink)", opacity: 0.85 }}
+                style={{ color: "var(--fg)", opacity: 0.85 }}
               >
                 {ev.summary}
               </p>

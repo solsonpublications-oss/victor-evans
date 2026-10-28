@@ -5,8 +5,11 @@ import * as React from "react";
 /**
  * Section reveal — IntersectionObserver adds .in to .reveal elements.
  * Reduced-motion: .reveal is forced visible via CSS @media query.
+ *
+ * Pass a `deps` array (e.g., the current view) so the observer re-runs when
+ * the view changes and new .reveal elements mount.
  */
-export function useRevealOnScroll() {
+export function useRevealOnScroll(deps: React.DependencyList = []) {
   React.useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -15,6 +18,8 @@ export function useRevealOnScroll() {
     ).matches;
     if (prefersReduced) {
       // CSS handles forcing .reveal visible. Nothing to do.
+      // But still force .in on any new elements to be safe.
+      document.querySelectorAll<HTMLElement>(".reveal:not(.in)").forEach((el) => el.classList.add("in"));
       return;
     }
 
@@ -44,8 +49,19 @@ export function useRevealOnScroll() {
     );
 
     els.forEach((el) => io.observe(el));
+
+    // Also immediately reveal any elements already in the viewport on view switch
+    requestAnimationFrame(() => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.in)").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("in");
+        }
+      });
+    });
+
     return () => io.disconnect();
-  }, []);
+  }, deps);
 }
 
 /**

@@ -2,111 +2,195 @@
 
 import * as React from "react";
 import { useHeaderScrolled } from "./hooks/motion";
+import { useView, type ViewId } from "./view-provider";
+import { useGetBookModal } from "./get-book-modal";
+import { ThemeToggle } from "./theme-toggle";
 
-const NAV = [
-  { href: "#author", label: "The Author" },
-  { href: "#book", label: "The Book" },
-  { href: "#record", label: "The Record" },
-  { href: "#contact", label: "Contact" },
+const NAV: { view: ViewId; label: string }[] = [
+  { view: "home", label: "Home" },
+  { view: "home", label: "The Author" }, // home view has it
+  { view: "home", label: "The Book" },
+  { view: "record", label: "The Record" },
+  { view: "contact", label: "Contact" },
+];
+
+// We split NAV into anchor-nav (scrolls within home) and view-nav (switches view).
+const VIEW_NAV: { view: ViewId; label: string }[] = [
+  { view: "record", label: "The Record" },
+  { view: "contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
   const scrolled = useHeaderScrolled(40);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { view, setView } = useView();
+  const { open: openGetBook } = useGetBookModal();
+
+  const onHome = view === "home";
+
+  const headerStyle: React.CSSProperties = {
+    backgroundColor: scrolled
+      ? "var(--header-bg-scrolled)"
+      : onHome
+      ? "transparent"
+      : "var(--header-bg)",
+    backdropFilter: scrolled ? "blur(12px) saturate(140%)" : "none",
+    WebkitBackdropFilter: scrolled ? "blur(12px) saturate(140%)" : "none",
+    borderBottom: scrolled
+      ? "1px solid var(--line-strong)"
+      : "1px solid transparent",
+    transition:
+      "background-color 250ms ease, backdrop-filter 250ms ease, border-color 250ms ease",
+  };
+
+  const wordmarkColor = onHome && !scrolled ? "var(--on-ink)" : "var(--fg)";
+  const navColor = onHome && !scrolled ? "var(--on-ink)" : "var(--fg)";
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        backgroundColor: scrolled ? "rgba(20, 17, 15, 0.82)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px) saturate(140%)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px) saturate(140%)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(184, 145, 63, 0.35)"
-          : "1px solid transparent",
-        transition:
-          "background-color 250ms ease, backdrop-filter 250ms ease, border-color 250ms ease",
-      }}
-    >
-      <div className="max-w-[1400px] mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-5 md:px-8 h-14 md:h-16 flex items-center justify-between gap-2">
         {/* wordmark */}
-        <a
-          href="#top"
-          className="label-mono text-paper hover:text-brass-2 transition-colors"
-          style={{ color: "var(--paper)" }}
-          aria-label="Victor L. Evans — home"
+        <button
+          type="button"
+          onClick={() => setView("home")}
+          className="label-mono"
+          style={{ color: wordmarkColor, transition: "color 250ms ease", cursor: "pointer" }}
+          aria-label="Go to home"
         >
           V. L. Evans
-        </a>
+        </button>
 
         {/* desktop nav */}
         <nav
-          className="hidden md:flex items-center gap-7"
+          className="hidden md:flex items-center gap-5 lg:gap-7"
           aria-label="Primary"
         >
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="label-mono-sm link-draw"
-              style={{ color: "var(--paper)", opacity: 0.78 }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.78")}
+          {onHome && (
+            <>
+              <a
+                href="#author"
+                className="nav-link"
+                style={{ color: navColor }}
+              >
+                The Author
+              </a>
+              <a
+                href="#book"
+                className="nav-link"
+                style={{ color: navColor }}
+              >
+                The Book
+              </a>
+            </>
+          )}
+          {VIEW_NAV.map((item) => (
+            <button
+              key={item.view}
+              type="button"
+              onClick={() => setView(item.view)}
+              className="nav-link"
+              data-active={view === item.view}
+              style={{ color: navColor }}
             >
               {item.label}
-            </a>
+            </button>
           ))}
-          <a
-            href="#book"
+          <button
+            type="button"
+            onClick={openGetBook}
             className="btn btn-outline-paper"
-            style={{ fontSize: "0.7rem" }}
+            style={{
+              fontSize: "0.7rem",
+              padding: "0.6rem 1rem",
+              color: onHome && !scrolled ? "var(--on-ink)" : "var(--fg)",
+              borderColor: onHome && !scrolled
+                ? "color-mix(in srgb, var(--on-ink) 55%, transparent)"
+                : "var(--line-strong)",
+            }}
           >
             Get the Book
-          </a>
+          </button>
+          <ThemeToggle inDarkContext={onHome && !scrolled} />
         </nav>
 
         {/* mobile toggle */}
-        <button
-          type="button"
-          className="md:hidden label-mono-sm"
-          style={{ color: "var(--paper)" }}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-          aria-label="Toggle navigation"
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          {mobileOpen ? "Close" : "Menu"}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle inDarkContext={onHome && !scrolled} />
+          <button
+            type="button"
+            className="label-mono-sm md:hidden"
+            style={{ color: navColor }}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            aria-label="Toggle navigation"
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            {mobileOpen ? "Close" : "Menu"}
+          </button>
+        </div>
       </div>
 
       {/* mobile drawer */}
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="md:hidden bg-ink-grain border-t border-[rgba(184,145,63,0.2)]"
+          className="md:hidden"
+          style={{
+            backgroundColor: "var(--header-bg-scrolled)",
+            backdropFilter: "blur(12px)",
+            borderTop: "1px solid var(--line)",
+          }}
         >
           <nav
-            className="px-5 py-4 flex flex-col gap-3"
+            className="px-4 sm:px-5 py-4 flex flex-col gap-1"
             aria-label="Mobile primary"
           >
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="label-mono py-2"
-                style={{ color: "var(--paper)" }}
-                onClick={() => setMobileOpen(false)}
+            {onHome && (
+              <>
+                <a
+                  href="#author"
+                  className="label-mono py-2.5 nav-link"
+                  style={{ color: "var(--fg)" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  The Author
+                </a>
+                <a
+                  href="#book"
+                  className="label-mono py-2.5 nav-link"
+                  style={{ color: "var(--fg)" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  The Book
+                </a>
+              </>
+            )}
+            {VIEW_NAV.map((item) => (
+              <button
+                key={item.view}
+                type="button"
+                className="label-mono py-2.5 nav-link text-left"
+                data-active={view === item.view}
+                style={{ color: "var(--fg)" }}
+                onClick={() => {
+                  setView(item.view);
+                  setMobileOpen(false);
+                }}
               >
                 {item.label}
-              </a>
+              </button>
             ))}
-            <a
-              href="#book"
-              className="btn btn-outline-paper mt-2"
-              onClick={() => setMobileOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                openGetBook();
+                setMobileOpen(false);
+              }}
+              className="btn btn-brick mt-2"
+              style={{ fontSize: "0.7rem" }}
             >
               Get the Book
-            </a>
+            </button>
           </nav>
         </div>
       )}

@@ -1,30 +1,58 @@
 "use client";
 
 import * as React from "react";
+import { useView, type ViewId } from "./view-provider";
 
 export function SiteFooter() {
+  const { view, setView } = useView();
+
+  const viewLinks: { view: ViewId; label: string }[] = [
+    { view: "home", label: "Home" },
+    { view: "record", label: "The Record" },
+    { view: "contact", label: "Contact" },
+    { view: "press", label: "Press" },
+    { view: "privacy", label: "Privacy" },
+  ];
+
+  const anchorLinks =
+    view === "home"
+      ? [
+          { href: "#author", label: "The Author" },
+          { href: "#book", label: "The Book" },
+        ]
+      : [];
+
   return (
     <footer
-      className="bg-ink-grain pt-14 pb-10 px-5 md:px-8"
+      className="bg-bg-ink-grain pt-12 sm:pt-14 pb-8 sm:pb-10 px-4 sm:px-5 md:px-8"
       style={{
-        color: "var(--paper)",
-        borderTop: "1px solid rgba(184, 145, 63, 0.2)",
+        color: "var(--on-ink)",
+        borderTop: "1px solid var(--line-strong)",
       }}
     >
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid md:grid-cols-12 gap-10">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-10">
           {/* wordmark + nonfiction note */}
           <div className="md:col-span-5">
-            <div
+            <button
+              type="button"
+              onClick={() => setView("home")}
               className="label-mono"
-              style={{ color: "var(--brass)", letterSpacing: "0.16em" }}
+              style={{
+                color: "var(--brass)",
+                letterSpacing: "0.16em",
+                cursor: "pointer",
+                background: "transparent",
+                border: "none",
+                padding: 0,
+              }}
             >
               V. L. Evans
-            </div>
+            </button>
             <p
               className="body-text mt-4"
               style={{
-                color: "var(--paper)",
+                color: "var(--on-ink)",
                 opacity: 0.7,
                 maxWidth: "38ch",
                 fontSize: "0.9rem",
@@ -37,7 +65,7 @@ export function SiteFooter() {
             </p>
           </div>
 
-          {/* sitemap */}
+          {/* sitemap — view nav */}
           <nav className="md:col-span-3" aria-label="Footer">
             <div
               className="label-mono-sm mb-4"
@@ -46,31 +74,42 @@ export function SiteFooter() {
               Sitemap
             </div>
             <ul className="space-y-2">
-              {[
-                ["#author", "The Author"],
-                ["#book", "The Book"],
-                ["#record", "The Record"],
-                ["#timeline", "Timeline"],
-                ["#family", "Family"],
-                ["#system", "System"],
-                ["#demands", "The Six Demands"],
-                ["#inside", "Read Inside"],
-                ["#contact", "Contact"],
-              ].map(([href, label]) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    className="link-draw label-mono-sm"
-                    style={{
-                      color: "var(--paper)",
-                      opacity: 0.78,
-                      letterSpacing: "0.12em",
-                    }}
+              {viewLinks.map((item) => (
+                <li key={item.view}>
+                  <button
+                    type="button"
+                    onClick={() => setView(item.view)}
+                    className="nav-link"
+                    data-active={view === item.view}
+                    style={{ color: "var(--on-ink)", opacity: 0.78 }}
                   >
-                    {label}
-                  </a>
+                    {item.label}
+                  </button>
                 </li>
               ))}
+              {anchorLinks.length > 0 && (
+                <li
+                  className="mt-3 pt-3"
+                  style={{ borderTop: "1px solid var(--line)" }}
+                >
+                  <div
+                    className="label-mono-sm mb-2"
+                    style={{ color: "var(--brass)", opacity: 0.6 }}
+                  >
+                    On this page
+                  </div>
+                  {anchorLinks.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="nav-link block"
+                      style={{ color: "var(--on-ink)", opacity: 0.78 }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </li>
+              )}
             </ul>
           </nav>
 
@@ -85,7 +124,7 @@ export function SiteFooter() {
             <p
               className="body-text"
               style={{
-                color: "var(--paper)",
+                color: "var(--on-ink)",
                 opacity: 0.78,
                 fontSize: "0.9rem",
               }}
@@ -106,7 +145,7 @@ export function SiteFooter() {
                 </a>
                 <p
                   className="body-text mt-1"
-                  style={{ color: "var(--mist)", fontSize: "0.82rem" }}
+                  style={{ color: "var(--fg-muted)", fontSize: "0.82rem" }}
                 >
                   A public service of the U.S. Administration on Aging.
                 </p>
@@ -123,7 +162,7 @@ export function SiteFooter() {
                 </a>
                 <p
                   className="body-text mt-1"
-                  style={{ color: "var(--mist)", fontSize: "0.82rem" }}
+                  style={{ color: "var(--fg-muted)", fontSize: "0.82rem" }}
                 >
                   Find your state or local APS office. Verify current contact
                   details before relying on them.
@@ -136,49 +175,62 @@ export function SiteFooter() {
         {/* bottom bar */}
         <div
           className="mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-          style={{ borderTop: "1px solid rgba(184, 145, 63, 0.15)" }}
+          style={{ borderTop: "1px solid var(--line)" }}
         >
-          <p className="label-mono-sm" style={{ color: "var(--mist)" }}>
+          <p className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
             © 2025 Victor L. Evans · All rights reserved
           </p>
           <div className="flex flex-wrap gap-5">
             <a
               href="mailto:contact@victorlevans.com"
-              className="label-mono-sm link-draw"
-              style={{ color: "var(--mist)" }}
+              className="link-draw label-mono-sm"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              Email
+            </a>
+            <button
+              type="button"
+              onClick={() => setView("press")}
+              className="link-draw label-mono-sm"
+              style={{
+                color: "var(--fg-muted)",
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+              }}
             >
               Press
-            </a>
-            <a
-              href="#contact"
-              className="label-mono-sm link-draw"
-              style={{ color: "var(--mist)" }}
+            </button>
+            <button
+              type="button"
+              onClick={() => setView("privacy")}
+              className="link-draw label-mono-sm"
+              style={{
+                color: "var(--fg-muted)",
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+              }}
             >
-              Contact
-            </a>
+              Privacy
+            </button>
             <a
               href="/sitemap.xml"
-              className="label-mono-sm link-draw"
-              style={{ color: "var(--mist)" }}
+              className="link-draw label-mono-sm"
+              style={{ color: "var(--fg-muted)" }}
             >
               Sitemap
-            </a>
-            <a
-              href="/robots.txt"
-              className="label-mono-sm link-draw"
-              style={{ color: "var(--mist)" }}
-            >
-              Robots
             </a>
           </div>
         </div>
 
-        {/* open-items footer note — only shown in non-production builds
-            so it doesn't ship to end users. Maintained internally by the owner. */}
+        {/* open-items footer note — only shown in non-production builds */}
         {process.env.NODE_ENV !== "production" && (
           <p
             className="label-mono-sm mt-6"
-            style={{ color: "var(--mist)", fontSize: "0.6rem", lineHeight: 1.7 }}
+            style={{ color: "var(--fg-muted)", fontSize: "0.6rem", lineHeight: 1.7 }}
           >
             Placeholders — cover art, author photograph, ISBN, price, retailer
             links, contact email — are flagged for the owner to confirm before

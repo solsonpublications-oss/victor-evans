@@ -128,7 +128,7 @@ export function DiamondDivider({
   tone?: "brass" | "ink" | "paper";
 }) {
   const color =
-    tone === "brass" ? "var(--brass)" : tone === "ink" ? "var(--ink)" : "var(--paper)";
+    tone === "brass" ? "var(--brass)" : tone === "ink" ? "var(--fg)" : "var(--bg)";
   return (
     <div
       className={`diamond-divider reveal ${className}`}
@@ -156,8 +156,8 @@ export function BookCoverArt({ className = "" }: { className?: string }) {
     >
       <defs>
         <linearGradient id="coverBg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1E1A17" />
-          <stop offset="100%" stopColor="#14110F" />
+          <stop offset="0%" stopColor="#2A2218" />
+          <stop offset="100%" stopColor="#1F1814" />
         </linearGradient>
         <pattern id="coverGrain" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
           <circle cx="1" cy="1" r="0.4" fill="rgba(184, 145, 63, 0.06)" />
@@ -191,9 +191,9 @@ export function BookCoverArt({ className = "" }: { className?: string }) {
       </g>
 
       {/* title */}
-      <text x="600" y="560" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="92" fill="#F1E8D8">THE</text>
-      <text x="600" y="700" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="118" fontWeight="500" fill="#F1E8D8">GENERATIONAL</text>
-      <text x="600" y="840" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="118" fontWeight="500" fill="#F1E8D8">CURSE</text>
+      <text x="600" y="560" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="92" fill="#F4ECD8">THE</text>
+      <text x="600" y="700" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="118" fontWeight="500" fill="#F4ECD8">GENERATIONAL</text>
+      <text x="600" y="840" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="118" fontWeight="500" fill="#F4ECD8">CURSE</text>
       <text x="600" y="980" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="118" fontWeight="500" fill="#B8913F">BREAKER</text>
 
       {/* divider */}
@@ -229,8 +229,8 @@ export function AuthorPortraitArt({ className = "" }: { className?: string }) {
     >
       <defs>
         <linearGradient id="portraitBg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2A2420" />
-          <stop offset="100%" stopColor="#14110F" />
+          <stop offset="0%" stopColor="#2F271F" />
+          <stop offset="100%" stopColor="#1F1814" />
         </linearGradient>
         <pattern id="portraitGrain" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
           <circle cx="1" cy="1" r="0.3" fill="rgba(184, 145, 63, 0.08)" />
@@ -248,7 +248,7 @@ export function AuthorPortraitArt({ className = "" }: { className?: string }) {
         <rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="#B8913F" />
       </g>
 
-      <text x="600" y="780" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="280" fontWeight="300" letterSpacing="20" fill="#F1E8D8">VLE</text>
+      <text x="600" y="780" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="280" fontWeight="300" letterSpacing="20" fill="#F4ECD8">VLE</text>
 
       <text x="600" y="900" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="22" letterSpacing="6" fill="rgba(184, 145, 63, 0.8)">VICTOR L. EVANS</text>
       <text x="600" y="940" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="26" fontStyle="italic" fill="rgba(241, 232, 216, 0.55)">Author photograph pending</text>

@@ -1,35 +1,41 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
-  THE GENERATIONAL CURSE BREAKER — design system
+  THE GENERATIONAL CURSE BREAKER — design system v2
   "The Evidence File meets the Family Home"
-  Archival paper, typewriter exhibit labels, brick and brass,
-  quiet light through a window. Nothing glossy, nothing startup-like.
+
+  New palette: deep umber / warm parchment / oxblood brick / antique brass.
+  The previous near-black ink read as cold. This reads as warm — like aged
+  paper, leather-bound record books, and the brick facade of a Northeast
+  Washington row house at dusk.
+
+  Light mode (default): parchment cream background, deep umber text.
+  Dark mode: deep umber background, warm cream text.
+  Both modes preserve the brick/brass accents and the documentary tone.
 */
 
+@custom-variant dark (&:is(.dark *));
+
 @theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-paper-3: var(--paper-3);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
   --color-brick: var(--brick);
   --color-brick-2: var(--brick-2);
   --color-brass: var(--brass);
   --color-brass-2: var(--brass-2);
-  --color-mist: var(--mist);
   --color-stamp: var(--stamp);
+  --color-line: var(--line);
 
-  --color-background: var(--paper);
-  --color-foreground: var(--ink);
-  --color-card: var(--paper-2);
-  --color-card-foreground: var(--ink);
-  --color-border: var(--ink-15);
-  --color-input: var(--ink-15);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--bg-2);
+  --color-card-foreground: var(--fg);
+  --color-border: var(--line);
+  --color-input: var(--line);
   --color-ring: var(--brass);
 
   --font-serif: var(--font-newsreader);
@@ -41,39 +47,92 @@
   --radius-lg: 4px;
 }
 
+/* ============== LIGHT MODE (default) ============== */
 :root {
-  /* Ink (dark backgrounds, body text on paper) */
-  --ink: #14110F;
-  --ink-2: #1E1A17;
-  --ink-3: #2A2420;
-  --ink-15: rgba(20, 17, 15, 0.14);
-  --ink-25: rgba(20, 17, 15, 0.28);
+  /* backgrounds — warm parchment */
+  --bg: #F4ECD8;
+  --bg-2: #E8DCC2;
+  --bg-3: #DCCFB2;
+  --bg-ink: #1F1814;          /* the "dark sections" in light mode */
+  --bg-ink-2: #2A2218;
 
-  /* Paper (light archival sections) */
-  --paper: #F1E8D8;
-  --paper-2: #E6D9C2;
-  --paper-3: #DCCEB3;
+  /* foreground */
+  --fg: #1F1814;
+  --fg-muted: #5C544A;
 
-  /* Brick — row-house brick, primary accent */
+  /* Text on ink (dark) sections — always light, regardless of theme.
+     Ink sections are dark in BOTH themes, so text on them must always be cream. */
+  --on-ink: #F4ECD8;
+  --on-ink-muted: #9C948A;
+
+  /* accents — preserved across modes for brand identity */
   --brick: #8E3B2F;
   --brick-2: #6E2C23;
-
-  /* Brass — ornament diamond, dividers, focus ring on dark */
-  --brass: #B8913F;
-  --brass-2: #D4B05E;
-
-  /* Mist — secondary text on dark */
-  --mist: #9C948A;
-
-  /* Stamp — rare "EXHIBIT" stamp accent */
+  --brass: #A8843A;
+  --brass-2: #C9A55C;
   --stamp: #B3261E;
 
+  --line: rgba(31, 24, 20, 0.14);
+  --line-strong: rgba(31, 24, 20, 0.28);
+
+  /* paper grain — subtle */
+  --grain-1: rgba(31, 24, 20, 0.018);
+  --grain-2: rgba(31, 24, 20, 0.012);
+
+  /* shadow tokens — for hover lift */
+  --shadow-card: 0 1px 2px rgba(31, 24, 20, 0.04), 0 4px 12px rgba(31, 24, 20, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(31, 24, 20, 0.06), 0 12px 32px rgba(142, 59, 47, 0.12);
+  --shadow-ink-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+
   --radius: 3px;
+  --header-bg: rgba(244, 236, 216, 0.82);
+  --header-bg-scrolled: rgba(244, 236, 216, 0.92);
+}
+
+/* ============== DARK MODE ============== */
+.dark {
+  /* backgrounds — deep warm umber (not cold black) */
+  --bg: #1A1410;
+  --bg-2: #251E18;
+  --bg-3: #2F271F;
+  --bg-ink: #14100C;            /* even deeper for "ink sections" in dark mode */
+  --bg-ink-2: #1F1812;
+
+  /* foreground — warm cream */
+  --fg: #E8DCC2;
+  --fg-muted: #9C948A;
+
+  /* Text on ink (dark) sections — still light cream.
+     Even in dark mode, ink sections are darker than the main bg,
+     so text on them stays cream. */
+  --on-ink: #E8DCC2;
+  --on-ink-muted: #8A8275;
+
+  /* accents — brightened for dark mode visibility */
+  --brick: #C4523F;
+  --brick-2: #A04334;
+  --brass: #D4B05E;
+  --brass-2: #E5C778;
+  --stamp: #D44A3E;
+
+  --line: rgba(232, 220, 194, 0.14);
+  --line-strong: rgba(232, 220, 194, 0.28);
+
+  /* paper grain becomes amber dust in dark mode */
+  --grain-1: rgba(212, 176, 94, 0.025);
+  --grain-2: rgba(255, 255, 255, 0.012);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(212, 176, 94, 0.15);
+  --shadow-ink-card: 0 8px 24px rgba(0, 0, 0, 0.55);
+
+  --header-bg: rgba(26, 20, 16, 0.82);
+  --header-bg-scrolled: rgba(26, 20, 16, 0.92);
 }
 
 @layer base {
   * {
-    border-color: var(--ink-15);
+    border-color: var(--line);
   }
 
   html {
@@ -83,30 +142,38 @@
   }
 
   body {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: var(--bg);
+    color: var(--fg);
     font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
     font-feature-settings: "kern", "liga", "calt";
-    /* faint paper grain via layered gradients — no image asset */
+    /* faint paper grain — same in both modes, just different colors */
     background-image:
-      radial-gradient(rgba(20, 17, 15, 0.018) 1px, transparent 1px),
-      radial-gradient(rgba(20, 17, 15, 0.012) 1px, transparent 1px);
+      radial-gradient(var(--grain-1) 1px, transparent 1px),
+      radial-gradient(var(--grain-2) 1px, transparent 1px);
     background-size: 3px 3px, 7px 7px;
     background-position: 0 0, 1px 1px;
+    transition: background-color 400ms ease, color 400ms ease;
   }
 
-  /* ink section overrides paper grain with a darker grain */
+  /* ink section — the "dark" cinematic band, in both modes.
+     Text on these sections must ALWAYS be light cream, regardless of theme. */
   .bg-ink-grain {
-    background-color: var(--ink);
+    background-color: var(--bg-ink);
     background-image:
-      radial-gradient(rgba(184, 145, 63, 0.025) 1px, transparent 1px),
-      radial-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+      radial-gradient(rgba(184, 145, 63, 0.04) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
     background-size: 5px 5px, 9px 9px;
+    color: var(--on-ink);
+  }
+  .dark .bg-ink-grain {
+    background-image:
+      radial-gradient(rgba(212, 176, 94, 0.03) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   }
 
   ::selection {
     background: var(--brass);
-    color: var(--ink);
+    color: var(--bg);
   }
 
   :focus-visible {
@@ -117,10 +184,10 @@
 
   /* Custom scrollbar */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-track { background: var(--bg-2); }
   ::-webkit-scrollbar-thumb {
-    background: var(--ink-25);
-    border: 2px solid var(--paper-2);
+    background: var(--line-strong);
+    border: 2px solid var(--bg-2);
     border-radius: 0;
   }
   ::-webkit-scrollbar-thumb:hover { background: var(--brick); }
@@ -234,9 +301,13 @@
     background: currentColor;
     transform: rotate(45deg);
     box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .diamond-divider:hover .diamond {
+    transform: rotate(45deg) scale(1.4);
   }
 
-  /* Buttons */
+  /* Buttons — with rich hover */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -252,53 +323,126 @@
     background: transparent;
     color: inherit;
     cursor: pointer;
-    transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+    transition: background 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                color 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                transform 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 250ms cubic-bezier(0.2, 0.7, 0.2, 1);
     text-decoration: none;
     line-height: 1;
+    position: relative;
+    overflow: hidden;
   }
-  .btn:hover { transform: translateY(-1px); }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(142, 59, 47, 0.18);
+  }
+  .btn:hover::before {
+    transform: translateX(100%);
+  }
   .btn:active { transform: translateY(0); }
 
   .btn-brick {
     background: var(--brick);
-    color: var(--paper);
+    color: #F4ECD8;
     border-color: var(--brick);
   }
-  .btn-brick:hover { background: var(--brick-2); border-color: var(--brick-2); }
+  .btn-brick:hover {
+    background: var(--brick-2);
+    border-color: var(--brick-2);
+    box-shadow: 0 8px 24px rgba(142, 59, 47, 0.35);
+  }
 
   .btn-paper {
-    background: var(--paper);
-    color: var(--ink);
-    border-color: var(--ink);
+    background: var(--bg);
+    color: var(--fg);
+    border-color: var(--fg);
   }
-  .btn-paper:hover { background: var(--paper-2); }
+  .btn-paper:hover {
+    background: var(--bg-2);
+    box-shadow: 0 6px 20px rgba(31, 24, 20, 0.15);
+  }
+
+  .btn-outline {
+    color: var(--fg);
+    border-color: var(--line-strong);
+  }
+  .btn-outline:hover {
+    color: var(--bg);
+    background: var(--fg);
+    border-color: var(--fg);
+  }
 
   .btn-outline-paper {
-    color: var(--paper);
-    border-color: color-mix(in srgb, var(--paper) 55%, transparent);
+    color: #F4ECD8;
+    border-color: color-mix(in srgb, #F4ECD8 55%, transparent);
   }
   .btn-outline-paper:hover {
-    color: var(--paper);
-    border-color: var(--paper);
-    background: color-mix(in srgb, var(--paper) 8%, transparent);
+    color: #F4ECD8;
+    border-color: #F4ECD8;
+    background: rgba(244, 236, 216, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   }
 
-  /* Exhibit card (paper section) */
+  /* Exhibit card — paper section, brick left border */
   .exhibit-card {
-    background: var(--paper-2);
-    border: 1px solid var(--ink-15);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
     border-left: 3px solid var(--brick);
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem;
     position: relative;
+    transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                background 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .exhibit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-left-color: var(--brass);
+    border-left-width: 4px;
+  }
+  /* brass corner accent on hover */
+  .exhibit-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 12px solid var(--brass);
+    border-left: 12px solid transparent;
+    opacity: 0;
+    transition: opacity 350ms ease;
+  }
+  .exhibit-card:hover::after {
+    opacity: 0.85;
   }
 
-  /* Exhibit card (ink section) */
+  /* Exhibit card — ink section */
   .exhibit-card-ink {
-    background: var(--ink-2);
+    background: var(--bg-ink-2);
     border: 1px solid rgba(184, 145, 63, 0.18);
     border-left: 3px solid var(--brass);
     padding: 1.5rem;
     position: relative;
+    transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .exhibit-card-ink:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    border-left-color: var(--brass-2);
   }
 
   /* Link underline draw */
@@ -307,15 +451,11 @@
     background-size: 0% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: background-size 300ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                color 250ms ease;
     text-decoration: none;
   }
   .link-draw:hover { background-size: 100% 1px; }
-
-  /* Focus ring on dark */
-  .focus-ring-dark :focus-visible {
-    outline-color: var(--brass);
-  }
 
   /* Tab list */
   .tab-list {
@@ -323,7 +463,8 @@
     gap: 0;
     overflow-x: auto;
     scrollbar-width: none;
-    border-bottom: 1px solid var(--ink-15);
+    border-bottom: 1px solid var(--line);
+    position: relative;
   }
   .tab-list::-webkit-scrollbar { display: none; }
 
@@ -335,19 +476,147 @@
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--mist);
+    color: var(--fg-muted);
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     white-space: nowrap;
-    transition: color 200ms ease, border-color 200ms ease;
+    transition: color 250ms ease, border-color 250ms ease, background 250ms ease;
     margin-bottom: -1px;
+    position: relative;
   }
-  .tab-trigger:hover { color: var(--ink); }
+  .tab-trigger:hover {
+    color: var(--fg);
+    background: color-mix(in srgb, var(--brass) 4%, transparent);
+  }
   .tab-trigger[data-state="active"] {
-    color: var(--ink);
+    color: var(--fg);
     border-bottom-color: var(--brick);
+  }
+  .tab-trigger[data-state="active"]::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--brick), transparent);
+  }
+
+  /* Theme toggle — sun/moon glyph swap */
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 250ms ease, color 250ms ease, background 250ms ease, transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-toggle:hover {
+    border-color: var(--brass);
+    color: var(--brass);
+    transform: rotate(15deg);
+  }
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 17, 15, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: backdropFade 300ms ease-out;
+  }
+  @keyframes backdropFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-panel {
+    background: var(--bg);
+    border: 1px solid var(--brass);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    max-width: 520px;
+    width: 100%;
+    padding: 2.5rem;
+    position: relative;
+    animation: modalRise 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @keyframes modalRise {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Nav link — animated underline + color shift */
+  .nav-link {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg);
+    opacity: 0.78;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 250ms ease, opacity 250ms ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .nav-link:hover {
+    opacity: 1;
+    color: var(--brick);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  .nav-link[data-active="true"] {
+    opacity: 1;
+    color: var(--brick);
+  }
+  .nav-link[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Card hover — universal lift */
+  .hover-lift {
+    transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
   }
 }
 
@@ -393,22 +662,10 @@
     100% { opacity: 1; }
   }
 
-  /* Diamond scale-in */
-  @keyframes diamondScale {
-    from { transform: rotate(45deg) scale(0.4); opacity: 0; }
-    to   { transform: rotate(45deg) scale(1); opacity: 1; }
-  }
-
   /* Cover float-in */
   @keyframes coverFloat {
     from { opacity: 0; transform: translateY(20px) rotate(-2.5deg); }
     to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
-  }
-
-  /* Underline ink draw on reveal */
-  @keyframes underlineDraw {
-    from { background-size: 0% 1px; }
-    to   { background-size: 100% 1px; }
   }
 
   /* Vertical scroll cue */
@@ -422,8 +679,6 @@
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  /* Count-up — handled via JS */
 
   /* Reduced motion: disable everything except instant state changes */
   @media (prefers-reduced-motion: reduce) {

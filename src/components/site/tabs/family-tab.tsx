@@ -8,7 +8,7 @@ export function FamilyTab() {
     <div>
       <p
         className="body-text measure mb-10"
-        style={{ color: "var(--ink)", opacity: 0.8 }}
+        style={{ color: "var(--fg)", opacity: 0.8 }}
       >
         An In Memoriam wall. Dignified, quiet cards. Hover reveals a
         candle-like glow — not a gimmick. Phyllis&apos;s card is written with
@@ -26,8 +26,8 @@ export function FamilyTab() {
             <div
               className="h-full p-6 relative overflow-hidden"
               style={{
-                background: "var(--paper-2)",
-                border: "1px solid var(--ink-15)",
+                background: "var(--bg-2)",
+                border: "1px solid var(--line)",
                 borderTop: "3px solid var(--brick)",
                 transition:
                   "border-color 350ms ease, transform 350ms ease, box-shadow 350ms ease",
@@ -66,7 +66,7 @@ export function FamilyTab() {
                 className="display"
                 style={{
                   fontSize: "clamp(1.15rem, 1.6vw, 1.4rem)",
-                  color: "var(--ink)",
+                  color: "var(--fg)",
                   lineHeight: 1.2,
                 }}
               >
@@ -84,7 +84,7 @@ export function FamilyTab() {
 
               <div
                 className="label-mono-sm mt-3"
-                style={{ color: "var(--mist)" }}
+                style={{ color: "var(--fg-muted)" }}
               >
                 {m.role}
               </div>
@@ -93,7 +93,7 @@ export function FamilyTab() {
                 className="my-4"
                 style={{
                   height: "1px",
-                  background: "var(--ink-15)",
+                  background: "var(--line)",
                 }}
               />
 
@@ -101,7 +101,7 @@ export function FamilyTab() {
                 className="display-italic"
                 style={{
                   fontSize: "0.95rem",
-                  color: "var(--ink)",
+                  color: "var(--fg)",
                   opacity: 0.85,
                   lineHeight: 1.55,
                 }}
@@ -111,7 +111,7 @@ export function FamilyTab() {
 
               <div
                 className="label-mono-sm mt-4"
-                style={{ color: "var(--mist)", opacity: 0.7 }}
+                style={{ color: "var(--fg-muted)", opacity: 0.7 }}
               >
                 {m.chapter}
               </div>
@@ -122,7 +122,7 @@ export function FamilyTab() {
 
       <p
         className="label-mono-sm mt-8"
-        style={{ color: "var(--mist)" }}
+        style={{ color: "var(--fg-muted)" }}
       >
         Family members are named in full as an act of dignity. The author documents
         that Phyllis is a sister and a person — never a spectacle.

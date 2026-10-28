@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider, themeInitScript } from "@/components/site/theme-provider";
+import { ViewProvider } from "@/components/site/view-provider";
+import { GetBookModalProvider } from "@/components/site/get-book-modal";
 
 // Source-of-truth Newsreader (single variable font, latin subset, opsz axis)
 const newsreader = Newsreader({
@@ -210,31 +213,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Inline script — runs synchronously before paint. Adds .js to <html> so
-  // the .reveal / .hero-rise elements hide-then-reveal ONLY when JS is on.
-  // Without this, no-JS users and static snapshots see visible content.
+  // Two inline scripts run synchronously before paint:
+  //   1. themeInitScript — sets .dark on <html> from localStorage/prefers-color-scheme
+  //   2. setJsClass — adds .js so .reveal elements hide-then-reveal only with JS
+  // Without these, no-JS users and static snapshots see visible content,
+  // and the wrong theme flashes before hydration.
   const setJsClass = `document.documentElement.classList.add('js');`;
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script dangerouslySetInnerHTML={{ __html: setJsClass }} />
       </head>
       <body
         className={`${newsreader.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 focus:label-mono"
-        >
-          Skip to content
-        </a>
-        {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Toaster />
+        <ThemeProvider>
+          <ViewProvider>
+            <GetBookModalProvider>
+              <a
+                href="#main"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-bg-ink focus:text-bg focus:px-4 focus:py-2 focus:label-mono"
+              >
+                Skip to content
+              </a>
+              {children}
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+              />
+              <Toaster />
+            </GetBookModalProvider>
+          </ViewProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

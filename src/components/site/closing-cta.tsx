@@ -48,7 +48,7 @@ export function ClosingCTA() {
       id="contact"
       className="bg-ink-grain relative pt-20 md:pt-24 pb-24 md:pb-32 px-5 md:px-8"
       aria-label="Closing and contact"
-      style={{ color: "var(--paper)" }}
+      style={{ color: "var(--on-ink)" }}
     >
       <div className="max-w-[1100px] mx-auto">
         <div className="reveal">
@@ -63,7 +63,7 @@ export function ClosingCTA() {
             className="display text-balance"
             style={{
               fontSize: "clamp(2.5rem, 7vw, 5rem)",
-              color: "var(--paper)",
+              color: "var(--on-ink)",
               lineHeight: 1,
             }}
           >
@@ -71,7 +71,7 @@ export function ClosingCTA() {
           </h2>
           <p
             className="lede mt-6 mx-auto"
-            style={{ color: "var(--paper)", opacity: 0.78, maxWidth: "55ch" }}
+            style={{ color: "var(--on-ink)", opacity: 0.78, maxWidth: "55ch" }}
           >
             The author intends to stand on the front steps of 2905 Mills Avenue.
             The steps his father built. The steps his mother swept. The steps his
@@ -101,14 +101,14 @@ export function ClosingCTA() {
               className="display"
               style={{
                 fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                color: "var(--paper)",
+                color: "var(--on-ink)",
               }}
             >
               Contact
             </h3>
             <p
               className="body-text mt-4"
-              style={{ color: "var(--paper)", opacity: 0.78, maxWidth: "40ch" }}
+              style={{ color: "var(--on-ink)", opacity: 0.78, maxWidth: "40ch" }}
             >
               For permissions, press inquiries, and review-copy requests. The
               author&apos;s home address and phone number are not published on
@@ -119,12 +119,12 @@ export function ClosingCTA() {
             </p>
             <p
               className="body-text mt-1"
-              style={{ color: "var(--paper)", opacity: 0.7, fontSize: "0.92rem" }}
+              style={{ color: "var(--on-ink)", opacity: 0.7, fontSize: "0.92rem" }}
             >
               <a
                 href="mailto:contact@victorlevans.com"
                 className="link-draw"
-                style={{ color: "var(--paper)" }}
+                style={{ color: "var(--on-ink)" }}
               >
                 contact@victorlevans.com
               </a>
@@ -138,7 +138,7 @@ export function ClosingCTA() {
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <label className="block">
-                <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+                <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                   Name
                 </span>
                 <input
@@ -151,14 +151,14 @@ export function ClosingCTA() {
                   style={{
                     background: "rgba(20, 17, 15, 0.6)",
                     border: "1px solid rgba(184, 145, 63, 0.25)",
-                    color: "var(--paper)",
+                    color: "var(--on-ink)",
                     fontFamily: "var(--font-newsreader), serif",
                     fontSize: "1rem",
                   }}
                 />
               </label>
               <label className="block">
-                <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+                <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                   Email
                 </span>
                 <input
@@ -171,7 +171,7 @@ export function ClosingCTA() {
                   style={{
                     background: "rgba(20, 17, 15, 0.6)",
                     border: "1px solid rgba(184, 145, 63, 0.25)",
-                    color: "var(--paper)",
+                    color: "var(--on-ink)",
                     fontFamily: "var(--font-newsreader), serif",
                     fontSize: "1rem",
                   }}
@@ -180,7 +180,7 @@ export function ClosingCTA() {
             </div>
 
             <label className="block">
-              <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+              <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                 Message
               </span>
               <textarea
@@ -192,7 +192,7 @@ export function ClosingCTA() {
                 style={{
                   background: "rgba(20, 17, 15, 0.6)",
                   border: "1px solid rgba(184, 145, 63, 0.25)",
-                  color: "var(--paper)",
+                  color: "var(--on-ink)",
                   fontFamily: "var(--font-newsreader), serif",
                   fontSize: "1rem",
                   resize: "vertical",
@@ -230,7 +230,7 @@ export function ClosingCTA() {
               >
                 {status === "submitting" ? "Sending…" : "Send"}
               </button>
-              <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+              <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                 No third-party scripts · honeypot protected
               </span>
             </div>

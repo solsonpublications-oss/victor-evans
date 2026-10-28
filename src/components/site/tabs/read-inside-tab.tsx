@@ -24,8 +24,8 @@ export function ReadInsideTab() {
                 key={p.number}
                 className="reveal"
                 style={{
-                  border: "1px solid var(--ink-15)",
-                  background: "var(--paper-2)",
+                  border: "1px solid var(--line)",
+                  background: "var(--bg-2)",
                 }}
               >
                 <button
@@ -39,14 +39,14 @@ export function ReadInsideTab() {
                   <span>
                     <span
                       className="label-mono-sm"
-                      style={{ color: "var(--mist)", display: "block" }}
+                      style={{ color: "var(--fg-muted)", display: "block" }}
                     >
                       {p.number}
                     </span>
                     <span
                       className="display-italic"
                       style={{
-                        color: "var(--ink)",
+                        color: "var(--fg)",
                         fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
                       }}
                     >
@@ -83,7 +83,7 @@ export function ReadInsideTab() {
                         <li
                           key={c.n}
                           className="flex gap-3"
-                          style={{ color: "var(--ink)", opacity: 0.85 }}
+                          style={{ color: "var(--fg)", opacity: 0.85 }}
                         >
                           <span
                             className="label-mono-sm"
@@ -115,7 +115,7 @@ export function ReadInsideTab() {
         </div>
         <p
           className="body-text measure mb-8"
-          style={{ color: "var(--ink)", opacity: 0.75, fontSize: "0.95rem" }}
+          style={{ color: "var(--fg)", opacity: 0.75, fontSize: "0.95rem" }}
         >
           Each under 150 words. Attributed by chapter. Sensitive passages and any
           profanity from the manuscript are not surfaced. Continue reading in the book.
@@ -132,7 +132,7 @@ export function ReadInsideTab() {
                 <span className="label-mono-sm" style={{ color: "var(--brick)" }}>
                   {ex.label}
                 </span>
-                <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+                <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                   {ex.attribution}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export function ReadInsideTab() {
                 className="display-italic"
                 style={{
                   fontSize: "clamp(1.05rem, 1.4vw, 1.2rem)",
-                  color: "var(--ink)",
+                  color: "var(--fg)",
                   lineHeight: 1.55,
                   whiteSpace: "pre-line",
                 }}

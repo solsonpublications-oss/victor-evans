@@ -16,7 +16,7 @@ export function SystemTab() {
     <div>
       <p
         className="body-text measure mb-10"
-        style={{ color: "var(--ink)", opacity: 0.8 }}
+        style={{ color: "var(--fg)", opacity: 0.8 }}
       >
         Deaf Ears and Blind Eyes. Each card states, in neutral language, what
         the author says he sent and what he says came back. Allegations are
@@ -36,12 +36,12 @@ export function SystemTab() {
                 className="display"
                 style={{
                   fontSize: "clamp(1.1rem, 1.5vw, 1.35rem)",
-                  color: "var(--ink)",
+                  color: "var(--fg)",
                 }}
               >
                 {inst.name}
               </h3>
-              <span className="label-mono-sm" style={{ color: "var(--mist)" }}>
+              <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
                 {inst.chapter}
               </span>
             </div>
@@ -56,7 +56,7 @@ export function SystemTab() {
                 </div>
                 <p
                   className="body-text"
-                  style={{ color: "var(--ink)", opacity: 0.85, fontSize: "0.92rem" }}
+                  style={{ color: "var(--fg)", opacity: 0.85, fontSize: "0.92rem" }}
                 >
                   {inst.sent}
                 </p>
@@ -70,7 +70,7 @@ export function SystemTab() {
                 </div>
                 <p
                   className="body-text"
-                  style={{ color: "var(--ink)", opacity: 0.85, fontSize: "0.92rem" }}
+                  style={{ color: "var(--fg)", opacity: 0.85, fontSize: "0.92rem" }}
                 >
                   {inst.received}
                 </p>
@@ -83,7 +83,7 @@ export function SystemTab() {
       {/* Balance sheet */}
       <div
         className="reveal mt-12 p-8 md:p-10 bg-ink-grain"
-        style={{ color: "var(--paper)" }}
+        style={{ color: "var(--on-ink)" }}
       >
         <div className="label-mono-sm mb-4" style={{ color: "var(--brass)" }}>
           The balance sheet
@@ -103,7 +103,7 @@ export function SystemTab() {
               </div>
               <div
                 className="label-mono-sm mt-2"
-                style={{ color: "var(--mist)" }}
+                style={{ color: "var(--fg-muted)" }}
               >
                 {b.l}
               </div>
@@ -114,7 +114,7 @@ export function SystemTab() {
           className="display-italic mt-6"
           style={{
             fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)",
-            color: "var(--paper)",
+            color: "var(--on-ink)",
             opacity: 0.85,
           }}
         >
