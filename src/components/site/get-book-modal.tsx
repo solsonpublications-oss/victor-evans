@@ -109,6 +109,30 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
           </svg>
         </button>
 
+        {/* Small cover thumbnail */}
+        <div
+          className="mx-auto mb-6"
+          style={{
+            width: "120px",
+            aspectRatio: "2 / 3",
+            boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
+            border: "1px solid rgba(212, 176, 94, 0.3)",
+          }}
+        >
+          <img
+            src="/cover.jpg"
+            alt="The Generational Curse Breaker — book cover"
+            width={1024}
+            height={1536}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </div>
+
         <DiamondDivider className="mb-6" />
 
         <p className="label-mono-sm mb-4" style={{ color: "var(--brass)" }}>

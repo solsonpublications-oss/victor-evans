@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookCoverArt, DiamondDivider } from "./illustrations";
+import { DiamondDivider } from "./illustrations";
 import { useGetBookModal } from "./get-book-modal";
 import { useView } from "./view-provider";
 
@@ -32,9 +32,9 @@ const DETAILS = [
   { k: "Author", v: "Victor L. Evans" },
   { k: "Edition", v: "First Edition, 2025" },
   { k: "Length", v: "Approximately 51,000 words · 12 chapters across four parts" },
-  { k: "Format", v: "Placeholder — confirm with author" },
-  { k: "ISBN", v: "Placeholder — confirm with author" },
-  { k: "Price", v: "Placeholder — confirm with author" },
+  { k: "Format", v: "Hardcover and digital — details pending" },
+  { k: "ISBN", v: "Pending publication" },
+  { k: "Price", v: "Pending publication" },
 ];
 
 export function AboutBook() {
@@ -60,32 +60,52 @@ export function AboutBook() {
           {/* sticky cover */}
           <div className="md:col-span-4">
             <div
-              className="md:sticky md:top-24 reveal hover-lift"
+              className="md:sticky md:top-24 reveal hover-lift relative"
               style={{
                 aspectRatio: "2 / 3",
-                maxWidth: "320px",
+                maxWidth: "360px",
                 margin: "0 auto",
                 transition: "transform 350ms cubic-bezier(0.2,0.7,0.2,1), filter 350ms ease",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.filter = "drop-shadow(0 30px 60px rgba(0,0,0,0.6))";
+                e.currentTarget.style.filter = "drop-shadow(0 30px 60px rgba(0,0,0,0.65))";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.filter = "drop-shadow(0 20px 40px rgba(0,0,0,0.4))";
+                e.currentTarget.style.filter = "drop-shadow(0 20px 40px rgba(0,0,0,0.45))";
               }}
             >
-              <BookCoverArt className="w-full h-full" />
+              <picture>
+                <img
+                  src="/cover.jpg"
+                  alt="The Generational Curse Breaker — book cover: a brick row house at dusk with a lit window, a broken chain on the front steps, and the silhouette of a white-haired figure in the storm clouds above."
+                  width={1024}
+                  height={1536}
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </picture>
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  border: "1px solid rgba(212, 176, 94, 0.25)",
+                }}
+                aria-hidden="true"
+              />
             </div>
             {process.env.NODE_ENV !== "production" && (
               <p
                 className="label-mono-sm mt-4 reveal text-center md:text-left"
                 style={{ color: "var(--on-ink-muted)" }}
               >
-                Cover art is a placeholder.
-                <br />
-                Swap one file to publish the real jacket.
+                Final cover art.
               </p>
             )}
           </div>
@@ -209,8 +229,7 @@ export function AboutBook() {
                 className="label-mono-sm mt-4"
                 style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
               >
-                Items marked &ldquo;placeholder&rdquo; are pending the author&apos;s
-                confirmation and will be filled in before launch.
+                Publication details to be confirmed at launch.
               </p>
 
               <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">

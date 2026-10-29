@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { DiamondDivider } from "./illustrations";
+import { DiamondDivider, BrokenChainArt } from "./illustrations";
 
 export function ClosingCTA() {
   const [status, setStatus] = React.useState<
@@ -56,6 +56,10 @@ export function ClosingCTA() {
         </div>
 
         <div className="text-center my-12 reveal" data-reveal-delay="80">
+          {/* Broken chain — the curse, broken */}
+          <div className="flex justify-center mb-6" style={{ opacity: 0.9 }}>
+            <BrokenChainArt className="w-40 h-16" tone="brass" />
+          </div>
           <p className="label-mono-sm mb-5" style={{ color: "var(--brass)" }}>
             The closing line
           </p>

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { AuthorPortraitArt, DiamondDivider } from "./illustrations";
+import { AuthorPortraitArt, DiamondDivider, BrokenChainArt } from "./illustrations";
 import { useCountUp } from "./hooks/motion";
 
 const STATS = [
@@ -102,6 +102,18 @@ export function AboutAuthor() {
 
           {/* text */}
           <div className="md:col-span-7">
+            {/* Broken chain motif — the book's central image */}
+            <div
+              className="reveal mb-6"
+              data-reveal-delay="60"
+              style={{ opacity: 0.85 }}
+            >
+              <BrokenChainArt
+                className="w-32 h-12"
+                tone="brass"
+              />
+            </div>
+
             <h2
               className="display reveal text-balance"
               style={{

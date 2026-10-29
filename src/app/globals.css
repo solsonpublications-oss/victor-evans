@@ -2,17 +2,24 @@
 @import "tw-animate-css";
 
 /*
-  THE GENERATIONAL CURSE BREAKER — design system v2
-  "The Evidence File meets the Family Home"
+  THE GENERATIONAL CURSE BREAKER — design system v3
+  "Storm light over the row house"
 
-  New palette: deep umber / warm parchment / oxblood brick / antique brass.
-  The previous near-black ink read as cold. This reads as warm — like aged
-  paper, leather-bound record books, and the brick facade of a Northeast
-  Washington row house at dusk.
+  Palette extracted directly from the book cover:
+  - Deep storm-charcoal base (#2A2520, #31261C) — the moody night sky
+  - Antique gold (#C9A55C, #D4B05E) — the title text
+  - Window amber (#B87838, #D49550) — the warm glow from the house
+  - Brick red-brown (#7A3826, #9C4A30) — the row house facade
+  - Stone sepia (#4A3C2E) — the front steps and broken chain
+  - Cloud gray (#5A5048) — the storm clouds
 
-  Light mode (default): parchment cream background, deep umber text.
-  Dark mode: deep umber background, warm cream text.
-  Both modes preserve the brick/brass accents and the documentary tone.
+  The cover is NOT a warm parchment page. It is a dark, atmospheric,
+  documentary painting — storm clouds at sunset, a lit window, a broken
+  chain. The site should feel the same: like opening a case file at dusk,
+  with the only warmth coming from a single lamp in a row house window.
+
+  Light mode: aged paper (warmer than the dark, but still sepia-toned,
+  not bright white). Dark mode: the storm itself.
 */
 
 @custom-variant dark (&:is(.dark *));
@@ -21,14 +28,21 @@
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
   --color-bg-3: var(--bg-3);
+  --color-bg-ink: var(--bg-ink);
+  --color-bg-ink-2: var(--bg-ink-2);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
   --color-brick: var(--brick);
   --color-brick-2: var(--brick-2);
   --color-brass: var(--brass);
   --color-brass-2: var(--brass-2);
+  --color-amber: var(--amber);
+  --color-amber-2: var(--amber-2);
   --color-stamp: var(--stamp);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
 
   --color-background: var(--bg);
   --color-foreground: var(--fg);
@@ -47,87 +61,84 @@
   --radius-lg: 4px;
 }
 
-/* ============== LIGHT MODE (default) ============== */
+/* ============== LIGHT MODE — aged sepia paper ============== */
 :root {
-  /* backgrounds — warm parchment */
-  --bg: #F4ECD8;
-  --bg-2: #E8DCC2;
-  --bg-3: #DCCFB2;
-  --bg-ink: #1F1814;          /* the "dark sections" in light mode */
-  --bg-ink-2: #2A2218;
+  /* backgrounds — aged sepia paper, like an old case file */
+  --bg: #EDE4D1;
+  --bg-2: #E0D4BC;
+  --bg-3: #D2C4A6;
+  --bg-ink: #1F1A15;            /* the dark "storm" sections */
+  --bg-ink-2: #2C241D;
 
   /* foreground */
-  --fg: #1F1814;
-  --fg-muted: #5C544A;
+  --fg: #2A2218;
+  --fg-muted: #6B5E4A;
 
-  /* Text on ink (dark) sections — always light, regardless of theme.
-     Ink sections are dark in BOTH themes, so text on them must always be cream. */
-  --on-ink: #F4ECD8;
-  --on-ink-muted: #9C948A;
+  /* Text on ink (dark) sections — always warm cream */
+  --on-ink: #EDE4D1;
+  --on-ink-muted: #A89878;
 
-  /* accents — preserved across modes for brand identity */
-  --brick: #8E3B2F;
-  --brick-2: #6E2C23;
-  --brass: #A8843A;
+  /* accents — from the cover */
+  --brick: #7A3826;             /* the row house brick */
+  --brick-2: #5C2A1C;
+  --brass: #A88A3E;             /* antique gold title */
   --brass-2: #C9A55C;
-  --stamp: #B3261E;
+  --amber: #B87838;             /* window glow */
+  --amber-2: #D49550;
+  --stamp: #8E2A1E;
 
-  --line: rgba(31, 24, 20, 0.14);
-  --line-strong: rgba(31, 24, 20, 0.28);
+  --line: rgba(42, 34, 24, 0.16);
+  --line-strong: rgba(42, 34, 24, 0.32);
 
-  /* paper grain — subtle */
-  --grain-1: rgba(31, 24, 20, 0.018);
-  --grain-2: rgba(31, 24, 20, 0.012);
+  --grain-1: rgba(42, 34, 24, 0.022);
+  --grain-2: rgba(42, 34, 24, 0.015);
 
-  /* shadow tokens — for hover lift */
-  --shadow-card: 0 1px 2px rgba(31, 24, 20, 0.04), 0 4px 12px rgba(31, 24, 20, 0.06);
-  --shadow-card-hover: 0 2px 4px rgba(31, 24, 20, 0.06), 0 12px 32px rgba(142, 59, 47, 0.12);
-  --shadow-ink-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 1px 3px rgba(42, 34, 24, 0.08), 0 4px 14px rgba(42, 34, 24, 0.08);
+  --shadow-card-hover: 0 2px 6px rgba(42, 34, 24, 0.10), 0 14px 36px rgba(122, 56, 38, 0.16);
+  --shadow-ink-card: 0 8px 28px rgba(0, 0, 0, 0.4);
 
   --radius: 3px;
-  --header-bg: rgba(244, 236, 216, 0.82);
-  --header-bg-scrolled: rgba(244, 236, 216, 0.92);
+  --header-bg: rgba(237, 228, 209, 0.85);
+  --header-bg-scrolled: rgba(237, 228, 209, 0.94);
 }
 
-/* ============== DARK MODE ============== */
+/* ============== DARK MODE — the storm itself ============== */
 .dark {
-  /* backgrounds — deep warm umber (not cold black) */
-  --bg: #1A1410;
-  --bg-2: #251E18;
-  --bg-3: #2F271F;
-  --bg-ink: #14100C;            /* even deeper for "ink sections" in dark mode */
-  --bg-ink-2: #1F1812;
+  /* backgrounds — deep storm-charcoal with warm undertone (NOT cold blue-black) */
+  --bg: #1A1612;
+  --bg-2: #251F18;
+  --bg-3: #302820;
+  --bg-ink: #100C09;            /* even deeper for "storm" sections */
+  --bg-ink-2: #1A1510;
 
-  /* foreground — warm cream */
-  --fg: #E8DCC2;
-  --fg-muted: #9C948A;
+  /* foreground — warm cream, like lamplight on a page */
+  --fg: #E0D4BC;
+  --fg-muted: #8A7E68;
 
-  /* Text on ink (dark) sections — still light cream.
-     Even in dark mode, ink sections are darker than the main bg,
-     so text on them stays cream. */
-  --on-ink: #E8DCC2;
-  --on-ink-muted: #8A8275;
+  --on-ink: #E0D4BC;
+  --on-ink-muted: #8A7E68;
 
   /* accents — brightened for dark mode visibility */
-  --brick: #C4523F;
-  --brick-2: #A04334;
+  --brick: #B85838;
+  --brick-2: #9C4A30;
   --brass: #D4B05E;
   --brass-2: #E5C778;
-  --stamp: #D44A3E;
+  --amber: #D49550;
+  --amber-2: #E8AC6A;
+  --stamp: #C44638;
 
-  --line: rgba(232, 220, 194, 0.14);
-  --line-strong: rgba(232, 220, 194, 0.28);
+  --line: rgba(224, 212, 188, 0.14);
+  --line-strong: rgba(224, 212, 188, 0.28);
 
-  /* paper grain becomes amber dust in dark mode */
-  --grain-1: rgba(212, 176, 94, 0.025);
-  --grain-2: rgba(255, 255, 255, 0.012);
+  --grain-1: rgba(212, 176, 94, 0.03);
+  --grain-2: rgba(255, 255, 255, 0.014);
 
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(212, 176, 94, 0.15);
-  --shadow-ink-card: 0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.5), 0 14px 36px rgba(212, 176, 94, 0.18);
+  --shadow-ink-card: 0 8px 28px rgba(0, 0, 0, 0.6);
 
-  --header-bg: rgba(26, 20, 16, 0.82);
-  --header-bg-scrolled: rgba(26, 20, 16, 0.92);
+  --header-bg: rgba(26, 22, 18, 0.85);
+  --header-bg-scrolled: rgba(26, 22, 18, 0.94);
 }
 
 @layer base {
@@ -146,7 +157,7 @@
     color: var(--fg);
     font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
     font-feature-settings: "kern", "liga", "calt";
-    /* faint paper grain — same in both modes, just different colors */
+    /* paper grain — subtle, like aged paper fiber */
     background-image:
       radial-gradient(var(--grain-1) 1px, transparent 1px),
       radial-gradient(var(--grain-2) 1px, transparent 1px);
@@ -155,20 +166,29 @@
     transition: background-color 400ms ease, color 400ms ease;
   }
 
-  /* ink section — the "dark" cinematic band, in both modes.
-     Text on these sections must ALWAYS be light cream, regardless of theme. */
+  /* ink section — the "storm" cinematic band, in both modes.
+     Like the dark moody sky on the cover. */
   .bg-ink-grain {
     background-color: var(--bg-ink);
     background-image:
-      radial-gradient(rgba(184, 145, 63, 0.04) 1px, transparent 1px),
-      radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      radial-gradient(rgba(212, 176, 94, 0.045) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 5px 5px, 9px 9px;
     color: var(--on-ink);
+    position: relative;
   }
   .dark .bg-ink-grain {
     background-image:
-      radial-gradient(rgba(212, 176, 94, 0.03) 1px, transparent 1px),
-      radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      radial-gradient(rgba(212, 176, 94, 0.035) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  }
+  /* a faint warm vignette like the cover's sunset glow */
+  .bg-ink-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(212, 149, 80, 0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
 
   ::selection {
@@ -182,7 +202,6 @@
     border-radius: 1px;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg-2); }
   ::-webkit-scrollbar-thumb {
@@ -229,7 +248,7 @@
   .body-text {
     font-family: var(--font-newsreader), Georgia, serif;
     font-size: clamp(1rem, 1.1vw, 1.075rem);
-    line-height: 1.65;
+    line-height: 1.7;
     font-weight: 400;
   }
 
@@ -307,7 +326,7 @@
     transform: rotate(45deg) scale(1.4);
   }
 
-  /* Buttons — with rich hover */
+  /* Buttons */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -344,7 +363,7 @@
   }
   .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(142, 59, 47, 0.18);
+    box-shadow: 0 6px 20px rgba(122, 56, 38, 0.22);
   }
   .btn:hover::before {
     transform: translateX(100%);
@@ -353,13 +372,24 @@
 
   .btn-brick {
     background: var(--brick);
-    color: #F4ECD8;
+    color: var(--on-ink);
     border-color: var(--brick);
   }
   .btn-brick:hover {
     background: var(--brick-2);
     border-color: var(--brick-2);
-    box-shadow: 0 8px 24px rgba(142, 59, 47, 0.35);
+    box-shadow: 0 8px 24px rgba(122, 56, 38, 0.38);
+  }
+
+  .btn-amber {
+    background: var(--amber);
+    color: var(--bg-ink);
+    border-color: var(--amber);
+  }
+  .btn-amber:hover {
+    background: var(--amber-2);
+    border-color: var(--amber-2);
+    box-shadow: 0 8px 24px rgba(212, 149, 80, 0.4);
   }
 
   .btn-paper {
@@ -369,7 +399,7 @@
   }
   .btn-paper:hover {
     background: var(--bg-2);
-    box-shadow: 0 6px 20px rgba(31, 24, 20, 0.15);
+    box-shadow: 0 6px 20px rgba(42, 34, 24, 0.18);
   }
 
   .btn-outline {
@@ -383,17 +413,17 @@
   }
 
   .btn-outline-paper {
-    color: #F4ECD8;
-    border-color: color-mix(in srgb, #F4ECD8 55%, transparent);
+    color: var(--on-ink);
+    border-color: color-mix(in srgb, var(--on-ink) 55%, transparent);
   }
   .btn-outline-paper:hover {
-    color: #F4ECD8;
-    border-color: #F4ECD8;
-    background: rgba(244, 236, 216, 0.08);
+    color: var(--on-ink);
+    border-color: var(--on-ink);
+    background: rgba(237, 228, 209, 0.08);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   }
 
-  /* Exhibit card — paper section, brick left border */
+  /* Exhibit card — paper section */
   .exhibit-card {
     background: var(--bg-2);
     border: 1px solid var(--line);
@@ -411,7 +441,6 @@
     border-left-color: var(--brass);
     border-left-width: 4px;
   }
-  /* brass corner accent on hover */
   .exhibit-card::after {
     content: "";
     position: absolute;
@@ -431,7 +460,7 @@
   /* Exhibit card — ink section */
   .exhibit-card-ink {
     background: var(--bg-ink-2);
-    border: 1px solid rgba(184, 145, 63, 0.18);
+    border: 1px solid rgba(212, 176, 94, 0.2);
     border-left: 3px solid var(--brass);
     padding: 1.5rem;
     position: relative;
@@ -441,7 +470,7 @@
   }
   .exhibit-card-ink:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
     border-left-color: var(--brass-2);
   }
 
@@ -504,7 +533,7 @@
     background: linear-gradient(90deg, transparent, var(--brick), transparent);
   }
 
-  /* Theme toggle — sun/moon glyph swap */
+  /* Theme toggle */
   .theme-toggle {
     width: 36px;
     height: 36px;
@@ -535,9 +564,9 @@
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(20, 17, 15, 0.7);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(16, 12, 9, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -553,7 +582,7 @@
   .modal-panel {
     background: var(--bg);
     border: 1px solid var(--brass);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
     max-width: 520px;
     width: 100%;
     padding: 2.5rem;
@@ -565,7 +594,7 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* Nav link — animated underline + color shift */
+  /* Nav link */
   .nav-link {
     font-family: var(--font-jetbrains), ui-monospace, monospace;
     font-size: 0.7rem;
@@ -622,12 +651,6 @@
 
 /* ============== MOTION ============== */
 @layer utilities {
-  /*
-    Progressive enhancement: .reveal defaults to VISIBLE so the page is
-    readable without JS, with slow hydration, or when captured as a static
-    snapshot. The .js class is added to <html> on mount, and ONLY THEN do
-    we hide-then-reveal. Reduced motion is honored in the @media query below.
-  */
   .reveal {
     opacity: 1;
     transform: none;
@@ -644,7 +667,6 @@
     transform: translateY(0);
   }
 
-  /* Hero staggered reveal — only hidden when JS is on */
   .hero-rise { opacity: 1; transform: none; }
   .js .hero-rise {
     opacity: 0;
@@ -655,32 +677,27 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Window glow — brass pulse on load */
   @keyframes windowGlow {
     0%   { opacity: 0; }
     60%  { opacity: 0; }
     100% { opacity: 1; }
   }
 
-  /* Cover float-in */
   @keyframes coverFloat {
     from { opacity: 0; transform: translateY(20px) rotate(-2.5deg); }
     to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
   }
 
-  /* Vertical scroll cue */
   @keyframes scrollCue {
     0%, 100% { transform: translateY(0); opacity: 0.4; }
     50%      { transform: translateY(6px); opacity: 1; }
   }
 
-  /* Tab panel fade-in */
   @keyframes panelFade {
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Reduced motion: disable everything except instant state changes */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.001ms !important;

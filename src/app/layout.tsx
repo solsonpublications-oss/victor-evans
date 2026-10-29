@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       "A true account of a family's fight for justice. Thirty years of documentation. Six demands. Read the record.",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "The Generational Curse Breaker — book cover and title",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "The Generational Curse Breaker | Victor L. Evans",
     description:
       "A true account of a family's fight for justice. Thirty years of documentation. Six demands. Read the record.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.jpg"],
   },
   category: "books",
   other: {

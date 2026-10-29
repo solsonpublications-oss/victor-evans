@@ -257,3 +257,69 @@ export function AuthorPortraitArt({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * Broken chain — the thematic motif from the book cover.
+ * A chain with one link broken open, symbolizing the curse being broken.
+ * Used as a decorative element in the author section.
+ */
+export function BrokenChainArt({
+  className = "",
+  tone = "brass",
+}: {
+  className?: string;
+  tone?: "brass" | "ink" | "paper";
+}) {
+  const color =
+    tone === "brass"
+      ? "var(--brass)"
+      : tone === "ink"
+      ? "var(--fg)"
+      : "var(--on-ink)";
+
+  return (
+    <svg
+      viewBox="0 0 200 80"
+      className={className}
+      aria-hidden="true"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Left link — intact oval */}
+      <ellipse
+        cx="40"
+        cy="40"
+        rx="28"
+        ry="18"
+        stroke={color}
+        strokeWidth="2.5"
+        opacity="0.7"
+      />
+      {/* Right link — broken, two halves separated */}
+      <path
+        d="M 100 22 Q 132 22 132 40 Q 132 58 100 58"
+        stroke={color}
+        strokeWidth="2.5"
+        opacity="0.7"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 168 22 Q 136 22 136 40"
+        stroke={color}
+        strokeWidth="2.5"
+        opacity="0.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 168 58 Q 136 58 136 40"
+        stroke={color}
+        strokeWidth="2.5"
+        opacity="0.5"
+        strokeLinecap="round"
+      />
+      {/* Break spark — small brass dot at the break point */}
+      <circle cx="152" cy="40" r="2" fill={color} opacity="0.9" />
+      <circle cx="152" cy="40" r="5" fill={color} opacity="0.2" />
+    </svg>
+  );
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { RowHouseArt, BookCoverArt } from "./illustrations";
+import { RowHouseArt } from "./illustrations";
 import { useCoverTilt } from "./hooks/motion";
 import { useGetBookModal } from "./get-book-modal";
 
@@ -19,19 +19,19 @@ export function Hero() {
       {/* background house line art — absolute, behind everything */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ opacity: 0.55 }}
+        style={{ opacity: 0.4 }}
         aria-hidden="true"
       >
         <RowHouseArt
           className="w-full h-full"
           style={{ objectFit: "cover" } as React.CSSProperties}
         />
-        {/* vignette to push the house into the background */}
+        {/* atmospheric vignette — like the cover's moody sky */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 50%, rgba(20,17,15,0.2) 0%, rgba(20,17,15,0.85) 70%, rgba(20,17,15,0.98) 100%)",
+              "radial-gradient(ellipse at 25% 45%, rgba(212, 149, 80, 0.12) 0%, rgba(31, 26, 21, 0.7) 45%, rgba(16, 12, 9, 0.96) 80%)",
           }}
         />
       </div>
@@ -109,13 +109,13 @@ export function Hero() {
           </div>
         </div>
 
-        {/* right: cover */}
+        {/* right: real book cover */}
         <div className="md:col-span-5 flex justify-center md:justify-end">
           <div
             ref={tiltRef}
             className="hero-rise relative"
             style={{
-              width: "min(72vw, 320px)",
+              width: "min(72vw, 360px)",
               aspectRatio: "2 / 3",
               animation: "coverFloat 1100ms cubic-bezier(0.2,0.7,0.2,1) forwards",
               animationDelay: "800ms",
@@ -123,17 +123,41 @@ export function Hero() {
               transformStyle: "preserve-3d",
               transform: "perspective(1200px) rotateX(0) rotateY(0)",
               transition: "transform 200ms ease-out, filter 350ms ease",
-              filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.55))",
+              filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.65))",
             }}
           >
-            <BookCoverArt className="w-full h-full" />
+            {/* Real book cover — the actual artwork */}
+            <picture>
+              <img
+                src="/cover.jpg"
+                alt="The Generational Curse Breaker — book cover: a brick row house at dusk with a lit window, a broken chain on the front steps, and the silhouette of a white-haired figure in the storm clouds above."
+                width={1024}
+                height={1536}
+                fetchPriority="high"
+                decoding="async"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </picture>
             {/* spine highlight */}
             <div
               className="absolute top-0 left-0 bottom-0 pointer-events-none"
               style={{
                 width: "4px",
                 background:
-                  "linear-gradient(90deg, rgba(255,255,255,0.15), transparent)",
+                  "linear-gradient(90deg, rgba(255,255,255,0.18), transparent)",
+              }}
+              aria-hidden="true"
+            />
+            {/* subtle border frame */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                border: "1px solid rgba(212, 176, 94, 0.25)",
               }}
               aria-hidden="true"
             />
@@ -141,7 +165,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* scroll cue — vertical thread with brass diamond */}
+      {/* scroll cue */}
       <div
         className="absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-6 hidden md:flex flex-col items-center gap-2"
         aria-hidden="true"
@@ -167,7 +191,7 @@ export function Hero() {
             animation: "scrollCue 2200ms ease-in-out infinite",
           }}
         />
-        <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+        <span className="label-mono-sm" style={{ color: "var(--on-ink-muted)" }}>
           Scroll
         </span>
       </div>
