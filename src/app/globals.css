@@ -2,143 +2,139 @@
 @import "tw-animate-css";
 
 /*
-  THE GENERATIONAL CURSE BREAKER — design system v3
-  "Storm light over the row house"
+  THE GENERATIONAL CURSE BREAKER — design system v4
+  "Storm to Sunrise"
 
-  Palette extracted directly from the book cover:
-  - Deep storm-charcoal base (#2A2520, #31261C) — the moody night sky
-  - Antique gold (#C9A55C, #D4B05E) — the title text
-  - Window amber (#B87838, #D49550) — the warm glow from the house
-  - Brick red-brown (#7A3826, #9C4A30) — the row house facade
-  - Stone sepia (#4A3C2E) — the front steps and broken chain
-  - Cloud gray (#5A5048) — the storm clouds
+  Two fully designed themes:
+  - Dark "Storm": deep midnight blue-black, molten gold, ember, lit window
+  - Light "Dawn": warm cream, antique gold, sunrise ember, golden hour
 
-  The cover is NOT a warm parchment page. It is a dark, atmospheric,
-  documentary painting — storm clouds at sunset, a lit window, a broken
-  chain. The site should feel the same: like opening a case file at dusk,
-  with the only warmth coming from a single lamp in a row house window.
-
-  Light mode: aged paper (warmer than the dark, but still sepia-toned,
-  not bright white). Dark mode: the storm itself.
+  The scroll itself tells the story: storm at the top, dawn by the footer.
+  Every cover element becomes a recurring motif: the gold title, the
+  breaking chain, the lit window, the watching figure, the Capitol horizon.
 */
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-bg: var(--bg);
-  --color-bg-2: var(--bg-2);
-  --color-bg-3: var(--bg-3);
-  --color-bg-ink: var(--bg-ink);
-  --color-bg-ink-2: var(--bg-ink-2);
-  --color-fg: var(--fg);
-  --color-fg-muted: var(--fg-muted);
-  --color-on-ink: var(--on-ink);
-  --color-on-ink-muted: var(--on-ink-muted);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-ember: var(--ember);
   --color-brick: var(--brick);
-  --color-brick-2: var(--brick-2);
-  --color-brass: var(--brass);
-  --color-brass-2: var(--brass-2);
-  --color-amber: var(--amber);
-  --color-amber-2: var(--amber-2);
-  --color-stamp: var(--stamp);
+  --color-window: var(--window);
+  --color-storm: var(--storm);
+  --color-focus: var(--focus);
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-dim: var(--on-dark-dim);
 
   --color-background: var(--bg);
-  --color-foreground: var(--fg);
-  --color-card: var(--bg-2);
-  --color-card-foreground: var(--fg);
+  --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
   --color-border: var(--line);
   --color-input: var(--line);
-  --color-ring: var(--brass);
+  --color-ring: var(--focus);
 
-  --font-serif: var(--font-newsreader);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-inter);
   --font-mono: var(--font-jetbrains);
-  --font-sans: var(--font-newsreader);
+  --font-sans: var(--font-inter);
 
   --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
 }
 
-/* ============== LIGHT MODE — aged sepia paper ============== */
+/* ============== DARK MODE — "Storm" ============== */
 :root {
-  /* backgrounds — aged sepia paper, like an old case file */
-  --bg: #EDE4D1;
-  --bg-2: #E0D4BC;
-  --bg-3: #D2C4A6;
-  --bg-ink: #1F1A15;            /* the dark "storm" sections */
-  --bg-ink-2: #2C241D;
+  /* Default to storm (dark) — the cover is dark and moody */
+  --bg: #070B14;
+  --surface: #0F1626;
+  --surface-2: #18223A;
+  --text: #F3EEE4;
+  --text-dim: #9AA6BF;
+  --on-dark: #F3EEE4;
+  --on-dark-dim: #9AA6BF;
 
-  /* foreground */
-  --fg: #2A2218;
-  --fg-muted: #6B5E4A;
+  --gold: #F6C453;
+  --gold-2: #FFE08A;
+  --gold-grad-1: #FFE08A;
+  --gold-grad-2: #F6C453;
+  --gold-grad-3: #C98A1B;
+  --ember: #FF7A45;
+  --brick: #C8553D;
+  --window: #FFD9A0;
+  --storm: #1B2A4A;
+  --focus: #FFE08A;
 
-  /* Text on ink (dark) sections — always warm cream */
-  --on-ink: #EDE4D1;
-  --on-ink-muted: #A89878;
+  --line: rgba(243, 238, 228, 0.12);
+  --line-strong: rgba(243, 238, 228, 0.24);
 
-  /* accents — from the cover */
-  --brick: #7A3826;             /* the row house brick */
-  --brick-2: #5C2A1C;
-  --brass: #A88A3E;             /* antique gold title */
-  --brass-2: #C9A55C;
-  --amber: #B87838;             /* window glow */
-  --amber-2: #D49550;
-  --stamp: #8E2A1E;
+  --grain-1: rgba(246, 196, 83, 0.025);
+  --grain-2: rgba(255, 255, 255, 0.012);
 
-  --line: rgba(42, 34, 24, 0.16);
-  --line-strong: rgba(42, 34, 24, 0.32);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(246, 196, 83, 0.18);
+  --shadow-book: 0 30px 60px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.5);
 
-  --grain-1: rgba(42, 34, 24, 0.022);
-  --grain-2: rgba(42, 34, 24, 0.015);
+  --header-bg: rgba(7, 11, 20, 0.7);
+  --header-bg-scrolled: rgba(15, 22, 38, 0.85);
 
-  --shadow-card: 0 1px 3px rgba(42, 34, 24, 0.08), 0 4px 14px rgba(42, 34, 24, 0.08);
-  --shadow-card-hover: 0 2px 6px rgba(42, 34, 24, 0.10), 0 14px 36px rgba(122, 56, 38, 0.16);
-  --shadow-ink-card: 0 8px 28px rgba(0, 0, 0, 0.4);
-
-  --radius: 3px;
-  --header-bg: rgba(237, 228, 209, 0.85);
-  --header-bg-scrolled: rgba(237, 228, 209, 0.94);
+  --sky-top: #050810;
+  --sky-mid: #0F1626;
+  --sky-bottom: #1B2A4A;
+  --horizon-glow: rgba(255, 122, 69, 0.15);
+  --window-glow: rgba(255, 217, 160, 0.6);
 }
 
-/* ============== DARK MODE — the storm itself ============== */
-.dark {
-  /* backgrounds — deep storm-charcoal with warm undertone (NOT cold blue-black) */
-  --bg: #1A1612;
-  --bg-2: #251F18;
-  --bg-3: #302820;
-  --bg-ink: #100C09;            /* even deeper for "storm" sections */
-  --bg-ink-2: #1A1510;
+/* ============== LIGHT MODE — "Dawn" ============== */
+.light {
+  --bg: #FBF6EC;
+  --surface: #F2E9D8;
+  --surface-2: #E8DCC4;
+  --text: #101626;
+  --text-dim: #4A5368;
+  /* In Dawn mode, storm-sections become lighter dawn skies, so text on them
+     must be dark — same as --text. */
+  --on-dark: #101626;
+  --on-dark-dim: #4A5368;
 
-  /* foreground — warm cream, like lamplight on a page */
-  --fg: #E0D4BC;
-  --fg-muted: #8A7E68;
+  --gold: #B7791F;
+  --gold-2: #E9B44C;
+  --gold-grad-1: #E9B44C;
+  --gold-grad-2: #B7791F;
+  --gold-grad-3: #8B5A0F;
+  --ember: #D9572B;
+  --brick: #A63B24;
+  --window: #FFC46B;
+  --storm: #C9D8EE;
+  --focus: #101626;
 
-  --on-ink: #E0D4BC;
-  --on-ink-muted: #8A7E68;
+  --line: rgba(16, 22, 38, 0.12);
+  --line-strong: rgba(16, 22, 38, 0.24);
 
-  /* accents — brightened for dark mode visibility */
-  --brick: #B85838;
-  --brick-2: #9C4A30;
-  --brass: #D4B05E;
-  --brass-2: #E5C778;
-  --amber: #D49550;
-  --amber-2: #E8AC6A;
-  --stamp: #C44638;
+  --grain-1: rgba(16, 22, 38, 0.018);
+  --grain-2: rgba(16, 22, 38, 0.012);
 
-  --line: rgba(224, 212, 188, 0.14);
-  --line-strong: rgba(224, 212, 188, 0.28);
+  --shadow-card: 0 2px 8px rgba(16, 22, 38, 0.06), 0 8px 24px rgba(16, 22, 38, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(16, 22, 38, 0.08), 0 16px 40px rgba(183, 121, 31, 0.16);
+  --shadow-book: 0 30px 60px rgba(16, 22, 38, 0.25), 0 10px 20px rgba(16, 22, 38, 0.12);
 
-  --grain-1: rgba(212, 176, 94, 0.03);
-  --grain-2: rgba(255, 255, 255, 0.014);
+  --header-bg: rgba(251, 246, 236, 0.7);
+  --header-bg-scrolled: rgba(242, 233, 216, 0.9);
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.5), 0 14px 36px rgba(212, 176, 94, 0.18);
-  --shadow-ink-card: 0 8px 28px rgba(0, 0, 0, 0.6);
-
-  --header-bg: rgba(26, 22, 18, 0.85);
-  --header-bg-scrolled: rgba(26, 22, 18, 0.94);
+  /* Dawn sky — golden hour, not dark storm */
+  --sky-top: #FBF6EC;
+  --sky-mid: #F5E8CC;
+  --sky-bottom: #E8DCC4;
+  --horizon-glow: rgba(217, 87, 43, 0.18);
+  --window-glow: rgba(255, 196, 107, 0.5);
 }
 
 @layer base {
@@ -154,116 +150,124 @@
 
   body {
     background-color: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+    color: var(--text);
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-feature-settings: "kern", "liga", "calt";
-    /* paper grain — subtle, like aged paper fiber */
     background-image:
       radial-gradient(var(--grain-1) 1px, transparent 1px),
       radial-gradient(var(--grain-2) 1px, transparent 1px);
     background-size: 3px 3px, 7px 7px;
     background-position: 0 0, 1px 1px;
-    transition: background-color 400ms ease, color 400ms ease;
+    transition: background-color 500ms ease, color 500ms ease;
+    overflow-x: hidden;
   }
 
-  /* ink section — the "storm" cinematic band, in both modes.
-     Like the dark moody sky on the cover. */
-  .bg-ink-grain {
-    background-color: var(--bg-ink);
-    background-image:
-      radial-gradient(rgba(212, 176, 94, 0.045) 1px, transparent 1px),
-      radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 5px 5px, 9px 9px;
-    color: var(--on-ink);
+  /* The cinematic dark "storm" sections — used in hero, book, footer */
+  .storm-section {
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 50%, var(--sky-bottom) 100%);
+    color: var(--on-dark);
     position: relative;
+    overflow: hidden;
   }
-  .dark .bg-ink-grain {
-    background-image:
-      radial-gradient(rgba(212, 176, 94, 0.035) 1px, transparent 1px),
-      radial-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px);
-  }
-  /* a faint warm vignette like the cover's sunset glow */
-  .bg-ink-grain::before {
+
+  /* Atmospheric vignette — the cover's sunset glow */
+  .storm-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 40%, rgba(212, 149, 80, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 40%, var(--horizon-glow) 0%, transparent 50%);
     pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Paper grain on dark sections */
+  .storm-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(246, 196, 83, 0.04) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 5px 5px, 9px 9px;
+    pointer-events: none;
+    z-index: 0;
   }
 
   ::selection {
-    background: var(--brass);
+    background: var(--gold);
     color: var(--bg);
   }
 
   :focus-visible {
-    outline: 2px solid var(--brass);
+    outline: 3px solid var(--focus);
     outline-offset: 3px;
     border-radius: 1px;
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: var(--bg-2); }
+  ::-webkit-scrollbar-track { background: var(--surface); }
   ::-webkit-scrollbar-thumb {
     background: var(--line-strong);
-    border: 2px solid var(--bg-2);
+    border: 2px solid var(--surface);
     border-radius: 0;
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--brick); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 }
 
 /* ============== TYPE SCALE ============== */
 @layer components {
   .eyebrow {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+    font-weight: 600;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
   }
 
   .display {
-    font-family: var(--font-newsreader), Georgia, serif;
-    font-weight: 400;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-weight: 800;
     font-style: normal;
     font-optical-sizing: auto;
-    line-height: 0.98;
-    letter-spacing: -0.02em;
+    line-height: 0.96;
+    letter-spacing: -0.025em;
   }
 
   .display-italic {
-    font-family: var(--font-newsreader), Georgia, serif;
+    font-family: var(--font-fraunces), Georgia, serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -0.015em;
+    line-height: 1.05;
   }
 
   .lede {
-    font-family: var(--font-newsreader), Georgia, serif;
-    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-    line-height: 1.55;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    line-height: 1.5;
     font-weight: 400;
+    font-style: italic;
   }
 
   .body-text {
-    font-family: var(--font-newsreader), Georgia, serif;
-    font-size: clamp(1rem, 1.1vw, 1.075rem);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: clamp(1rem, 1.05vw, 1.075rem);
     line-height: 1.7;
     font-weight: 400;
   }
 
   .body-text-lg {
-    font-family: var(--font-newsreader), Georgia, serif;
-    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
-    line-height: 1.6;
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+    line-height: 1.55;
     font-weight: 400;
   }
 
   .label-mono {
     font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: clamp(0.7rem, 0.9vw, 0.78rem);
+    font-size: clamp(0.72rem, 0.9vw, 0.8rem);
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
@@ -271,39 +275,66 @@
     font-family: var(--font-jetbrains), ui-monospace, monospace;
     font-size: 0.65rem;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-  }
-
-  .exhibit-stamp {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    color: var(--stamp);
-    border: 1.5px solid var(--stamp);
-    padding: 4px 8px;
-    display: inline-block;
-    transform: rotate(-2deg);
-    text-transform: uppercase;
-    opacity: 0.85;
   }
 
   .measure {
-    max-width: 64ch;
+    max-width: 66ch;
+  }
+
+  /* Gold foil text — gradient with cursor-driven light sweep */
+  .foil-text {
+    background: linear-gradient(
+      105deg,
+      var(--gold-grad-3) 0%,
+      var(--gold-grad-2) 30%,
+      var(--gold-grad-1) 50%,
+      var(--gold-grad-2) 70%,
+      var(--gold-grad-3) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transition: background-position 80ms linear;
+  }
+
+  /* Kintsugi crack — gold crack line that draws and fills */
+  .kintsugi {
+    position: relative;
+    display: inline-block;
+  }
+  .kintsugi::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M5 50 Q 30 30, 45 55 T 95 50' stroke='%23F6C453' stroke-width='1.5' fill='none' opacity='0.7'/></svg>");
+    background-size: 100% 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 800ms ease;
+  }
+  .kintsugi.revealed::after {
+    opacity: 1;
   }
 }
 
 /* ============== COMPONENT PRIMITIVES ============== */
 @layer components {
-  /* Brass diamond section divider — drawn with CSS only */
+  /* Diamond divider — the cover's ornament, used as section breaks */
   .diamond-divider {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
     width: 100%;
-    color: var(--brass);
+    color: var(--gold);
   }
   .diamond-divider::before,
   .diamond-divider::after {
@@ -312,166 +343,166 @@
     background: linear-gradient(90deg, transparent, currentColor 20%, currentColor 80%, transparent);
     flex: 1;
     max-width: 180px;
-    opacity: 0.7;
+    opacity: 0.6;
   }
   .diamond-divider .diamond {
     width: 8px;
     height: 8px;
     background: currentColor;
     transform: rotate(45deg);
-    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+    box-shadow: 0 0 12px currentColor, 0 0 0 3px color-mix(in srgb, currentColor 15%, transparent);
     transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   .diamond-divider:hover .diamond {
-    transform: rotate(45deg) scale(1.4);
+    transform: rotate(45deg) scale(1.5);
   }
 
-  /* Buttons */
+  /* Buttons — magnetic, with light sweep */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.85rem 1.4rem;
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: 0.74rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     border: 1.5px solid currentColor;
     background: transparent;
     color: inherit;
     cursor: pointer;
-    transition: background 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                color 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                transform 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                box-shadow 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                border-color 250ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: all 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
     text-decoration: none;
     line-height: 1;
     position: relative;
     overflow: hidden;
+    border-radius: var(--radius-md);
   }
   .btn::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
     transform: translateX(-100%);
     transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
     pointer-events: none;
   }
   .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(122, 56, 38, 0.22);
+    box-shadow: 0 8px 24px rgba(246, 196, 83, 0.2);
   }
   .btn:hover::before {
     transform: translateX(100%);
   }
   .btn:active { transform: translateY(0); }
 
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-grad-1), var(--gold-grad-2), var(--gold-grad-3));
+    color: #070B14;
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+  .btn-gold:hover {
+    box-shadow: 0 8px 28px rgba(246, 196, 83, 0.4);
+  }
+
   .btn-brick {
     background: var(--brick);
-    color: var(--on-ink);
+    color: var(--on-dark);
     border-color: var(--brick);
   }
   .btn-brick:hover {
-    background: var(--brick-2);
-    border-color: var(--brick-2);
-    box-shadow: 0 8px 24px rgba(122, 56, 38, 0.38);
+    background: color-mix(in srgb, var(--brick) 85%, var(--ember));
+    box-shadow: 0 8px 28px rgba(200, 85, 61, 0.4);
   }
 
-  .btn-amber {
-    background: var(--amber);
-    color: var(--bg-ink);
-    border-color: var(--amber);
+  .btn-ember {
+    background: var(--ember);
+    color: #070B14;
+    border-color: var(--ember);
+    font-weight: 700;
   }
-  .btn-amber:hover {
-    background: var(--amber-2);
-    border-color: var(--amber-2);
-    box-shadow: 0 8px 24px rgba(212, 149, 80, 0.4);
-  }
-
-  .btn-paper {
-    background: var(--bg);
-    color: var(--fg);
-    border-color: var(--fg);
-  }
-  .btn-paper:hover {
-    background: var(--bg-2);
-    box-shadow: 0 6px 20px rgba(42, 34, 24, 0.18);
+  .btn-ember:hover {
+    box-shadow: 0 8px 28px rgba(255, 122, 69, 0.4);
   }
 
   .btn-outline {
-    color: var(--fg);
+    color: var(--text);
     border-color: var(--line-strong);
+    background: transparent;
   }
   .btn-outline:hover {
     color: var(--bg);
-    background: var(--fg);
-    border-color: var(--fg);
+    background: var(--text);
+    border-color: var(--text);
   }
 
-  .btn-outline-paper {
-    color: var(--on-ink);
-    border-color: color-mix(in srgb, var(--on-ink) 55%, transparent);
+  .btn-outline-light {
+    color: var(--on-dark);
+    border-color: color-mix(in srgb, var(--on-dark) 50%, transparent);
+    background: transparent;
   }
-  .btn-outline-paper:hover {
-    color: var(--on-ink);
-    border-color: var(--on-ink);
-    background: rgba(237, 228, 209, 0.08);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  .btn-outline-light:hover {
+    color: var(--on-dark);
+    border-color: var(--on-dark);
+    background: rgba(243, 238, 228, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 
-  /* Exhibit card — paper section */
+  /* Glass card — frosted, with cursor-tracked glow */
+  .glass-card {
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 400ms ease,
+                box-shadow 400ms ease;
+  }
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      color-mix(in srgb, var(--gold) 12%, transparent),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+  }
+  .glass-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--gold) 40%, var(--line));
+    box-shadow: var(--shadow-card-hover);
+  }
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Exhibit card — solid, brick left border */
   .exhibit-card {
-    background: var(--bg-2);
+    background: var(--surface);
     border: 1px solid var(--line);
     border-left: 3px solid var(--brick);
     padding: 1.5rem;
     position: relative;
     transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
                 box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                background 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+                border-color 350ms ease;
   }
   .exhibit-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-card-hover);
-    border-left-color: var(--brass);
+    border-left-color: var(--gold);
     border-left-width: 4px;
-  }
-  .exhibit-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-top: 12px solid var(--brass);
-    border-left: 12px solid transparent;
-    opacity: 0;
-    transition: opacity 350ms ease;
-  }
-  .exhibit-card:hover::after {
-    opacity: 0.85;
-  }
-
-  /* Exhibit card — ink section */
-  .exhibit-card-ink {
-    background: var(--bg-ink-2);
-    border: 1px solid rgba(212, 176, 94, 0.2);
-    border-left: 3px solid var(--brass);
-    padding: 1.5rem;
-    position: relative;
-    transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-  .exhibit-card-ink:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-    border-left-color: var(--brass-2);
   }
 
   /* Link underline draw */
@@ -499,74 +530,62 @@
 
   .tab-trigger {
     flex: 0 0 auto;
-    padding: 0.85rem 1.1rem;
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: 0.74rem;
-    font-weight: 500;
+    padding: 0.9rem 1.2rem;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--fg-muted);
+    color: var(--text-dim);
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     white-space: nowrap;
-    transition: color 250ms ease, border-color 250ms ease, background 250ms ease;
+    transition: color 250ms ease, border-color 250ms ease;
     margin-bottom: -1px;
-    position: relative;
   }
   .tab-trigger:hover {
-    color: var(--fg);
-    background: color-mix(in srgb, var(--brass) 4%, transparent);
+    color: var(--text);
   }
   .tab-trigger[data-state="active"] {
-    color: var(--fg);
-    border-bottom-color: var(--brick);
-  }
-  .tab-trigger[data-state="active"]::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--brick), transparent);
+    color: var(--text);
+    border-bottom-color: var(--gold);
   }
 
-  /* Theme toggle */
+  /* Theme toggle — morphing sun/moon */
   .theme-toggle {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--line-strong);
     background: transparent;
-    color: var(--fg);
+    color: var(--text);
     cursor: pointer;
-    transition: border-color 250ms ease, color 250ms ease, background 250ms ease, transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
-    border-radius: 2px;
+    transition: all 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    border-radius: 50%;
     position: relative;
     overflow: hidden;
   }
   .theme-toggle:hover {
-    border-color: var(--brass);
-    color: var(--brass);
-    transform: rotate(15deg);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: scale(1.08);
   }
   .theme-toggle svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    width: 18px;
+    height: 18px;
   }
 
   /* Modal */
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(16, 12, 9, 0.78);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(7, 11, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -580,13 +599,14 @@
   }
 
   .modal-panel {
-    background: var(--bg);
-    border: 1px solid var(--brass);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    background: var(--surface);
+    border: 1px solid var(--gold);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
     max-width: 520px;
     width: 100%;
     padding: 2.5rem;
     position: relative;
+    border-radius: var(--radius-lg);
     animation: modalRise 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   @keyframes modalRise {
@@ -596,13 +616,13 @@
 
   /* Nav link */
   .nav-link {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
-    font-size: 0.7rem;
-    font-weight: 500;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--fg);
-    opacity: 0.78;
+    color: var(--text);
+    opacity: 0.75;
     text-decoration: none;
     background: transparent;
     border: none;
@@ -618,34 +638,45 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: var(--brass);
+    background: var(--gold);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   .nav-link:hover {
     opacity: 1;
-    color: var(--brick);
+    color: var(--gold);
   }
   .nav-link:hover::after {
     transform: scaleX(1);
   }
   .nav-link[data-active="true"] {
     opacity: 1;
-    color: var(--brick);
+    color: var(--gold);
   }
   .nav-link[data-active="true"]::after {
     transform: scaleX(1);
   }
 
-  /* Card hover — universal lift */
+  /* Hover lift */
   .hover-lift {
     transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                border-color 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+                box-shadow 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
   .hover-lift:hover {
     transform: translateY(-3px);
+  }
+
+  /* 3D book */
+  .book-3d {
+    transform-style: preserve-3d;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .book-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
@@ -657,9 +688,9 @@
   }
   .js .reveal {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
-                transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transform: translateY(20px);
+    transition: opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
     will-change: opacity, transform;
   }
   .js .reveal.in {
@@ -670,34 +701,86 @@
   .hero-rise { opacity: 1; transform: none; }
   .js .hero-rise {
     opacity: 0;
-    transform: translateY(14px);
-    animation: heroRise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    transform: translateY(16px);
+    animation: heroRise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   }
   @keyframes heroRise {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes windowGlow {
-    0%   { opacity: 0; }
-    60%  { opacity: 0; }
-    100% { opacity: 1; }
+  /* Window breathing glow */
+  @keyframes windowBreathe {
+    0%, 100% { opacity: 0.7; filter: blur(3px); }
+    50% { opacity: 1; filter: blur(2px); }
   }
 
+  /* Chain link stroke draw */
+  @keyframes chainDraw {
+    from { stroke-dashoffset: 200; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Chain snap */
+  @keyframes chainSnap {
+    0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+    40% { transform: translateX(0) rotate(-3deg); }
+    50% { transform: translateX(20px) rotate(15deg); opacity: 0; }
+    100% { transform: translateX(60px) rotate(45deg); opacity: 0; }
+  }
+
+  /* Ember particle rise */
+  @keyframes emberRise {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-200px) translateX(var(--drift, 10px)) scale(0.3); opacity: 0; }
+  }
+
+  /* Cover float-in */
   @keyframes coverFloat {
-    from { opacity: 0; transform: translateY(20px) rotate(-2.5deg); }
-    to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
+    from { opacity: 0; transform: translateY(30px) rotateY(-15deg); }
+    to { opacity: 1; transform: translateY(0) rotateY(0); }
   }
 
+  /* Scroll cue */
   @keyframes scrollCue {
     0%, 100% { transform: translateY(0); opacity: 0.4; }
-    50%      { transform: translateY(6px); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 1; }
   }
 
+  /* Tab panel fade */
   @keyframes panelFade {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
+  /* Typing caret blink */
+  @keyframes caretBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  /* Lamp light on */
+  @keyframes lampOn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Lightning flash — slow, soft, never strobing */
+  @keyframes lightningFlash {
+    0%, 100% { opacity: 0; }
+    3% { opacity: 0.4; }
+    6% { opacity: 0.1; }
+    9% { opacity: 0.3; }
+    12% { opacity: 0; }
+  }
+
+  /* Theme circular reveal — for View Transitions API fallback */
+  @keyframes themeReveal {
+    from { clip-path: circle(0% at var(--reveal-x, 50%) var(--reveal-y, 50%)); }
+    to { clip-path: circle(150% at var(--reveal-x, 50%) var(--reveal-y, 50%)); }
+  }
+
+  /* Reduced motion: disable everything */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.001ms !important;
@@ -707,6 +790,8 @@
     }
     .js .reveal { opacity: 1 !important; transform: none !important; }
     .js .hero-rise { opacity: 1 !important; transform: none !important; animation: none !important; }
+    .storm-section::before,
+    .storm-section::after { animation: none !important; }
   }
 
   .text-balance { text-wrap: balance; }

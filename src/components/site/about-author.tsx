@@ -38,7 +38,7 @@ function StatItem({
           color: "var(--brick)",
           transition: "color 350ms ease",
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brass)")}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
         onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brick)")}
       >
         {current}
@@ -46,7 +46,7 @@ function StatItem({
       </div>
       <div
         className="label-mono-sm mt-2"
-        style={{ color: "var(--fg-muted)" }}
+        style={{ color: "var(--text-dim)" }}
       >
         {label}
       </div>
@@ -59,12 +59,13 @@ export function AboutAuthor() {
     <section
       id="author"
       className="relative py-16 sm:py-20 md:py-32 px-4 sm:px-5 md:px-8"
+      style={{ backgroundColor: "var(--surface)" }}
       aria-label="About the author — Victor L. Evans"
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12 reveal">
           <span className="label-mono-sm" style={{ color: "var(--brick)" }}>§ 01</span>
-          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             About the Author
           </span>
         </div>
@@ -90,7 +91,7 @@ export function AboutAuthor() {
                 className="portrait-frame absolute pointer-events-none"
                 style={{
                   inset: "-10px sm:-14px",
-                  border: "1px solid var(--brass)",
+                  border: "1px solid var(--gold)",
                   opacity: 0.55,
                   transform: "translate(8px, 8px)",
                   transition: "transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1)",
@@ -118,7 +119,7 @@ export function AboutAuthor() {
               className="display reveal text-balance"
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 3.4rem)",
-                color: "var(--fg)",
+                color: "var(--text)",
               }}
               data-reveal-delay="100"
             >
@@ -164,7 +165,7 @@ export function AboutAuthor() {
                 className="display-italic"
                 style={{
                   fontSize: "clamp(1.2rem, 2.2vw, 1.7rem)",
-                  color: "var(--fg)",
+                  color: "var(--text)",
                   lineHeight: 1.45,
                 }}
               >
@@ -173,7 +174,7 @@ export function AboutAuthor() {
               </p>
               <footer
                 className="label-mono-sm mt-3"
-                style={{ color: "var(--fg-muted)" }}
+                style={{ color: "var(--text-dim)" }}
               >
                 — Author&apos;s Note
               </footer>
@@ -200,7 +201,7 @@ export function AboutAuthor() {
           </div>
           <p
             className="label-mono-sm mt-6 sm:mt-8 text-center md:text-left"
-            style={{ color: "var(--fg-muted)" }}
+            style={{ color: "var(--text-dim)" }}
           >
             Thirty years · thousands of pages · hundreds of letters · zero
             meaningful interventions.

@@ -46,7 +46,7 @@ export function PrivacyView() {
           <span className="label-mono-sm" style={{ color: "var(--brick)" }}>
             § Privacy
           </span>
-          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             Plain-language. No legalese where avoidable.
           </span>
         </div>
@@ -55,7 +55,7 @@ export function PrivacyView() {
           className="display reveal text-balance"
           style={{
             fontSize: "clamp(2.2rem, 5vw, 4rem)",
-            color: "var(--fg)",
+            color: "var(--text)",
           }}
         >
           Privacy.
@@ -63,7 +63,7 @@ export function PrivacyView() {
 
         <p
           className="lede reveal mt-6 measure"
-          style={{ color: "var(--fg)", opacity: 0.85 }}
+          style={{ color: "var(--text)", opacity: 0.85 }}
         >
           This site is built to respect you. No tracking. No advertising. No
           third-party scripts. The only information we hold is what you choose
@@ -89,7 +89,7 @@ export function PrivacyView() {
               </h2>
               <p
                 className="body-text measure"
-                style={{ color: "var(--fg)", opacity: 0.88 }}
+                style={{ color: "var(--text)", opacity: 0.88 }}
               >
                 {s.p}
               </p>
@@ -103,7 +103,7 @@ export function PrivacyView() {
         >
           <p
             className="label-mono-sm"
-            style={{ color: "var(--fg-muted)" }}
+            style={{ color: "var(--text-dim)" }}
           >
             Last revised: October 2025
           </p>

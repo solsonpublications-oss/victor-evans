@@ -9,7 +9,7 @@ export function ThemeToggle({ inDarkContext = false }: { inDarkContext?: boolean
   // If the toggle is rendered inside an "ink" section (which is dark in both
   // themes), we want the icon color to be the cream tone regardless of the
   // global theme. Otherwise, follow the global theme.
-  const iconColor = inDarkContext ? "var(--on-ink)" : "var(--fg)";
+  const iconColor = inDarkContext ? "var(--on-dark)" : "var(--text)";
 
   return (
     <button

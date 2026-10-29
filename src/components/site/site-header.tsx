@@ -43,8 +43,8 @@ export function SiteHeader() {
       "background-color 250ms ease, backdrop-filter 250ms ease, border-color 250ms ease",
   };
 
-  const wordmarkColor = onHome && !scrolled ? "var(--on-ink)" : "var(--fg)";
-  const navColor = onHome && !scrolled ? "var(--on-ink)" : "var(--fg)";
+  const wordmarkColor = onHome && !scrolled ? "var(--on-dark)" : "var(--text)";
+  const navColor = onHome && !scrolled ? "var(--on-dark)" : "var(--text)";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={headerStyle}>
@@ -98,13 +98,13 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={openGetBook}
-            className="btn btn-outline-paper"
+            className="btn btn-outline-light"
             style={{
               fontSize: "0.7rem",
               padding: "0.6rem 1rem",
-              color: onHome && !scrolled ? "var(--on-ink)" : "var(--fg)",
+              color: onHome && !scrolled ? "var(--on-dark)" : "var(--text)",
               borderColor: onHome && !scrolled
-                ? "color-mix(in srgb, var(--on-ink) 55%, transparent)"
+                ? "color-mix(in srgb, var(--on-dark) 55%, transparent)"
                 : "var(--line-strong)",
             }}
           >
@@ -150,7 +150,7 @@ export function SiteHeader() {
                 <a
                   href="#author"
                   className="label-mono py-2.5 nav-link"
-                  style={{ color: "var(--fg)" }}
+                  style={{ color: "var(--text)" }}
                   onClick={() => setMobileOpen(false)}
                 >
                   The Author
@@ -158,7 +158,7 @@ export function SiteHeader() {
                 <a
                   href="#book"
                   className="label-mono py-2.5 nav-link"
-                  style={{ color: "var(--fg)" }}
+                  style={{ color: "var(--text)" }}
                   onClick={() => setMobileOpen(false)}
                 >
                   The Book
@@ -171,7 +171,7 @@ export function SiteHeader() {
                 type="button"
                 className="label-mono py-2.5 nav-link text-left"
                 data-active={view === item.view}
-                style={{ color: "var(--fg)" }}
+                style={{ color: "var(--text)" }}
                 onClick={() => {
                   setView(item.view);
                   setMobileOpen(false);

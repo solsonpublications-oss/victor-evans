@@ -24,9 +24,9 @@ export function SiteFooter() {
 
   return (
     <footer
-      className="bg-bg-ink-grain pt-12 sm:pt-14 pb-8 sm:pb-10 px-4 sm:px-5 md:px-8"
+      className="bg-storm-section pt-12 sm:pt-14 pb-8 sm:pb-10 px-4 sm:px-5 md:px-8"
       style={{
-        color: "var(--on-ink)",
+        color: "var(--on-dark)",
         borderTop: "1px solid var(--line-strong)",
       }}
     >
@@ -39,7 +39,7 @@ export function SiteFooter() {
               onClick={() => setView("home")}
               className="label-mono"
               style={{
-                color: "var(--brass)",
+                color: "var(--gold)",
                 letterSpacing: "0.16em",
                 cursor: "pointer",
                 background: "transparent",
@@ -52,7 +52,7 @@ export function SiteFooter() {
             <p
               className="body-text mt-4"
               style={{
-                color: "var(--on-ink)",
+                color: "var(--on-dark)",
                 opacity: 0.7,
                 maxWidth: "38ch",
                 fontSize: "0.9rem",
@@ -69,7 +69,7 @@ export function SiteFooter() {
           <nav className="md:col-span-3" aria-label="Footer">
             <div
               className="label-mono-sm mb-4"
-              style={{ color: "var(--brass)" }}
+              style={{ color: "var(--gold)" }}
             >
               Sitemap
             </div>
@@ -81,7 +81,7 @@ export function SiteFooter() {
                     onClick={() => setView(item.view)}
                     className="nav-link"
                     data-active={view === item.view}
-                    style={{ color: "var(--on-ink)", opacity: 0.78 }}
+                    style={{ color: "var(--on-dark)", opacity: 0.78 }}
                   >
                     {item.label}
                   </button>
@@ -94,7 +94,7 @@ export function SiteFooter() {
                 >
                   <div
                     className="label-mono-sm mb-2"
-                    style={{ color: "var(--brass)", opacity: 0.6 }}
+                    style={{ color: "var(--gold)", opacity: 0.6 }}
                   >
                     On this page
                   </div>
@@ -103,7 +103,7 @@ export function SiteFooter() {
                       key={item.href}
                       href={item.href}
                       className="nav-link block"
-                      style={{ color: "var(--on-ink)", opacity: 0.78 }}
+                      style={{ color: "var(--on-dark)", opacity: 0.78 }}
                     >
                       {item.label}
                     </a>
@@ -117,14 +117,14 @@ export function SiteFooter() {
           <div className="md:col-span-4">
             <div
               className="label-mono-sm mb-4"
-              style={{ color: "var(--brass)" }}
+              style={{ color: "var(--gold)" }}
             >
               Care resources
             </div>
             <p
               className="body-text"
               style={{
-                color: "var(--on-ink)",
+                color: "var(--on-dark)",
                 opacity: 0.78,
                 fontSize: "0.9rem",
               }}
@@ -139,13 +139,13 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-draw label-mono-sm"
-                  style={{ color: "var(--brass-2)" }}
+                  style={{ color: "var(--gold-2)" }}
                 >
                   Eldercare Locator →
                 </a>
                 <p
                   className="body-text mt-1"
-                  style={{ color: "var(--fg-muted)", fontSize: "0.82rem" }}
+                  style={{ color: "var(--text-dim)", fontSize: "0.82rem" }}
                 >
                   A public service of the U.S. Administration on Aging.
                 </p>
@@ -156,13 +156,13 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-draw label-mono-sm"
-                  style={{ color: "var(--brass-2)" }}
+                  style={{ color: "var(--gold-2)" }}
                 >
                   Adult Protective Services →
                 </a>
                 <p
                   className="body-text mt-1"
-                  style={{ color: "var(--fg-muted)", fontSize: "0.82rem" }}
+                  style={{ color: "var(--text-dim)", fontSize: "0.82rem" }}
                 >
                   Find your state or local APS office. Verify current contact
                   details before relying on them.
@@ -177,14 +177,14 @@ export function SiteFooter() {
           className="mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
           style={{ borderTop: "1px solid var(--line)" }}
         >
-          <p className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <p className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             © 2025 Victor L. Evans · All rights reserved
           </p>
           <div className="flex flex-wrap gap-5">
             <a
               href="mailto:contact@victorlevans.com"
               className="link-draw label-mono-sm"
-              style={{ color: "var(--fg-muted)" }}
+              style={{ color: "var(--text-dim)" }}
             >
               Email
             </a>
@@ -193,7 +193,7 @@ export function SiteFooter() {
               onClick={() => setView("press")}
               className="link-draw label-mono-sm"
               style={{
-                color: "var(--fg-muted)",
+                color: "var(--text-dim)",
                 background: "transparent",
                 border: "none",
                 padding: 0,
@@ -207,7 +207,7 @@ export function SiteFooter() {
               onClick={() => setView("privacy")}
               className="link-draw label-mono-sm"
               style={{
-                color: "var(--fg-muted)",
+                color: "var(--text-dim)",
                 background: "transparent",
                 border: "none",
                 padding: 0,
@@ -219,7 +219,7 @@ export function SiteFooter() {
             <a
               href="/sitemap.xml"
               className="link-draw label-mono-sm"
-              style={{ color: "var(--fg-muted)" }}
+              style={{ color: "var(--text-dim)" }}
             >
               Sitemap
             </a>
@@ -230,7 +230,7 @@ export function SiteFooter() {
         {process.env.NODE_ENV !== "production" && (
           <p
             className="label-mono-sm mt-6"
-            style={{ color: "var(--fg-muted)", fontSize: "0.6rem", lineHeight: 1.7 }}
+            style={{ color: "var(--text-dim)", fontSize: "0.6rem", lineHeight: 1.7 }}
           >
             Placeholders — cover art, author photograph, ISBN, price, retailer
             links, contact email — are flagged for the owner to confirm before

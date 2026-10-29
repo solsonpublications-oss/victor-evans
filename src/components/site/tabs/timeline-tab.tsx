@@ -8,7 +8,7 @@ export function TimelineTab() {
     <div>
       <p
         className="body-text measure mb-10"
-        style={{ color: "var(--fg)", opacity: 0.8 }}
+        style={{ color: "var(--text)", opacity: 0.8 }}
       >
         A vertical thread that fills with brass as you scroll. Each entry is an
         exhibit card with the date the manuscript cites and the chapter that
@@ -24,7 +24,7 @@ export function TimelineTab() {
             left: "0.35rem",
             width: "2px",
             background:
-              "linear-gradient(to bottom, var(--brass) 0%, var(--brass) 100%)",
+              "linear-gradient(to bottom, var(--gold) 0%, var(--gold) 100%)",
             opacity: 0.55,
           }}
         />
@@ -44,8 +44,8 @@ export function TimelineTab() {
                 top: "0.4rem",
                 width: "12px",
                 height: "12px",
-                background: i === 0 ? "var(--brass)" : "var(--bg)",
-                border: "2px solid var(--brass)",
+                background: i === 0 ? "var(--gold)" : "var(--bg)",
+                border: "2px solid var(--gold)",
                 transform: "rotate(45deg)",
               }}
             />
@@ -55,7 +55,7 @@ export function TimelineTab() {
                 <span className="label-mono" style={{ color: "var(--brick)" }}>
                   {ev.date}
                 </span>
-                <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+                <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
                   {ev.chapter}
                 </span>
               </div>
@@ -63,14 +63,14 @@ export function TimelineTab() {
                 className="display-italic"
                 style={{
                   fontSize: "clamp(1.25rem, 2vw, 1.6rem)",
-                  color: "var(--fg)",
+                  color: "var(--text)",
                 }}
               >
                 {ev.title}
               </h3>
               <p
                 className="body-text mt-2"
-                style={{ color: "var(--fg)", opacity: 0.85 }}
+                style={{ color: "var(--text)", opacity: 0.85 }}
               >
                 {ev.summary}
               </p>

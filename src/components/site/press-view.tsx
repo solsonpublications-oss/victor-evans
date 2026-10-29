@@ -47,7 +47,7 @@ export function PressView() {
           <span className="label-mono-sm" style={{ color: "var(--brick)" }}>
             § Press
           </span>
-          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             For media, reviewers, and event organizers
           </span>
         </div>
@@ -56,7 +56,7 @@ export function PressView() {
           className="display reveal text-balance"
           style={{
             fontSize: "clamp(2.2rem, 5vw, 4rem)",
-            color: "var(--fg)",
+            color: "var(--text)",
           }}
         >
           Press &amp; media kit.
@@ -64,7 +64,7 @@ export function PressView() {
 
         <p
           className="lede reveal mt-6 measure"
-          style={{ color: "var(--fg)", opacity: 0.85 }}
+          style={{ color: "var(--text)", opacity: 0.85 }}
         >
           Bios at three lengths, book facts, and downloadable asset placeholders.
           For review copies and interview requests, use the contact form or the
@@ -88,7 +88,7 @@ export function PressView() {
                 <p
                   className="body-text"
                   style={{
-                    color: "var(--fg)",
+                    color: "var(--text)",
                     opacity: 0.88,
                     fontSize: "0.92rem",
                     lineHeight: 1.6,
@@ -109,7 +109,7 @@ export function PressView() {
           <div
             className="p-6 md:p-8"
             style={{
-              background: "var(--bg-2)",
+              background: "var(--surface)",
               border: "1px solid var(--line)",
             }}
           >
@@ -122,13 +122,13 @@ export function PressView() {
                 >
                   <dt
                     className="label-mono-sm py-2"
-                    style={{ color: "var(--fg-muted)" }}
+                    style={{ color: "var(--text-dim)" }}
                   >
                     {d.k}
                   </dt>
                   <dd
                     className="col-span-2 py-2 body-text"
-                    style={{ fontSize: "0.92rem", color: "var(--fg)" }}
+                    style={{ fontSize: "0.92rem", color: "var(--text)" }}
                   >
                     {d.v}
                   </dd>
@@ -161,13 +161,13 @@ export function PressView() {
                 </div>
                 <div
                   className="display-italic"
-                  style={{ color: "var(--fg)", fontSize: "1.1rem" }}
+                  style={{ color: "var(--text)", fontSize: "1.1rem" }}
                 >
                   {a.label}
                 </div>
                 <div
                   className="label-mono-sm mt-2"
-                  style={{ color: "var(--fg-muted)" }}
+                  style={{ color: "var(--text-dim)" }}
                 >
                   {a.note}
                 </div>
@@ -176,7 +176,7 @@ export function PressView() {
           </div>
           <p
             className="label-mono-sm mt-4"
-            style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
+            style={{ color: "var(--text-dim)", fontSize: "0.6rem" }}
           >
             Cover and headshot are placeholders. The author will supply final
             assets before launch.
@@ -191,7 +191,7 @@ export function PressView() {
               className="display"
               style={{
                 fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-                color: "var(--fg)",
+                color: "var(--text)",
               }}
             >
               Request a review copy.
@@ -199,7 +199,7 @@ export function PressView() {
             <p
               className="body-text mt-4 mx-auto"
               style={{
-                color: "var(--fg)",
+                color: "var(--text)",
                 opacity: 0.82,
                 maxWidth: "48ch",
               }}

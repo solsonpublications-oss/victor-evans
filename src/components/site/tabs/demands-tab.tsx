@@ -10,7 +10,7 @@ export function DemandsTab() {
     <div>
       <p
         className="body-text measure mb-10"
-        style={{ color: "var(--fg)", opacity: 0.8 }}
+        style={{ color: "var(--text)", opacity: 0.8 }}
       >
         The book&apos;s closing requests, rendered as six numbered exhibit
         cards that expand on click. Each is grounded in documented fact and is
@@ -51,7 +51,7 @@ export function DemandsTab() {
                     style={{
                       display: "block",
                       fontSize: "clamp(1.1rem, 1.6vw, 1.4rem)",
-                      color: "var(--fg)",
+                      color: "var(--text)",
                       lineHeight: 1.2,
                     }}
                   >
@@ -62,7 +62,7 @@ export function DemandsTab() {
                     style={{
                       display: "block",
                       marginTop: "0.4rem",
-                      color: "var(--fg)",
+                      color: "var(--text)",
                       opacity: 0.7,
                       fontSize: "0.92rem",
                     }}
@@ -101,13 +101,13 @@ export function DemandsTab() {
                   >
                     <p
                       className="body-text"
-                      style={{ color: "var(--fg)", opacity: 0.88 }}
+                      style={{ color: "var(--text)", opacity: 0.88 }}
                     >
                       {d.body}
                     </p>
                     <div
                       className="label-mono-sm mt-4"
-                      style={{ color: "var(--fg-muted)" }}
+                      style={{ color: "var(--text-dim)" }}
                     >
                       Authority: <span style={{ color: "var(--brick)" }}>{d.authority}</span>
                     </div>
@@ -123,14 +123,14 @@ export function DemandsTab() {
       <div
         className="reveal mt-10 p-6"
         style={{
-          background: "var(--bg-3)",
+          background: "var(--surface-2)",
           border: "1px solid var(--line)",
         }}
       >
         <div className="label-mono-sm mb-3" style={{ color: "var(--brick)" }}>
           What you can do
         </div>
-        <ul className="space-y-2 body-text" style={{ color: "var(--fg)" }}>
+        <ul className="space-y-2 body-text" style={{ color: "var(--text)" }}>
           <li>
             <span style={{ color: "var(--brick)" }}>—</span> Read the record and share it
             with someone who has the authority to act.
@@ -147,7 +147,7 @@ export function DemandsTab() {
         </ul>
         <p
           className="label-mono-sm mt-4"
-          style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
+          style={{ color: "var(--text-dim)", fontSize: "0.6rem" }}
         >
           Any item not in the manuscript is marked as a placeholder pending the
           author&apos;s confirmation.

@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
-import { Newsreader, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider, themeInitScript } from "@/components/site/theme-provider";
 import { ViewProvider } from "@/components/site/view-provider";
 import { GetBookModalProvider } from "@/components/site/get-book-modal";
 
-// Source-of-truth Newsreader (single variable font, latin subset, opsz axis)
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+// Fraunces — variable display serif, heavy optical sizes for the title
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
+  display: "swap",
+});
+
+// Inter — body and UI
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -227,7 +235,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: setJsClass }} />
       </head>
       <body
-        className={`${newsreader.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <ThemeProvider>
           <ViewProvider>

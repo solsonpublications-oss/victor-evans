@@ -70,7 +70,7 @@ export function TheRecord() {
       <div className="max-w-[1400px] mx-auto">
         <div className="flex items-center gap-3 mb-10 reveal">
           <span className="label-mono-sm text-brass">§ 03</span>
-          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             The Record
           </span>
         </div>
@@ -79,14 +79,14 @@ export function TheRecord() {
           className="display reveal text-balance mb-6"
           style={{
             fontSize: "clamp(2rem, 4vw, 3.4rem)",
-            color: "var(--fg)",
+            color: "var(--text)",
           }}
         >
           Open the file.
         </h2>
         <p
           className="lede reveal mb-10 measure"
-          style={{ color: "var(--fg)", opacity: 0.8 }}
+          style={{ color: "var(--text)", opacity: 0.8 }}
         >
           Five tabs. The Timeline. The Family. The System. The Six Demands.
           Read Inside. Each one a layer of the record — read them in order, or

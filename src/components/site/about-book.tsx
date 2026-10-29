@@ -44,14 +44,14 @@ export function AboutBook() {
   return (
     <section
       id="book"
-      className="bg-ink-grain relative py-16 sm:py-20 md:py-32 px-4 sm:px-5 md:px-8"
+      className="storm-section relative py-16 sm:py-20 md:py-32 px-4 sm:px-5 md:px-8"
       aria-label="About the book"
-      style={{ color: "var(--on-ink)" }}
+      style={{ color: "var(--on-dark)" }}
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12 reveal">
-          <span className="label-mono-sm" style={{ color: "var(--brass)" }}>§ 02</span>
-          <span className="label-mono-sm" style={{ color: "var(--fg-muted)" }}>
+          <span className="label-mono-sm" style={{ color: "var(--gold)" }}>§ 02</span>
+          <span className="label-mono-sm" style={{ color: "var(--text-dim)" }}>
             About the Book
           </span>
         </div>
@@ -95,7 +95,7 @@ export function AboutBook() {
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  border: "1px solid rgba(212, 176, 94, 0.25)",
+                  border: "1px solid rgba(246, 196, 83, 0.25)",
                 }}
                 aria-hidden="true"
               />
@@ -103,7 +103,7 @@ export function AboutBook() {
             {process.env.NODE_ENV !== "production" && (
               <p
                 className="label-mono-sm mt-4 reveal text-center md:text-left"
-                style={{ color: "var(--on-ink-muted)" }}
+                style={{ color: "var(--on-dark-dim)" }}
               >
                 Final cover art.
               </p>
@@ -116,18 +116,18 @@ export function AboutBook() {
               className="display reveal text-balance"
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 3.4rem)",
-                color: "var(--on-ink)",
+                color: "var(--on-dark)",
               }}
               data-reveal-delay="80"
             >
               The House. The Net.
               <br />
-              <span style={{ color: "var(--brass-2)" }}>The Reckoning.</span>
+              <span style={{ color: "var(--gold-2)" }}>The Reckoning.</span>
             </h2>
 
             <p
               className="lede reveal mt-5 sm:mt-6"
-              style={{ color: "var(--on-ink)", opacity: 0.85, maxWidth: "55ch" }}
+              style={{ color: "var(--on-dark)", opacity: 0.92, maxWidth: "55ch" }}
               data-reveal-delay="140"
             >
               A nonfiction account of one family&apos;s thirty-year fight
@@ -144,7 +144,7 @@ export function AboutBook() {
                   data-reveal-delay={i * 100}
                 >
                   <div className="md:col-span-3">
-                    <div className="label-mono-sm" style={{ color: "var(--brass)" }}>
+                    <div className="label-mono-sm" style={{ color: "var(--gold)" }}>
                       {String(i + 1).padStart(2, "0")} / {beat.label}
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export function AboutBook() {
                       className="display-italic"
                       style={{
                         fontSize: "clamp(1.2rem, 2.2vw, 1.7rem)",
-                        color: "var(--on-ink)",
+                        color: "var(--on-dark)",
                         transition: "color 350ms ease",
                       }}
                     >
@@ -161,7 +161,7 @@ export function AboutBook() {
                     </h3>
                     <p
                       className="body-text mt-2 sm:mt-3"
-                      style={{ color: "var(--on-ink)", opacity: 0.82 }}
+                      style={{ color: "var(--on-dark)", opacity: 0.9 }}
                     >
                       {beat.body}
                     </p>
@@ -174,17 +174,17 @@ export function AboutBook() {
             <div
               className="reveal mt-10 sm:mt-12 p-5 sm:p-6 hover-lift"
               style={{
-                border: "1px solid rgba(184, 145, 63, 0.25)",
+                border: "1px solid rgba(246, 196, 83, 0.25)",
                 background: "rgba(31, 24, 20, 0.5)",
               }}
             >
               <div
                 className="label-mono-sm mb-3"
-                style={{ color: "var(--brass)" }}
+                style={{ color: "var(--gold)" }}
               >
                 Who the book is for
               </div>
-              <p className="body-text" style={{ color: "var(--on-ink)", opacity: 0.85 }}>
+              <p className="body-text" style={{ color: "var(--on-dark)", opacity: 0.92 }}>
                 Families of people with developmental disabilities. Attorneys,
                 social workers, judges, legislators, and law enforcement. Anyone
                 who needs to understand what elder and disabled adult financial
@@ -199,7 +199,7 @@ export function AboutBook() {
               className="reveal mt-8 p-5 sm:p-6 hover-lift"
               style={{
                 background: "var(--bg)",
-                color: "var(--fg)",
+                color: "var(--text)",
                 border: "1px solid var(--line)",
               }}
             >
@@ -213,7 +213,7 @@ export function AboutBook() {
                     className="grid grid-cols-3 gap-3 text-sm"
                     style={{ borderBottom: "1px solid var(--line)" }}
                   >
-                    <dt className="label-mono-sm py-1" style={{ color: "var(--fg-muted)" }}>
+                    <dt className="label-mono-sm py-1" style={{ color: "var(--text-dim)" }}>
                       {d.k}
                     </dt>
                     <dd
@@ -227,7 +227,7 @@ export function AboutBook() {
               </dl>
               <p
                 className="label-mono-sm mt-4"
-                style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
+                style={{ color: "var(--text-dim)", fontSize: "0.6rem" }}
               >
                 Publication details to be confirmed at launch.
               </p>

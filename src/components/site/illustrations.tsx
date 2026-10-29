@@ -128,7 +128,7 @@ export function DiamondDivider({
   tone?: "brass" | "ink" | "paper";
 }) {
   const color =
-    tone === "brass" ? "var(--brass)" : tone === "ink" ? "var(--fg)" : "var(--bg)";
+    tone === "gold" ? "var(--gold)" : tone === "ink" ? "var(--text)" : "var(--on-dark)";
   return (
     <div
       className={`diamond-divider reveal ${className}`}
@@ -271,11 +271,11 @@ export function BrokenChainArt({
   tone?: "brass" | "ink" | "paper";
 }) {
   const color =
-    tone === "brass"
-      ? "var(--brass)"
+    tone === "gold"
+      ? "var(--gold)"
       : tone === "ink"
-      ? "var(--fg)"
-      : "var(--on-ink)";
+      ? "var(--text)"
+      : "var(--on-dark)";
 
   return (
     <svg

@@ -85,7 +85,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
           style={{
             borderColor: "var(--line-strong)",
             background: "transparent",
-            color: "var(--fg)",
+            color: "var(--text)",
             cursor: "pointer",
             transition: "all 250ms ease",
           }}
@@ -96,7 +96,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.borderColor = "var(--line-strong)";
-            e.currentTarget.style.color = "var(--fg)";
+            e.currentTarget.style.color = "var(--text)";
             e.currentTarget.style.transform = "rotate(0deg)";
           }}
         >
@@ -116,7 +116,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
             width: "120px",
             aspectRatio: "2 / 3",
             boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
-            border: "1px solid rgba(212, 176, 94, 0.3)",
+            border: "1px solid rgba(246, 196, 83, 0.3)",
           }}
         >
           <img
@@ -135,7 +135,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
 
         <DiamondDivider className="mb-6" />
 
-        <p className="label-mono-sm mb-4" style={{ color: "var(--brass)" }}>
+        <p className="label-mono-sm mb-4" style={{ color: "var(--gold)" }}>
           A note from the author
         </p>
 
@@ -144,7 +144,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
           className="display"
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-            color: "var(--fg)",
+            color: "var(--text)",
             marginBottom: "1rem",
           }}
         >
@@ -154,7 +154,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
         <p
           className="body-text-lg"
           style={{
-            color: "var(--fg)",
+            color: "var(--text)",
             opacity: 0.82,
             maxWidth: "42ch",
             margin: "0 auto 1.5rem",
@@ -189,7 +189,7 @@ function GetBookModal({ onClose }: { onClose: () => void }) {
 
         <p
           className="label-mono-sm mt-6"
-          style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}
+          style={{ color: "var(--text-dim)", fontSize: "0.6rem" }}
         >
           First Edition · 2025 · Nonfiction
         </p>

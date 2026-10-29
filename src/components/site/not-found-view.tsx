@@ -7,7 +7,7 @@ export function NotFoundView() {
   const { setView } = useView();
   return (
     <section
-      className="bg-ink-grain min-h-[80vh] flex items-center justify-center px-4 sm:px-5 md:px-8 pt-20 pb-16"
+      className="storm-section min-h-[80vh] flex items-center justify-center px-4 sm:px-5 md:px-8 pt-20 pb-16"
       aria-label="Page not found"
     >
       <div className="max-w-[640px] text-center">
@@ -18,7 +18,7 @@ export function NotFoundView() {
           style={{
             width: "min(60vw, 240px)",
             height: "auto",
-            color: "var(--brass)",
+            color: "var(--gold)",
           }}
           fill="none"
           aria-hidden="true"
@@ -58,14 +58,14 @@ export function NotFoundView() {
           {/* warm light spilling out from under the door */}
           <polygon
             points="62,300 178,300 200,320 40,320"
-            fill="var(--brass)"
+            fill="var(--gold)"
             opacity="0.08"
           />
         </svg>
 
         <p
           className="label-mono-sm mb-4"
-          style={{ color: "var(--brass)" }}
+          style={{ color: "var(--gold)" }}
         >
           § 404 — Off the record
         </p>
@@ -74,7 +74,7 @@ export function NotFoundView() {
           className="display text-balance"
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-            color: "var(--on-ink)",
+            color: "var(--on-dark)",
           }}
         >
           This page isn&apos;t on the record.
@@ -82,7 +82,7 @@ export function NotFoundView() {
 
         <p
           className="lede mt-5"
-          style={{ color: "var(--on-ink)", opacity: 0.75 }}
+          style={{ color: "var(--on-dark)", opacity: 0.75 }}
         >
           The page you were looking for is not part of this site. The walls
           remember. The doorway is empty. Return to the record.
@@ -98,7 +98,7 @@ export function NotFoundView() {
           </button>
           <button
             type="button"
-            className="btn btn-outline-paper"
+            className="btn btn-outline-light"
             onClick={() => setView("record")}
           >
             Open the file

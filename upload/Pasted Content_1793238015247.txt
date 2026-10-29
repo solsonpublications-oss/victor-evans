@@ -1,0 +1,448 @@
+Agent Swarm Build Plan: The Generational Curse Breaker Website
+Version 2. A cinematic, dark and light themed author site built around the cover: storm to sunrise, a lit window, a breaking chain. The home page has four parts only: Hero, About the Author, About the Book, Footer.
+1. Master prompt
+Paste this into your orchestrator agent first. Give every other agent this block, section 2 (Cover DNA) and its own role prompt from section 9. The book file and the cover image are the only sources of truth.
+You are the Orchestrator of a build swarm. Build a cinematic, award-level, production-ready author website for Victor L. Evans, author of the nonfiction book "The Generational Curse Breaker: A Family's Battle Against Undue Influence, Systemic Neglect, and the Theft of Carrie Evans's Legacy."
+
+THE FEELING
+The visitor must feel the book in their chest within five seconds: a storm clearing into sunrise over a brick Washington row house, one warm window lit, a rusted chain broken on the front steps, a gold title like molten foil. Modern, deep, dynamic, never static. A wow effect on load, on scroll, on hover and on theme switch, without ever feeling cheap or gimmicky. The tone stays dignified: this is a true story about a disabled sister, lost brothers and thirty years of fighting.
+
+HOME PAGE = EXACTLY FOUR PARTS, NOTHING ELSE
+1. Hero (one full viewport, cinematic)
+2. About the Author
+3. About the Book
+4. Footer
+The home page has no other sections. A slim sticky header (logo, links, theme switch) is navigation, not a section. The five detail tabs (The Timeline, The Family, The System, The Six Demands, Read Inside) live on their own routes under /record and are linked from the header and footer.
+
+THEMES
+Two fully designed modes, Dark ("Storm") and Light ("Dawn"), with a system-preference default, a manual switch, no flash of wrong theme, and a signature animated transition between them. Both modes must feel premium, not an inverted afterthought.
+
+SOURCE ASSETS
+The cover image (generational_cursebreaker.jpeg, 1024x1536) is supplied. The author photo is not: build a refined placeholder that is swapped by changing one file path.
+
+NON-NEGOTIABLES
+- Never invent facts, dates, quotes, reviews, endorsements, ISBNs, prices or retailer links. Unknowns become clearly marked placeholders logged in /docs/OPEN-ITEMS.md.
+- Copy must match the manuscript's voice (see Voice rules in section 8).
+- Never publish the author's home address or phone number from the copyright page.
+- Performance, accessibility and reduced-motion rules in sections 6 and 7 are hard gates, not suggestions.
+- Sensitive-content rules in section 8 apply to every agent.
+
+PROCESS
+Run the phases and gates in section 9. Enforce file ownership. Return: the repository, /docs/OPEN-ITEMS.md, a QA report with Lighthouse and axe results, and a 60-second screen recording script of the site's best moments.
+2. Cover DNA: what the site inherits
+The cover tells one story in six images. Each becomes a recurring visual motif and an animation, so the site feels like the book opening up.
+Cover element
+What it means
+How the site uses it
+Molten gold title in a heavy slab serif
+Weight, legacy, gravity
+Foil text with a moving light sweep that follows the cursor; used for the H1 and big numbers only
+Storm clouds breaking into sunrise
+Thirty years of struggle giving way to clarity
+The scroll-linked sky: storm at the top, dawn by the footer; in Light mode it is the dawn palette throughout
+Brick row house with one lit window and a silhouette
+The home on Mills Avenue; Carrie Evans, Phyllis
+A breathing window glow as the hero's emotional anchor; reused as the logo mark
+Rusted chain breaking on the front steps
+The curse and its breaking
+A gold-lit chain that snaps on the intro and again as a scroll-scrubbed moment in About the Book; the break is the site's signature gesture
+Giant ghostly figure of an older man in the clouds
+The author as a watching, protective presence
+A slow-drifting silhouette in the sky layer, revealed by parallax; never given a face
+Capitol dome at sunset, lamp-lit park, wet street
+Washington, Langdon Park, the institutions that did not act
+A horizon strip that brightens as you scroll; park lamps switch on one by one; rain glints on the street in Dark mode
+Design idea in one line: Storm to sunrise. Every scroll takes the visitor from the dark of the record to the first light of justice.
+Kintsugi motif: the broken chain and the gold title suggest repair, not just ruin. Thin gold crack lines can draw across surfaces and then fill with light, used sparingly as dividers and hover accents.
+The supplied cover is 1024 by 1536 pixels. It is perfect as the 3D book face at up to about 520 px wide. Do not enlarge it as a full-screen background: the sky, house and chain are rebuilt as layered scenes (section 6) that echo the cover at any resolution.
+3. Design system: Storm (dark) and Dawn (light)
+Modern, saturated and luminous, sampled from the cover but pushed forward: deep midnight blues, molten gold with an amber-to-ember gradient, and warm window light. Agents verify every text pairing at WCAG AA or better.
+Token
+Dark: Storm
+Light: Dawn
+Use
+--bg
+#070B14
+#FBF6EC
+Page background
+--surface
+#0F1626
+#F2E9D8
+Cards, panels
+--surface-2
+#18223A
+#E8DCC4
+Raised cards, inputs
+--text
+#F3EEE4
+#101626
+Body text
+--text-dim
+#9AA6BF
+#4A5368
+Secondary text
+--gold
+#F6C453
+#B7791F
+Foil, rules, icons (decorative on light)
+--gold-grad
+#FFE08A to #F6C453 to #C98A1B
+#E9B44C to #B7791F
+Title foil, buttons
+--ember
+#FF7A45
+#D9572B
+Sunrise accent, hover glow
+--brick
+#C8553D
+#A63B24
+Links, active states (AA on its surface)
+--window
+#FFD9A0
+#FFC46B
+The lit-window glow
+--storm
+#1B2A4A
+#C9D8EE
+Sky and fog layers
+--focus
+#FFE08A
+#101626
+Focus ring (3 px)
+On Light, gold is decorative only; text and controls use --text or --brick to stay legible.
+Typography (two families, about 90 KB total, self-hosted WOFF2, Latin subset)
+• Display: Fraunces variable (heavy optical sizes at 800 to 900) for the title and section heads. It carries the cover's weighty, slightly vintage serif in a modern, soft-cut form. Alternative: Recoleta-style or Roslindale if licensed.
+• Body and UI: Inter variable, 400 to 600. Eyebrow labels in small caps with wide tracking.
+• Fluid scale with clamp(). Hero title around clamp(2.8rem, 9vw, 8rem), text-wrap: balance, tight leading.
+• Fallback stacks: Georgia, serif and system-ui, sans-serif, with size-adjusted fallbacks to prevent layout shift.
+Theme switch (a showpiece, not a checkbox)
+• Default follows prefers-color-scheme; the choice is stored and applied by a tiny inline script in the head so there is no flash.
+• The toggle is a sun and moon that morph into each other. On click, the new theme expands as a circular reveal from the toggle using the View Transitions API (fallback: a 250 ms crossfade).
+• In Dark the hero sky is a night storm with the window lit; in Light it is a golden-hour dawn, the window glow becomes a warm reflection, and the Capitol silhouette catches the sun. Same scene, two moods.
+• All colors, shadows, gradients and the SVG scene colors come from CSS variables so the swap is instant and consistent.
+Surface language: frosted glass cards (backdrop-filter used sparingly and only on large static surfaces), 1 px gold hairline borders, soft inner glow on hover, fine film grain overlay at 4 percent opacity (one tiled 4 KB asset), generous 12-column grid, 70-character reading measure.
+4. Home page, scene by scene
+One long cinematic scroll with four parts. A slim sticky header floats above it: gold diamond-window logo, links (Author, Book, The Record, Contact), theme switch, and a "Get the Book" button. The header turns to frosted glass after the first scroll.
+4.1 Hero (one viewport, the first five seconds)
+Intro sequence (first visit only, under 1.4 seconds, skippable, never blocks content):
+1. Black screen. A single gold chain link draws itself with a stroke animation.
+2. The link cracks, a flash of light, and a burst of ember particles floats upward.
+3. The storm sky fades in, the window in the row house lights up with a slow breath, and the title assembles.
+Return visits and reduced-motion users skip straight to step 3 as a short fade.
+Scene layers (parallax, pointer and device-tilt reactive):
+• Sky: slow-moving storm clouds (shader or layered AVIF), with rare, soft lightning flashes in Dark mode only.
+• Giant silhouette: the faceless watching figure drifting in the clouds.
+• Horizon: Capitol dome and park lamps, brightening as you scroll.
+• Row house: inline SVG brick silhouette with the lit window; the window glow pulses like a heartbeat and brightens when the cursor approaches.
+• Foreground: steps and the broken chain with a gold glint that travels across the links.
+• Particles: embers rising (Dark) or golden dust motes (Light), canvas 2D, capped at 60 particles.
+• Rain streaks in Dark mode, off on mobile low-power devices.
+Content:
+• Eyebrow: A true account. First edition, 2025.
+• H1 The Generational Curse Breaker in animated gold foil. Words rise in on a mask; "Breaker" gets a kintsugi crack that draws across it and fills with light.
+• Subtitle: the full book subtitle, fading up line by line.
+• Hook line in the author's voice: "I am not asking you to take my word for it. I am asking you to read the record." (verify wording against the manuscript before use)
+• Buttons: Read the Record (goes to /record) and Get the Book (placeholder link). Both magnetic: they lean toward the cursor, with a light sweep on hover.
+• The 3D book: the supplied cover on a floating hardcover with spine thickness and page edges (CSS 3D), tilting with the cursor and with a gold specular sheen that follows it. Click or tap flips it to show the back cover placeholder.
+• Scroll cue: a vertical thread with a traveling gold diamond. At the bottom edge, a slow ticker of short phrases from the book: Read the record. Thirty years. The walls remember. I didn't forget.
+4.2 About the Author
+Pinned scroll scene, about 150 vh tall on desktop, a normal stack on mobile.
+• Portrait: a 4:5 frame with a placeholder portrait. The image reveals through a slow ink-bleed mask wipe, then settles with a subtle parallax and a thin gold offset frame that draws itself.
+• Text: the author's own words about himself, set large. As the visitor scrolls, the paragraph illuminates word by word from dim to full brightness, scrubbed to scroll. Facts only, from the Author's Note: retired U.S. Army veteran, two master's degrees (Public Administration and Human Resources Management), self-described "not a professional writer," a career among records and accountability, writing because time is running out.
+• Numbers strip: four counters that roll like a mechanical odometer when they enter view: 30 years of documentation, 7 children in one row house, 6 demands for justice, 12 chapters.
+• Pull quote: typed out with a blinking gold caret, then the caret becomes the diamond mark.
+• Background: the storm lightens a notch here; the lamp-lit park glow slides in from the right.
+4.3 About the Book
+The emotional climax. Pinned two-column scene.
+• Left, sticky: the 3D book rotating with scroll through four poses: front cover, three-quarter, spine, back. The gold title flares as each pose lands.
+• Right, three beats that crossfade as you scroll:
+    1. The House. 2905 Mills Avenue, Langdon Park, seven children and one bathroom. The home that was paid off by hand.
+    2. The Net. Displacement after a fire, a will signed under duress, a sister isolated, brothers lost.
+    3. The Reckoning. Thirty years of letters to agencies that did not act, and six formal demands for justice.
+• The chain moment: a full-width gold-lit chain runs behind the text. During beat three the scroll position scrubs the chain apart: links strain, one snaps, sparks fly and the section brightens from storm to sunrise. This is the site's signature moment. Keep it under 2 seconds of scroll distance and give it a one-tap skip for assistive users (it is purely decorative).
+• Book structure as hover cards: four glass cards for the four Parts (Foundations and Fault Lines, The Net Tightens, The Era of Isolation and Tragedy, The Fight for Accountability). Hover or focus lifts the card, glows its border and reveals its chapter titles. A link goes to "Read Inside".
+• Who it is for (from the Author's Note): families of people with developmental disabilities, attorneys, social workers, judges, legislators, law enforcement.
+• Details card: title, subtitle, author, edition, year. Format, page count, ISBN, price and release date are flagged placeholders.
+• Buttons: Get the Book and Request a Review Copy (placeholders).
+4.4 Footer
+• A giant outlined line, "I didn't forget.", fills with gold as it scrolls into view, with a slow light sweep across it. The storm is now fully dawn: a warm gradient sky and the lit lamps all on.
+• Link columns: The Record (five inner pages), Press and Media, Contact, Privacy. A contact email placeholder or a short form (no phone number, no home address).
+• The theme switch, a small credit line, copyright 2025 Victor L. Evans, and the nonfiction note from the copyright page.
+• A "Back to the steps" button: the diamond climbs three animated stone steps while the page scrolls to top.
+• A quiet resource line pointing to Adult Protective Services and the Eldercare Locator, with official contact details verified before launch.
+5. Inner pages: the five tabs as /record routes
+Because the home page now holds only the hero, author, book and footer, the five detail tabs become their own pages under /record. They share one tabbed shell: a sticky tab bar with a sliding gold underline, and page-to-page View Transitions so switching tabs feels like one app. Each route is a real, crawlable page with its own title, description and structured data, which is better for SEO than in-page tabs. Tell me if you would rather drop these pages entirely.
+Route
+Tab
+What it holds
+Signature effect
+/record/timeline
+The Timeline
+Vertical timeline of the family's story, each entry linked to its chapter
+A gold thread that draws down the page with scroll; entries emerge from fog and the current year glows
+/record/family
+The Family
+In-memoriam cards for Carrie Viola Evans, James William Evans Sr., Phyllis Lorraine Evans and the brothers named in Chapter 8
+Cards rise from a dim wall; hover lights a small window-style glow on the card; no photos unless supplied and approved
+/record/system
+The System
+Institution cards for MPD, Adult Protective Services, the FBI, the VA, legal channels and Congress, in neutral "what the author says he sent and received" language
+A "balance sheet" counter: thirty years, thousands of pages, hundreds of letters, dozens of agencies, zero meaningful interventions, counting up in a ledger style
+/record/demands
+The Six Demands
+The six requests from Chapter 12 as expandable exhibit cards, plus a "What you can do" block
+Cards flip with a gold edge light; a progress ring fills as each is opened
+/record/inside
+Read Inside
+Parts and chapters as an accordion and three short excerpts under 150 words each, with chapter references
+A page-turn reveal on each excerpt; "Continue reading in the book" links to the buy buttons
+Content rules for these pages
+• Every fact traces to a chapter in the Manuscript Analyst's source notes. The Timeline's dates must be quoted exactly as each chapter states them. The manuscript contains a date ambiguity between the foreword and the will chapter, so the Analyst logs it for the author to confirm before the date is shown.
+• The Six Demands cards use the book's own wording from Chapter 12. Agents read them, never guess.
+• Excerpts avoid profanity and avoid passages that accuse a named private individual (see section 8).
+• Each page ends with the same quiet call to action: Get the Book and Request a Review Copy.
+6. Motion and effects library
+The rule: big, cinematic and smooth, but built to degrade gracefully. Every effect has a lightweight fallback, and the page is fully readable with all effects off.
+Effect
+Where
+How
+Fallback
+Chain-break intro
+Hero, first visit
+SVG stroke draw, then a snap and an ember burst
+Short fade
+Layered parallax scene
+Hero
+Pointer and device-tilt driven translate3d layers
+Static composed scene
+Storm shader sky
+Hero and About the Author
+A small WebGL fragment shader (fbm clouds) loaded after first paint on capable devices
+Layered AVIF clouds drifting with CSS
+Lightning flash
+Hero, Dark mode
+Rare, soft opacity pulse, never strobing, maximum once per 12 seconds
+Off
+Ember and dust particles
+Hero, chain moment
+Canvas 2D, up to 60 particles, paused when off-screen
+None
+Gold foil title
+Hero, big numbers
+background-clip: text gradient with a cursor-driven light sweep
+Flat gold
+Kintsugi crack
+Title word, dividers
+SVG path draw, then a gold fill pulse
+Static line
+3D hardcover book
+Hero and About the Book
+CSS 3D transforms, tilt on pointer, scroll-scrubbed rotation
+Flat cover with a shadow
+Scroll-scrubbed word reveal
+About the Author
+Native CSS animation-timeline: view(), JS fallback
+Full-brightness text
+Odometer counters
+Numbers strip
+CSS @property or a tiny JS counter
+Final numbers
+Pinned scenes
+Author and Book
+CSS position: sticky first, GSAP ScrollTrigger only where scrub needs it
+Normal stacked layout on mobile
+Chain snap (scroll-scrubbed)
+About the Book
+Scrubbed SVG plus canvas sparks
+Static broken chain
+Lamp-lighting horizon
+Hero to footer
+Scroll progress variable lights lamps in sequence
+Lamps all on
+Theme switch reveal
+Header
+View Transitions API circular clip-path from the toggle
+250 ms crossfade
+Magnetic buttons and light sweep
+All CTAs
+Pointer proximity, transform only
+Plain hover
+Glass card hover
+Part cards, family cards
+Cursor-tracked radial highlight via CSS variables
+Border color change
+Custom ember cursor trail
+Desktop only
+One 2D canvas, 12-point trail
+Native cursor
+Page transitions
+Inner routes
+View Transitions, shared tab underline
+Instant navigation
+Smooth scroll
+Site-wide
+Lenis (about 3 KB), disabled for reduced motion
+Native scroll
+Footer fill and steps climb
+Footer
+Scroll-scrubbed gradient fill, SVG steps
+Static text
+Guardrails (hard gates)
+• Animate transform, opacity, filter and shader uniforms only. No layout-thrashing properties.
+• prefers-reduced-motion: reduce turns off the intro, parallax, shader, lightning, particles, cursor trail, smooth scroll and scrubbed scenes. State changes stay instant and content stays visible.
+• No flashing faster than 3 times per second anywhere. Lightning is a slow, low-contrast fade.
+• Effects load in tiers: tier 0 (critical, inline CSS and under 25 KB gzipped JS) renders the full hero without effects; tier 1 (smooth scroll, theme transition, tilt) loads after first paint; tier 2 (shader, particles, cursor trail, GSAP) loads only on devices with enough power and no data-saver, and never delays interaction.
+• Mobile gets a simplified scene: no rain, no cursor trail, fewer particles, shader replaced by layered clouds, tilt replaced by gentle scroll parallax (device orientation only if the visitor opts in).
+• Pause every animation loop when the tab is hidden or the element is off-screen.
+• Target 60 fps on a mid-range phone. If a frame budget check fails, the Motion agent must downgrade the effect rather than ship jank.
+7. Tech stack, performance budget and SEO
+Stack
+• Astro static output with TypeScript, plain modern CSS (custom properties, @layer, container queries, scroll-driven animations). No UI framework and no Tailwind runtime.
+• Small vanilla JS islands for the theme switch, tilt, counters, header and accordion. Lenis for smooth scroll. GSAP with ScrollTrigger and a tiny WebGL library such as OGL are loaded lazily, only for pinned scenes and the sky shader.
+• Images through astro:assets: AVIF and WebP with srcset, explicit width and height, hero image eager with fetchpriority="high", everything else lazy. The scene art is mostly inline SVG and CSS.
+• Hosting: Cloudflare Pages or Vercel, Brotli, immutable asset caching, security headers (CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy). Optional cookie-free analytics.
+Performance budget (mobile, simulated 4G)
+Metric
+Target
+Lighthouse Performance
+90 or higher
+Lighthouse Accessibility, Best Practices, SEO
+95 or higher
+LCP
+under 2.0 s
+CLS
+0
+INP
+under 150 ms
+Critical JS (tier 0)
+under 25 KB gzipped
+Deferred effects JS (tiers 1 and 2)
+under 120 KB gzipped, loaded after first paint
+Initial HTML plus CSS plus fonts
+under 200 KB
+Fonts
+two families, about 90 KB total
+If a wow effect threatens a budget, the effect is simplified or moved to a later tier. The budget wins.
+Accessibility: WCAG 2.2 AA, full keyboard navigation, visible focus ring in the theme's --focus color, skip link, semantic landmarks, one H1 per page, decorative layers marked aria-hidden, scrubbed scenes always have a readable static equivalent.
+SEO
+• Unique title and 150 to 160 character description per page, written in the book's voice. Home title idea: The Generational Curse Breaker | Victor L. Evans, a true account of one family's fight for justice (tuned to under 60 characters).
+• Topics to cover naturally, never stuffed: Victor L. Evans author, The Generational Curse Breaker book, true family story, undue influence and will contests, financial exploitation of disabled adults, guardianship and Adult Protective Services failures, Black family homeownership in Washington D.C., Langdon neighborhood history.
+• JSON-LD: Book (author, datePublished 2025, edition, language; leave out isbn and offers until real), Person, WebSite, BreadcrumbList on inner pages and FAQPage using a 5 to 6 question FAQ answerable from the manuscript.
+• sitemap.xml, robots.txt, canonical URLs, Open Graph and Twitter cards with a 1200 by 630 image built from the cover, descriptive alt text, clean URLs, internal links between the five record pages and the home page, lang="en".
+• All inner-page content is server-rendered HTML, so nothing important depends on JavaScript.
+8. Voice, legal and ethics guardrails
+A cinematic site does not change how the words must sound. The visuals can be bold; the copy stays plain, precise and dignified.
+Voice rules (from the manuscript)
+• Documentary, not dramatic: a disciplined veteran-administrator speaking plainly, with grief "refined into clarity." Short declarative sentences land after long careful ones.
+• Reuse the book's own ledger and home language: record, audit, arithmetic, balance sheet, the steps, the windows, "the walls remember."
+• Signature lines available for reuse, all from the manuscript: Read the record. / The Arithmetic of Loss. / This book is the audit. / The walls remember. / I didn't forget. / Hope is a discipline.
+• No hype words (explosive, shocking), no emoji, no exclamation points, no invented testimonials, no profanity (the foreword contains a quoted profanity; never surface it).
+• Microcopy in the same voice: Read the Record, Open the File, Stand on the Steps.
+Legal and ethics rules for every agent
+1. Frame allegations as the author's documented account ("the author documents," "according to the book"). Never state them as the site's own findings.
+2. Named private individuals: no standalone pages, headlines, meta descriptions or social cards that accuse a named private person of a crime. Accusatory names appear only inside short quoted excerpts, each approved by the Legal and Ethics agent.
+3. Phyllis Lorraine Evans is a living person with a disability. No photos, no medical detail beyond what is needed to describe the book, no spectacle. Always "Phyllis," always a sister and a person.
+4. Privacy: no home address or phone number for the author or any living person. The Mills Avenue address appears only as the book's historical setting.
+5. No invented proof: exhibit-style design is a visual language, not a claim. No fake documents, leaked-evidence graphics or fabricated filings.
+6. The silhouettes and faceless figure are artistic devices. Do not add faces or stock photos of real or implied family members.
+7. Recommend attorney review of the final copy before launch and log it in /docs/OPEN-ITEMS.md.
+8. Care resources: a quiet footer pointer to Adult Protective Services and the Eldercare Locator, with current official details verified before use.
+9. Agent roster, role prompts and phase gates
+Phases and gates
+Phase
+Output
+Gate to pass
+1. Discovery
+Manuscript read; /docs/SOURCE-NOTES.md with chapter-cited facts; /docs/OPEN-ITEMS.md
+Every fact has a chapter citation
+2. Creative direction
+Storyboard of the four home scenes in both themes; motion bible; effect tier plan
+Creative Director and Orchestrator sign off
+3. Content
+Final copy for home, five record pages, FAQ, meta, alt text in /content
+Voice and Legal agents clear section 8
+4. Design system
+Tokens for Storm and Dawn, type, components, SVG scene art, 3D book, placeholders
+Contrast checks pass in both themes
+5. Build
+Astro site, theme system, all pages, tier 0 complete and beautiful without effects
+npm run build clean, no console errors
+6. Effects
+Tier 1 and 2 effects, intro, shader, chain moment, theme reveal
+60 fps on a mid-range phone, reduced-motion verified
+7. QA and optimize
+Lighthouse, axe, keyboard, cross-browser, real-device checks
+All budgets in section 7 met
+8. Launch pack
+Deploy and asset-swap guides, open items list
+Owner swaps placeholders; attorney review noted
+Role prompts. Each agent writes only in its own folders; conflicts go to the Orchestrator.
+Agent 0: Orchestrator
+Own the plan, phase gates and /docs. Break work into tasks, assign them, enforce file ownership, resolve conflicts, and block any phase that fails its gate. Maintain /docs/OPEN-ITEMS.md. Refuse invented facts. Protect the performance budget: when a wow effect and a budget collide, the budget wins and the effect is downgraded. Deliver the final report.
+Agent 1: Manuscript Analyst (owns /docs/SOURCE-NOTES.md)
+Read the full manuscript. Produce a fact sheet: people, places, institutions, dates, laws and cases cited, the six demands verbatim from Chapter 12, 20 candidate pull-quotes under 40 words each with chapter and section, and a list of date or fact ambiguities (for example the 1995 versus 1996 will dating). Flag every sensitive passage. Write no marketing copy.
+Agent 2: Creative Director (owns /design/storyboard)
+Storyboard the four home scenes frame by frame in Storm and Dawn, using Cover DNA as the source. Define the intro, the hero layers, the author pin, the book pin, the chain snap and the footer fill, with timings, easing, scroll distances and fallbacks. Every moment must serve the story (storm to sunrise, breaking the chain) and stay dignified. Cut any effect that feels like a gimmick.
+Agent 3: Voice and Copy Director (owns /content)
+Write all copy in the voice rules of section 8, strictly from SOURCE-NOTES. Deliver hero lines, author text with word-reveal chunking, the three book beats, part cards, stats, record-page content, three excerpts under 150 words, a 5 to 6 question FAQ, press bios (50, 100, 200 words), microcopy, meta titles and descriptions, alt text. No hype, no emoji, no exclamation points.
+Agent 4: Legal and Ethics Reviewer (owns /docs/REVIEW-LEGAL.md)
+Review all copy, meta text and visuals against section 8. For each item return approve, revise (with exact replacement text) or remove. Flag allegations stated as fact, accusatory headlines about named private people, unnecessary detail about Phyllis, and any private contact data. Recommend attorney review.
+Agent 5: Design System and UI Designer (owns /design/system)
+Turn sections 2 and 3 into tokens, components and layouts for Storm and Dawn at 360, 768, 1280 and 1920 px: header, buttons, glass cards, timeline, accordion, tab bar, footer, theme switch. Verify WCAG AA for every pairing in both themes. Design the two-mood hero so one SVG scene re-colors from variables.
+Agent 6: Asset and Illustration Engineer (owns /src/assets, /design/scenes)
+Optimize the supplied cover to AVIF, WebP and JPG. Build the CSS 3D hardcover (front, spine, back, page edges). Draw the layered hero scene as inline SVG: sky bands, giant silhouette (faceless), Capitol horizon, lamps, row house with the lit window, steps and the chain, each layer separated for parallax. Build the author portrait placeholder (4:5), back cover placeholder, favicon set, grain tile and OG image template. Keep the SVG scene under 40 KB and every file path swap-ready.
+Agent 7: Frontend Engineer (owns /src, /public, astro.config)
+Build the Astro site from /content and /design. Semantic HTML first, CSS second, JS last. Make tier 0 (no effects) complete and beautiful. Implement the theme system with no flash, header, home page (hero, author, book, footer only), the five /record routes with the shared tab shell, JSON-LD, sitemap, robots, security headers. Keep critical JS under 25 KB gzipped.
+Agent 8: Motion and FX Engineer (owns /src/motion)
+Implement section 6 exactly, in tiers. Native CSS scroll-driven animation first, GSAP ScrollTrigger only where scrub needs it, Lenis for smooth scroll, a small WebGL shader for the storm sky with a CSS fallback. Build the chain-break intro, kintsugi cracks, foil sweep, magnetic buttons, ember particles, theme circular reveal, lamp-lighting horizon, chain snap, footer fill. Respect reduced motion everywhere, pause off-screen loops, cap particles, and measure frame time on a mid-range phone. Downgrade rather than ship jank.
+Agent 9: SEO and Structured Data (owns /src/seo, /docs/SEO.md)
+Own titles, descriptions, heading audit, internal links, JSON-LD (Book, Person, WebSite, BreadcrumbList, FAQPage), sitemap, robots, canonical and social cards. Leave isbn and offers out until real. Validate structured data and produce an SEO checklist.
+Agent 10: Performance, Accessibility and QA (owns /docs/QA-REPORT.md)
+Run Lighthouse (mobile and desktop) in both themes, axe-core, keyboard-only traversal, screen reader smoke test, reduced-motion test, 360 px overflow test, slow 4G throttling, real mid-range Android and iPhone checks, broken-link check. Fail the gate on any miss and send exact fixes to the owning agent.
+Agent 11: Launch and Handover (owns /docs/DEPLOY.md, /docs/ASSET-SWAP.md)
+Write step-by-step docs for deploying to Cloudflare Pages or Vercel, connecting a custom domain, swapping the real author photo and back cover (file names, sizes, aspect ratios), updating buy links, ISBN and price, enabling the contact form endpoint, and updating JSON-LD when ISBN and price exist.
+10. Assets, acceptance checklist and open items
+Assets
+Asset
+Status
+Spec
+Book cover
+Supplied (1024 by 1536 px)
+Use on the 3D book at up to about 520 px wide; AVIF, WebP and JPG; request a larger original from the author for sharper print and OG use
+Back cover
+Placeholder
+Typographic panel in the cover's gold-on-night style; swap file /src/assets/back.*
+Author portrait
+Placeholder
+4:5 frame, 1200 by 1500 px final, warm neutral grade; swap file /src/assets/author.*
+Hero scene
+Built by the swarm
+Layered inline SVG under 40 KB, colored by theme variables
+OG image
+Generated
+1200 by 630 px from the cover, under 100 KB
+Favicon
+Generated
+Gold diamond-window mark: SVG, 32 px PNG, Apple touch icon
+Family photos
+None
+Only if the author supplies and approves them
+Definition of done
+• The home page contains the hero, About the Author, About the Book and the footer, and nothing else.
+• Dark and Light themes are both fully designed, switch without a flash and animate the change.
+• The hero delivers the wow in five seconds, and the tier 0 version is still beautiful with every effect off.
+• The chain-snap scene, the foil title, the 3D book and the storm-to-sunrise scroll all work on a mid-range phone at 60 fps or degrade cleanly.
+• Performance 90 or higher and Accessibility, Best Practices and SEO 95 or higher on mobile; JS budgets met.
+• Reduced-motion mode removes all motion while keeping every word readable.
+• Every fact traces to a chapter; no invented ISBN, price, reviews or dates; placeholders are marked and logged.
+• Legal and Ethics sign-off recorded; attorney review noted as done or pending.
+• No home address or phone number anywhere in the build or source.
+Open items to confirm with Victor L. Evans
+1. A larger original of the cover, the author photo and a back cover design.
+2. Publisher or self-publishing details: ISBN, formats, price, release date, retailer links.
+3. Any real reviews, endorsements or press mentions he wants shown.
+4. The contact email he prefers and whether he wants a form.
+5. Confirmation of the date ambiguities flagged by the Manuscript Analyst (for example 1995 versus 1996 for the will).
+6. Which excerpts may appear, after legal review.
+7. Domain name preference and any social profiles.
+8. Whether he is comfortable with the faceless giant silhouette in the sky layer, which echoes the cover, or prefers it removed.
