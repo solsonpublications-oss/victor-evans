@@ -9,7 +9,12 @@ const BEATS = [
   {
     label: "The House",
     title: "2905 Mills Avenue N.E.",
-    body: "A brick row house in the Langdon neighborhood of Washington, D.C., across from Langdon Park. James William Evans Sr., a Navy veteran, worked at the Greyhound terminal. Carrie Viola Evans kept the house. Seven children. Two parents. One bathroom. The mortgage was paid. The lights stayed on. In Black Northeast Washington of that era, the book documents, that was an achievement that the parents understood and the children did not yet appreciate.",
+    body: "A brick row house in the Langdon neighborhood of Washington, D.C., across from Langdon Park. James William Evans Sr., a Navy veteran, worked as a transmission mechanic for the Greyhound Bus Company through the late fifties, sixties, and seventies. Carrie Viola Evans kept the house. Seven children. Two parents. One bathroom. The mortgage was paid in full. The family was never on food stamps or welfare — they survived through work. In Black Northeast Washington of that era, a steady job and a paid-off home were an achievement. The parents understood that. The children did not yet appreciate it.",
+  },
+  {
+    label: "The Man",
+    title: "A proud Black man in a White man's world.",
+    body: "The author documents that his father's frustrations — and the drinking and the strain they produced at home — came from a source the country has never fully named. A proud Black man in a White man's world, working through the late fifties and sixties and seventies, carried the constant weight of degradation and disrespect. Black families did not trust White medicine — physical or mental — after generations of mistreatment, and after being used as guinea pigs by authorities in government and medicine. A man in that position could not sit down with a psychiatrist and get coping skills for what was being done to him. The book documents that this victimization continues today — in job promotion, in selection, in the administration of government goods and services.",
   },
   {
     label: "The Net",

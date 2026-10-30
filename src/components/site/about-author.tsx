@@ -140,13 +140,20 @@ export function AboutAuthor() {
                 as &ldquo;not a professional writer.&rdquo;
               </p>
               <p>
+                His father worked as a transmission mechanic for the Greyhound
+                Bus Company. His mother kept the house. The family survived
+                through work — never on food stamps or welfare. A steady job
+                and a paid-off home in Black Northeast Washington was an
+                achievement, and the author grew up inside that achievement
+                and inside the frustrations that came with it.
+              </p>
+              <p>
                 He wrote this book because time is running out. His sister
-                Phyllis is in her sixties. Three of his brothers are dead. His
-                mother is dead. He spent roughly thirty years writing to the
-                FBI, the Metropolitan Police Department, Adult Protective
-                Services, the D.C. Attorney General, and the United States
-                Congress. In May 2025 he petitioned Congress for an
-                investigation.
+                Phyllis is in her sixties. He spent roughly thirty years
+                writing to the FBI, the Metropolitan Police Department, Adult
+                Protective Services, the D.C. Attorney General, and the
+                United States Congress. In May 2025 he petitioned Congress for
+                an investigation.
               </p>
               <p>
                 He is the only remaining capacitated member of his family. The

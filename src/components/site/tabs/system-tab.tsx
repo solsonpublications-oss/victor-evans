@@ -120,6 +120,20 @@ export function SystemTab() {
         >
           This book is the audit.
         </p>
+        <p
+          className="body-text mt-6"
+          style={{
+            color: "var(--on-dark)",
+            opacity: 0.8,
+            maxWidth: "60ch",
+          }}
+        >
+          The author documents that this pattern of victimization is not
+          historical. It continues today — in job promotion and selection,
+          and in the administration of government goods and services. The
+          book asks whether the institutions designed to protect citizens
+          will act when the citizen is Black, disabled, or poor.
+        </p>
       </div>
     </div>
   );

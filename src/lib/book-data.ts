@@ -20,7 +20,7 @@ export const TIMELINE: TimelineEvent[] = [
     chapter: "Ch. 1",
     title: "The home is bought",
     summary:
-      "James William Evans Sr., a Navy veteran turned Greyhound mechanic, and Carrie Viola Evans purchase the brick row house at 2905 Mills Avenue N.E., in the Langdon neighborhood of Washington, D.C. They raise seven children inside its walls.",
+      "James William Evans Sr., a Navy veteran, worked as a transmission mechanic for the Greyhound Bus Company. He and Carrie Viola Evans purchase the brick row house at 2905 Mills Avenue N.E., in the Langdon neighborhood of Washington, D.C. They raise seven children inside its walls. The family survives through work — never on food stamps or welfare.",
   },
   {
     date: "May 15, 1960",
@@ -124,9 +124,9 @@ export type FamilyMember = {
 export const FAMILY: FamilyMember[] = [
   {
     name: "James William Evans Sr.",
-    role: "Father. Navy veteran. Greyhound mechanic.",
+    role: "Father. Navy veteran. Transmission mechanic, Greyhound Bus Company.",
     years: "d. 1980",
-    line: "He polished the front steps on weekends. The brick facade was maintained. The yard was swept. These were not casual acts. They were acts of ownership.",
+    line: "He polished the front steps on weekends. The brick facade was maintained. The yard was swept. These were not casual acts. They were acts of ownership, and ownership was something that Black families in this city had been systematically denied for generations.",
     chapter: "Ch. 1",
   },
   {
@@ -300,7 +300,7 @@ export const EXCERPTS: Excerpt[] = [
   {
     attribution: "Chapter 1 — The Greyhound Janitor and the Cycle of Abuse",
     label: "The opening of the book",
-    text: "My father, James William Evans Sr., was a Navy veteran. He served his country, came home, and went to work at the Greyhound Bus Lines terminal in Washington, D.C. He started as a cook in the terminal cafeteria. Later he moved to the maintenance shop, where he worked as a mechanic. This was steady work. It paid enough to support a wife and eventually seven children in a house on Mills Avenue in Northeast Washington.",
+    text: "My father, James William Evans Sr., was a Navy veteran. He served his country, came home, and went to work at the Greyhound Bus Lines terminal in Washington, D.C. He started as a cook in the terminal cafeteria. Later he moved to the maintenance shop, where he worked as a mechanic. This was steady work. It paid enough to support a wife and eventually seven children in a house on Mills Avenue in Northeast Washington.\n\nIn the world my father inhabited, a Black man with a steady job and a paid-off house had achieved something substantial.",
   },
   {
     attribution: "Prologue — The Arithmetic of Loss",
