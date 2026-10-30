@@ -15,6 +15,19 @@ export function useReducedMotion(): boolean {
   return reduced;
 }
 
+/** Reactive media-query flag (e.g. "(max-width: 639px)"). */
+export function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const set = () => setMatches(mq.matches);
+    set();
+    mq.addEventListener("change", set);
+    return () => mq.removeEventListener("change", set);
+  }, [query]);
+  return matches;
+}
+
 /**
  * Global pointer position as percentages (0..100) written to CSS vars
  * --mx / --my on a target element. Passive + rAF-throttled.

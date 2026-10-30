@@ -1,0 +1,50 @@
+THE GENERATIONAL CURSE BREAKER — website source
+================================================
+
+This zip contains the full Next.js 16 source for the book website at
+thegenerationalcursebreaker.com.
+
+SETUP (5 minutes)
+-----------------
+1. Unzip this folder.
+2. Install Node.js 20+ and either bun (recommended) or npm.
+3. From inside the unzipped folder, run:
+
+       bun install            # or: npm install
+       bun run db:generate    # or: npx prisma generate
+       bun run dev            # or: npm run dev
+
+4. Open http://localhost:3000
+
+WHAT WAS CHANGED IN THIS VERSION (client feedback applied)
+----------------------------------------------------------
+- src/lib/content.ts — removed all dreary / poverty / janitor framing;
+  James Sr. honored as a Greyhound transmission mechanic (a major
+  technical achievement); "never on food stamps or welfare" framing
+  added across Home, Timeline, Family, FAQ; medical mistrust and
+  "guinea pigs" context explained; System tab now says "police
+  wellness checks" (not "welfare checks").
+- src/components/site/hero.tsx — removed the kintsugi crack SVG over
+  the word "Breaker"; book cover now shows on mobile.
+- src/components/site/record/record-shell.tsx — fixed mobile overflow
+  in the sticky record tab bar (underline now contained in the nav).
+- src/app/layout.tsx + src/app/globals.css — book-cover typography
+  upgrade (Fraunces with opsz + SOFT axes, refined hero title and
+  reading-measure prose); fixed a pre-existing variable-cascade bug
+  that was making the whole site fall back to system sans-serif.
+- src/components/site/effects.ts, src/components/ui/carousel.tsx,
+  src/hooks/use-mobile.ts — lint fixes only.
+
+BUILD
+-----
+- bun run build       # production build (verified clean, 0 errors)
+- bun run start       # serve the production build
+
+PUSH TO YOUR GITHUB REPO (github.com/Reysajju/vle)
+--------------------------------------------------
+- git init && git remote add origin https://github.com/Reysajju/vle.git
+- git add -A && git commit -m "Apply client feedback + book typography + responsive fixes"
+- git push -u origin main
+
+Every word of site copy comes from the manuscript. Placeholders are
+marked [placeholder] in the text.

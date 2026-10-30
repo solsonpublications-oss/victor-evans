@@ -1,37 +1,77 @@
 "use client";
 
-import * as React from "react";
-import { useTheme } from "./theme-provider";
+import { useCallback } from "react";
+import { useReducedMotion } from "./effects";
 
-export function ThemeToggle({ inDarkContext = false }: { inDarkContext?: boolean }) {
-  const { theme, toggle } = useTheme();
+export default function ThemeToggle() {
+  const reduced = useReducedMotion();
 
-  // If the toggle is rendered inside an "ink" section (which is dark in both
-  // themes), we want the icon color to be the cream tone regardless of the
-  // global theme. Otherwise, follow the global theme.
-  const iconColor = inDarkContext ? "var(--on-dark)" : "var(--text)";
+  const toggle = useCallback(
+    (e: React.MouseEvent) => {
+      const root = document.documentElement;
+      const toDark = !root.classList.contains("dark");
+      const next = toDark ? "dark" : "light";
+      try {
+        localStorage.setItem("gcb-theme", toDark ? "storm" : "dawn");
+      } catch {
+        /* private mode — session-only theme */
+      }
+
+      const apply = () => {
+        root.classList.remove("dark", "light");
+        root.classList.add(next);
+        root.style.colorScheme = toDark ? "dark" : "light";
+      };
+
+      // Circular reveal from the toggle itself via View Transitions API
+      const doc = document as Document & {
+        startViewTransition?: (cb: () => void) => { finished: Promise<void> };
+      };
+      if (!reduced && doc.startViewTransition) {
+        const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+        root.style.setProperty("--tx", `${r.left + r.width / 2}px`);
+        root.style.setProperty("--ty", `${r.top + r.height / 2}px`);
+        doc.startViewTransition(apply);
+      } else {
+        if (reduced) {
+          apply();
+        } else {
+          root.classList.add("theme-fade");
+          apply();
+          window.setTimeout(() => root.classList.remove("theme-fade"), 320);
+        }
+      }
+    },
+    [reduced]
+  );
 
   return (
     <button
       type="button"
       onClick={toggle}
       className="theme-toggle"
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      style={{ color: iconColor, borderColor: inDarkContext ? "rgba(244, 236, 216, 0.35)" : "var(--line-strong)" }}
+      aria-label="Switch between Storm (dark) and Dawn (light) themes"
+      title="Storm / Dawn"
     >
-      {theme === "light" ? (
-        // Moon
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      ) : (
-        // Sun
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      )}
+      {/* moon (shown in dark) */}
+      <svg className="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M20.4 14.2A8.5 8.5 0 0 1 9.8 3.6a8.5 8.5 0 1 0 10.6 10.6Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+      </svg>
+      {/* sun (shown in light) */}
+      <svg className="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.4" stroke="currentColor" strokeWidth="1.7" />
+        <path
+          d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
     </button>
   );
 }

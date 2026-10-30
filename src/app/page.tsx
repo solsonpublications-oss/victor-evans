@@ -1,43 +1,43 @@
-"use client";
+import SiteShell from "@/components/site/site-shell";
+import cover from "@/assets/cover.jpg";
 
-import * as React from "react";
-import { SiteHeader } from "@/components/site/site-header";
-import { Hero } from "@/components/site/hero";
-import { AboutAuthor } from "@/components/site/about-author";
-import { AboutBook } from "@/components/site/about-book";
-import { TheRecord } from "@/components/site/the-record";
-import { ClosingCTA } from "@/components/site/closing-cta";
-import { PressView } from "@/components/site/press-view";
-import { PrivacyView } from "@/components/site/privacy-view";
-import { NotFoundView } from "@/components/site/not-found-view";
-import { SiteFooter } from "@/components/site/site-footer";
-import { useRevealOnScroll } from "@/components/site/hooks/motion";
-import { useView } from "@/components/site/view-provider";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Book",
+      name: "The Generational Curse Breaker",
+      subtitle:
+        "A Family's Battle Against Undue Influence, Systemic Neglect, and the Theft of Carrie Evans's Legacy",
+      author: { "@type": "Person", name: "Victor L. Evans" },
+      datePublished: "2025",
+      inLanguage: "en",
+      bookEdition: "First edition",
+      numberOfChapters: 12,
+      description:
+        "A work of nonfiction: one family's battle against undue influence, systemic neglect, and the theft of Carrie Evans's legacy — documented across thirty years.",
+    },
+    {
+      "@type": "Person",
+      name: "Victor L. Evans",
+      jobTitle: "Author",
+      description:
+        "Retired United States Army veteran with two Master's degrees and a career among records and accountability. Author of The Generational Curse Breaker.",
+      knowsAbout: ["public administration", "human resources management", "documentation and accountability"],
+    },
+    {
+      "@type": "WebSite",
+      name: "The Generational Curse Breaker",
+      inLanguage: "en",
+    },
+  ],
+};
 
 export default function Page() {
-  // Reveal-on-scroll for all .reveal elements. Re-runs when the view changes
-  // so newly-mounted .reveal elements get observed. Skips if reduced motion.
-  const { view } = useView();
-  useRevealOnScroll([view]);
-
   return (
     <>
-      <SiteHeader />
-      <main id="main">
-        {view === "home" && (
-          <>
-            <Hero />
-            <AboutAuthor />
-            <AboutBook />
-          </>
-        )}
-        {view === "record" && <TheRecord />}
-        {view === "contact" && <ClosingCTA />}
-        {view === "press" && <PressView />}
-        {view === "privacy" && <PrivacyView />}
-        {view === "404" && <NotFoundView />}
-      </main>
-      <SiteFooter />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <SiteShell cover={cover} />
     </>
   );
 }

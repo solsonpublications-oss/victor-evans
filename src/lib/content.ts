@@ -281,17 +281,16 @@ export const FAMILY = {
       name: "Carrie Viola Evans",
       years: "n\u00e9e Sumner \u00b7 mother",
       epitaph:
-        "She raised seven children in a house with one bathroom and \u201cprayed the way other people breathed.\u201d Never on welfare or food stamps, she and her family survived through fierce self-reliance and faith. Her spoken estate plan \u2014 protection for Phyllis, the house preserved, the family land shared \u2014 is the book's founding document.",
-      note: "Died December 1996 (per Chapter 6; the Prologue cites 2004 \u2014 date flagged). Buried at Fort Lincoln Cemetery.",
+        "She raised seven children in a house with one bathroom — never on food stamps or welfare, through independence and steadfast faith — and \u201cprayed the way other people breathed.\u201d Her spoken estate plan — protection for Phyllis, the house preserved, the family land shared — is the book's founding document.",
+      note: "Died December 1996 (per Chapter 6; the Prologue cites 2004 — date flagged). Buried at Fort Lincoln Cemetery.",
       living: false,
     },
     {
       name: "James William Evans Sr.",
-      years: "father \u00b7 navy veteran \u00b7 greyhound transmission mechanic",
+      years: "father · navy veteran · greyhound transmission mechanic",
       epitaph:
-        "Navy veteran and skilled transmission mechanic for the Greyhound Bus Company from the late 1950s and 1960s through the 1970s \u2014 a major technical achievement. Never relying on food stamps or welfare, he paid off 2905 Mills Avenue in full with his own hands. Yet with that achievement came the immense frustration of a proud Black man navigating a white-dominated society that denied respect and fair advancement.",
-      note:
-        "Driven to drink and family strain by constant racial degradation in an era when Black Americans rightfully distrusted medical and psychiatric institutions after generations of exploitation as 'guinea pigs' \u2014 leaving him without safe mental coping outlets. Died 1980.",
+        "Navy veteran and skilled transmission mechanic for the Greyhound Bus Company from the late 1950s and 1960s through the 1970s — a major technical achievement. Never relying on food stamps or welfare, he paid off 2905 Mills Avenue in full with his own hands. Yet with that achievement came the immense frustration of a proud Black man navigating a white-dominated society that denied respect and fair advancement.",
+      note: "Driven to drink and family strain by constant racial degradation in an era when Black Americans rightfully distrusted medical and psychiatric institutions after generations of exploitation as \u201cguinea pigs\u201d — leaving him without safe mental coping outlets. Died 1980.",
       living: false,
     },
     {
@@ -474,6 +473,10 @@ export const INSIDE = {
       a: "Yes. From the copyright page: \u201cThis is a work of nonfiction. The events described herein are true to the best of the author's knowledge and recollection, supported by legal documents, sworn affidavits, medical records, and official government correspondence referenced throughout the text.\u201d",
     },
     {
+      q: "What was the foundation the Evans family stood on in Northeast Washington?",
+      a: "Skilled labor and self-reliance. As a Greyhound transmission mechanic, James Sr. earned and paid off the family's brick row house at 2905 Mills Avenue in full — no mortgage, no landlord, never on food stamps or welfare — while Carrie Viola raised seven children through independence and steadfast faith.",
+    },
+    {
       q: "Who is the book for?",
       a: "From the Author's Note: families of people with developmental disabilities; anyone who has watched the system fail someone who cannot fully protect themselves; law enforcement officers, attorneys, social workers, judges, and legislators.",
     },
@@ -484,10 +487,6 @@ export const INSIDE = {
     {
       q: "What does \u201cthe generational curse\u201d mean?",
       a: "From Chapter 12: \u201cA generational curse is a pattern of harm that repeats across generations because the conditions that produce it are never addressed\u2026 not supernatural. It is structural.\u201d",
-    },
-    {
-      q: "What was the family's background and foundation?",
-      a: "The Evans family was self-sufficient, resilient, and proud. James Evans Sr., a Navy veteran and skilled transmission mechanic for the Greyhound Bus Company from the late 1950s through the 1970s, earned and paid off the family home at 2905 Mills Avenue in full. The family was never on food stamps or welfare; they survived and built their legacy through steady technical work, mutual perseverance, and deep faith.",
     },
     {
       q: "Who is Phyllis?",

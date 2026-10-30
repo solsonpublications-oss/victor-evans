@@ -39,8 +39,8 @@ export default function RecordShell({ tab, onTab }: { tab: string; onTab: (id: s
   return (
     <div className="relative" style={{ zIndex: 1 }}>
       <div className="tab-bar glass hairline-b" style={{ top: 64 }}>
-        <div ref={barRef} className="relative mx-auto max-w-7xl px-4 sm:px-6">
-          <nav className="flex gap-7 overflow-x-auto" aria-label="The Record sections">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <nav ref={barRef} className="relative flex gap-7 overflow-x-auto" aria-label="The Record sections">
             {RECORD_TABS.map((t) => (
               <a
                 key={t.id}
