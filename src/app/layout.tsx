@@ -205,6 +205,14 @@ const jsonLd = {
         },
         {
           "@type": "Question",
+          name: "What was the family's foundation in Northeast Washington?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The author's father, James William Evans Sr., was a Navy veteran who worked as a transmission mechanic for the Greyhound Bus Company from the late 1950s through the 1970s — a major technical achievement for a Black man in that era. The family was never on food stamps or welfare. They survived through work. The brick row house at 2905 Mills Avenue N.E. was paid off in full. The book documents that this achievement came with the immense frustration of a proud Black man navigating a white-dominated society that denied respect and fair advancement, and that Black families rightfully distrusted medical and psychiatric institutions after generations of exploitation.",
+          },
+        },
+        {
+          "@type": "Question",
           name: "How does the author frame the allegations?",
           acceptedAnswer: {
             "@type": "Answer",

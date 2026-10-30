@@ -41,7 +41,7 @@ export const TIMELINE: TimelineEvent[] = [
     chapter: "Ch. 1",
     title: "James Evans Sr. dies",
     summary:
-      "The author's father dies. The house at 2905 Mills Avenue transfers to Carrie Viola Evans. She owns it free and clear. No bank holds a lien. No landlord can evict her.",
+      "James William Evans Sr., Navy veteran and skilled transmission mechanic for the Greyhound Bus Company from the late 1950s through the 1970s, dies. Built on hard-won self-sufficiency without welfare or food stamps, the house at 2905 Mills Avenue transfers to Carrie Viola Evans — owned free and clear. No mortgage. No landlord.",
   },
   {
     date: "Date unrecorded",
@@ -124,16 +124,16 @@ export type FamilyMember = {
 export const FAMILY: FamilyMember[] = [
   {
     name: "James William Evans Sr.",
-    role: "Father. Navy veteran. Transmission mechanic, Greyhound Bus Company.",
+    role: "Father · Navy veteran · Greyhound transmission mechanic.",
     years: "d. 1980",
-    line: "He polished the front steps on weekends. The brick facade was maintained. The yard was swept. These were not casual acts. They were acts of ownership, and ownership was something that Black families in this city had been systematically denied for generations.",
+    line: "Navy veteran and skilled transmission mechanic for the Greyhound Bus Company from the late 1950s and 1960s through the 1970s — a major technical achievement. Never relying on food stamps or welfare, he paid off 2905 Mills Avenue in full with his own hands. Yet with that achievement came the immense frustration of a proud Black man navigating a white-dominated society that denied respect and fair advancement.",
     chapter: "Ch. 1",
   },
   {
     name: "Carrie Viola Evans",
     role: "Mother. Matriarch. Keeper of the home.",
     years: "d. December 1996",
-    line: "She prayed the way other people breathed — continuously, without announcement, as a condition of being alive.",
+    line: "She raised seven children through independence and faith — never on food stamps or welfare. She prayed the way other people breathed, continuously, without announcement, as a condition of being alive.",
     chapter: "Ch. 1",
   },
   {
@@ -183,7 +183,7 @@ export type InstitutionCard = {
 export const INSTITUTIONS: InstitutionCard[] = [
   {
     name: "Metropolitan Police Department",
-    sent: "Eighteen years of welfare-check requests filed with the 5th District.",
+    sent: "Eighteen years of police wellness-check requests filed with the 5th District.",
     received:
       "Officers knocked, asked if Phyllis was fine, and left. One lieutenant noted that Phyllis appeared easily influenced and that Simone was positioning herself as family. The observation sat in a file. The author says he was told, at headquarters: We only do stabbings and shootings here.",
     chapter: "Ch. 10",
@@ -298,7 +298,7 @@ export type Excerpt = {
 
 export const EXCERPTS: Excerpt[] = [
   {
-    attribution: "Chapter 1 — The Greyhound Janitor and the Cycle of Abuse",
+    attribution: "Chapter 1 — The Greyhound Transmission Mechanic: Achievement, Frustration, and Survival",
     label: "The opening of the book",
     text: "My father, James William Evans Sr., was a Navy veteran. He served his country, came home, and went to work at the Greyhound Bus Lines terminal in Washington, D.C. He started as a cook in the terminal cafeteria. Later he moved to the maintenance shop, where he worked as a mechanic. This was steady work. It paid enough to support a wife and eventually seven children in a house on Mills Avenue in Northeast Washington.\n\nIn the world my father inhabited, a Black man with a steady job and a paid-off house had achieved something substantial.",
   },
@@ -336,7 +336,7 @@ export const CONTENTS: Part[] = [
     number: "Part One",
     title: "Foundations and Fault Lines",
     chapters: [
-      { n: "Ch. 1", title: "The Greyhound Janitor and the Cycle of Abuse" },
+      { n: "Ch. 1", title: "The Greyhound Transmission Mechanic: Achievement, Frustration, and Survival" },
       { n: "Ch. 2", title: "The Twins and the Burden of Hemiplegia" },
       { n: "Ch. 3", title: "The Stranger in Langdon Park" },
     ],
