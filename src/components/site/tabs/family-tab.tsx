@@ -44,23 +44,38 @@ export function FamilyTab() {
                 e.currentTarget.style.borderTopColor = "var(--brick)";
               }}
             >
-              {/* candle-like glow on hover */}
-              <span
+              {/* In Memoriam Candle Flame on Hover */}
+              <div
                 aria-hidden="true"
-                className="absolute pointer-events-none"
-                style={{
-                  top: "-12px",
-                  right: "18px",
-                  width: "8px",
-                  height: "8px",
-                  background: "var(--gold)",
-                  borderRadius: "50%",
-                  boxShadow: "0 0 12px 3px var(--gold), 0 0 22px 6px rgba(246, 196, 83, 0.45)",
-                  opacity: 0,
-                  transform: "scale(0.4)",
-                  transition: "opacity 400ms ease, transform 400ms ease",
-                }}
-              />
+                className="absolute top-3 right-4 pointer-events-none flex flex-col items-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-100 scale-75"
+              >
+                {/* Flame Halo Glow */}
+                <div
+                  className="absolute -top-3 w-10 h-10 rounded-full"
+                  style={{
+                    background: "radial-gradient(circle, rgba(246, 196, 83, 0.5) 0%, rgba(255, 122, 69, 0.2) 50%, transparent 75%)",
+                    filter: "blur(6px)",
+                    animation: "candleBreathe 2s ease-in-out infinite",
+                  }}
+                />
+                {/* Candle Teardrop Flame */}
+                <svg width="14" height="24" viewBox="0 0 14 24" fill="none" className="relative z-10">
+                  <line x1="7" y1="18" x2="7" y2="24" stroke="#888" strokeWidth="1.2" strokeLinecap="round" />
+                  <path
+                    d="M 7 1 C 5 7 2 11 2 15 C 2 18 4 20 7 20 C 10 20 12 18 12 15 C 12 11 9 7 7 1 Z"
+                    fill="url(#candleFlameGrad)"
+                    style={{ animation: "candleFlicker 1.6s ease-in-out infinite" }}
+                  />
+                  <ellipse cx="7" cy="16" rx="2" ry="3" fill="#FFF8E7" opacity="0.9" />
+                  <defs>
+                    <linearGradient id="candleFlameGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#FFF2A3" />
+                      <stop offset="40%" stopColor="#F6C453" />
+                      <stop offset="100%" stopColor="#C8553D" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
 
               <h3
                 className="display"

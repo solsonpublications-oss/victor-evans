@@ -774,6 +774,40 @@
     12% { opacity: 0; }
   }
 
+  /* Candle flame flicker & halo */
+  @keyframes candleFlicker {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.95; }
+    25% { transform: scale(1.08, 0.94) rotate(2deg); opacity: 1; }
+    50% { transform: scale(0.95, 1.05) rotate(-1deg); opacity: 0.88; }
+    75% { transform: scale(1.04, 0.98) rotate(1.5deg); opacity: 0.98; }
+  }
+  @keyframes candleBreathe {
+    0%, 100% { transform: scale(1); opacity: 0.45; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+  }
+
+  /* Gentle floating animation (translate-only so 3D rotation transforms are preserved) */
+  @keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-7px); }
+  }
+
+  .animate-gentle-float {
+    animation: gentleFloat 5s ease-in-out infinite;
+  }
+
+  /* Shimmer sweep */
+  @keyframes shimmerGlow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Star twinkle */
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.35); filter: drop-shadow(0 0 3px #FFE08A); }
+  }
+
   /* Theme circular reveal — for View Transitions API fallback */
   @keyframes themeReveal {
     from { clip-path: circle(0% at var(--reveal-x, 50%) var(--reveal-y, 50%)); }

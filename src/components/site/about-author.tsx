@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { AuthorPortraitArt, DiamondDivider, BrokenChainArt } from "./illustrations";
+import { DiamondDivider } from "./illustrations";
 import { useCountUp } from "./hooks/motion";
+import { AuthorPortraitAnimated } from "./author-portrait-animated";
+import { InteractiveChain } from "./interactive-chain";
 
 const STATS = [
   { value: 30, suffix: "", label: "Years of documentation" },
@@ -71,48 +73,19 @@ export function AboutAuthor() {
         </div>
 
         <div className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
-          {/* portrait */}
+          {/* 3D Animated Author Medallion Portrait */}
           <div className="md:col-span-5 reveal" data-reveal-delay="80">
-            <div
-              className="relative hover-lift"
-              style={{ aspectRatio: "4 / 5", maxWidth: "480px", margin: "0 auto" }}
-              onMouseEnter={(e) => {
-                const frame = e.currentTarget.querySelector(".portrait-frame") as HTMLElement;
-                if (frame) frame.style.transform = "translate(12px, 12px)";
-              }}
-              onMouseLeave={(e) => {
-                const frame = e.currentTarget.querySelector(".portrait-frame") as HTMLElement;
-                if (frame) frame.style.transform = "translate(8px, 8px)";
-              }}
-            >
-              <AuthorPortraitArt className="w-full h-full" />
-              {/* brass offset frame */}
-              <div
-                className="portrait-frame absolute pointer-events-none"
-                style={{
-                  inset: "-10px sm:-14px",
-                  border: "1px solid var(--gold)",
-                  opacity: 0.55,
-                  transform: "translate(8px, 8px)",
-                  transition: "transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1)",
-                }}
-                aria-hidden="true"
-              />
-            </div>
+            <AuthorPortraitAnimated />
           </div>
 
           {/* text */}
           <div className="md:col-span-7">
-            {/* Broken chain motif — the book's central image */}
+            {/* Interactive Broken Chain motif — the book's signature gesture */}
             <div
               className="reveal mb-6"
               data-reveal-delay="60"
-              style={{ opacity: 0.85 }}
             >
-              <BrokenChainArt
-                className="w-32 h-12"
-                tone="brass"
-              />
+              <InteractiveChain label="The Generational Curse Breaker" />
             </div>
 
             <h2

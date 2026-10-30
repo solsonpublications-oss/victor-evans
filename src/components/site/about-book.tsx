@@ -4,6 +4,7 @@ import * as React from "react";
 import { DiamondDivider } from "./illustrations";
 import { useGetBookModal } from "./get-book-modal";
 import { useView } from "./view-provider";
+import { InteractiveBook3D } from "./interactive-book-3d";
 
 const BEATS = [
   {
@@ -62,48 +63,10 @@ export function AboutBook() {
         </div>
 
         <div className="grid md:grid-cols-12 gap-8 md:gap-14">
-          {/* sticky cover */}
+          {/* 3D interactive hardcover showcase */}
           <div className="md:col-span-4">
-            <div
-              className="md:sticky md:top-24 reveal hover-lift relative"
-              style={{
-                aspectRatio: "2 / 3",
-                maxWidth: "360px",
-                margin: "0 auto",
-                transition: "transform 350ms cubic-bezier(0.2,0.7,0.2,1), filter 350ms ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.filter = "drop-shadow(0 30px 60px rgba(0,0,0,0.65))";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.filter = "drop-shadow(0 20px 40px rgba(0,0,0,0.45))";
-              }}
-            >
-              <picture>
-                <img
-                  src="/cover.jpg"
-                  alt="The Generational Curse Breaker — book cover: a brick row house at dusk with a lit window, a broken chain on the front steps, and the silhouette of a white-haired figure in the storm clouds above."
-                  width={1024}
-                  height={1536}
-                  loading="lazy"
-                  decoding="async"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </picture>
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  border: "1px solid rgba(246, 196, 83, 0.25)",
-                }}
-                aria-hidden="true"
-              />
+            <div className="md:sticky md:top-24 reveal flex justify-center">
+              <InteractiveBook3D variant="showcase" />
             </div>
             {process.env.NODE_ENV !== "production" && (
               <p

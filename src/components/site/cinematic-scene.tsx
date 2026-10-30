@@ -80,6 +80,34 @@ export function CinematicHeroScene({
         {/* Sky base */}
         <rect width="1440" height="900" fill="url(#sky)" />
 
+        {/* Layer 1b: Twinkling night sky stars */}
+        <g opacity="0.75">
+          {[
+            { cx: 120, cy: 80, r: 1.2, d: "0s" },
+            { cx: 280, cy: 60, r: 1.5, d: "1.2s" },
+            { cx: 440, cy: 110, r: 1.0, d: "2.4s" },
+            { cx: 620, cy: 75, r: 1.4, d: "0.8s" },
+            { cx: 780, cy: 130, r: 1.1, d: "1.8s" },
+            { cx: 960, cy: 90, r: 1.6, d: "3.1s" },
+            { cx: 1120, cy: 70, r: 1.3, d: "2.1s" },
+            { cx: 1300, cy: 120, r: 1.5, d: "0.5s" },
+            { cx: 200, cy: 140, r: 1.0, d: "1.5s" },
+            { cx: 850, cy: 50, r: 1.2, d: "2.7s" },
+          ].map((star, i) => (
+            <circle
+              key={i}
+              cx={star.cx}
+              cy={star.cy}
+              r={star.r}
+              fill="#FFE08A"
+              style={{
+                animation: `starTwinkle 3.2s ease-in-out infinite`,
+                animationDelay: star.d,
+              }}
+            />
+          ))}
+        </g>
+
         {/* Horizon sunset glow */}
         <rect
           width="1440"

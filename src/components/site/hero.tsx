@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import { CinematicHeroScene, ParticleCanvas } from "./cinematic-scene";
-import { useCoverTilt, useScrollProgress, useFoilSweep, useMagnetic } from "./hooks/motion";
+import { useScrollProgress, useFoilSweep, useMagnetic } from "./hooks/motion";
 import { useGetBookModal } from "./get-book-modal";
 import { useView } from "./view-provider";
+import { InteractiveBook3D } from "./interactive-book-3d";
 
 /**
  * Chain-break intro — first visit only, skippable, reduced-motion safe.
@@ -116,7 +117,6 @@ function ChainBreakIntro({ onDone }: { onDone: () => void }) {
 }
 
 export function Hero() {
-  const tiltRef = useCoverTilt(8);
   const foilRef = useFoilSweep();
   const readBtnRef = useMagnetic(0.25, 120);
   const getBookBtnRef = useMagnetic(0.25, 120);
@@ -124,6 +124,14 @@ export function Hero() {
   const { setView } = useView();
   const scrollProgress = useScrollProgress();
   const [introDone, setIntroDone] = React.useState(false);
+  const [lanternPos, setLanternPos] = React.useState({ x: 50, y: 40 });
+
+  const handleHeroPointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setLanternPos({ x, y });
+  };
 
   return (
     <>
@@ -131,6 +139,7 @@ export function Hero() {
 
       <section
         id="top"
+        onPointerMove={handleHeroPointerMove}
         className="storm-section relative overflow-hidden"
         style={{ minHeight: "100svh" }}
         aria-label="The Generational Curse Breaker — opening"
@@ -138,8 +147,17 @@ export function Hero() {
         {/* Cinematic layered background scene */}
         <CinematicHeroScene scrollProgress={scrollProgress * 2} />
 
+        {/* Dynamic Interactive Lantern Ambient Glow (Follows cursor) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+          style={{
+            background: `radial-gradient(circle 460px at ${lanternPos.x}% ${lanternPos.y}%, rgba(255, 224, 138, 0.14), rgba(200, 85, 61, 0.05) 45%, transparent 75%)`,
+          }}
+        />
+
         {/* Particle canvas — embers (dark) / dust (light) */}
-        <ParticleCanvas count={40} />
+        <ParticleCanvas count={45} />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-5 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-24 grid md:grid-cols-12 gap-8 items-center">
           {/* left/center: text */}
@@ -221,89 +239,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* right: 3D book */}
-          <div className="md:col-span-5 flex justify-center md:justify-end">
-            <div
-              ref={tiltRef}
-              className="hero-rise relative"
-              style={{
-                width: "min(72vw, 380px)",
-                aspectRatio: "2 / 3",
-                animation: "coverFloat 1200ms cubic-bezier(0.2,0.7,0.2,1) forwards",
-                animationDelay: "1200ms",
-                opacity: 0,
-                transformStyle: "preserve-3d",
-                transform: "perspective(1200px) rotateX(0) rotateY(0)",
-                transition: "transform 200ms ease-out",
-                filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.7))",
-              }}
-            >
-              {/* Real book cover on a 3D hardcover face */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  transformStyle: "preserve-3d",
-                  borderRadius: "2px",
-                  overflow: "hidden",
-                  boxShadow: "0 0 0 1px rgba(246, 196, 83, 0.15), inset 0 0 20px rgba(0,0,0,0.3)",
-                }}
-              >
-                <picture>
-                  <img
-                    src="/cover.jpg"
-                    alt="The Generational Curse Breaker — book cover: a brick row house at dusk with a lit window, a broken chain on the front steps, and the silhouette of a white-haired figure in the storm clouds above."
-                    width={1024}
-                    height={1536}
-                    fetchPriority="high"
-                    decoding="async"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </picture>
-                {/* Specular gold sheen — follows cursor */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: `radial-gradient(circle 80px at var(--sheen-x, 50%) var(--sheen-y, 30%), rgba(255, 224, 138, 0.25), transparent 60%)`,
-                    pointerEvents: "none",
-                    mixBlendMode: "screen",
-                  }}
-                />
-              </div>
-              {/* Spine highlight */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  width: "6px",
-                  background: "linear-gradient(90deg, rgba(255,255,255,0.2), transparent)",
-                  pointerEvents: "none",
-                }}
-                  aria-hidden="true"
-              />
-              {/* Page edges — right side */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "2px",
-                  right: "-3px",
-                  bottom: "2px",
-                  width: "4px",
-                  background: "linear-gradient(to right, #E8DCC4, #F2E9D8, #E8DCC4)",
-                  borderRadius: "0 2px 2px 0",
-                  boxShadow: "1px 0 3px rgba(0,0,0,0.3)",
-                }}
-                aria-hidden="true"
-              />
-            </div>
+          {/* right: 3D interactive book */}
+          <div className="md:col-span-5 flex justify-center md:justify-end hero-rise" style={{ animationDelay: "1100ms" }}>
+            <InteractiveBook3D variant="hero" priority />
           </div>
         </div>
 

@@ -49,6 +49,15 @@ dev.out.log
 test
 prompt
 
+# temporary screenshots & scrape dumps
+scripts/*.png
+scripts/*.json
+scripts/book_full.txt
+download/
+tool-results/
+upload/
+
+
 server.log
 # Skills directory
 /skills/
